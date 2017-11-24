@@ -44,6 +44,7 @@ with con:
                "feedback_user VARCHAR(20)," \
                "ISBN13 CHAR(13)," \
                "order_date DATE NOT NULL," \
+               "score INT CHECK (score >=0 AND score <= 10)," \
                "feedback TINYTEXT," \
                "PRIMARY KEY (feedback_user,ISBN13)," \
                "FOREIGN KEY (feedback_user) REFERENCES user_account(user_id) ON DELETE CASCADE," \
@@ -54,6 +55,7 @@ with con:
              "feedback_user VARCHAR(20)," \
              "ISBN13 CHAR(13)," \
              "entry_date DATE NOT NULL," \
+             "score INT CHECK (score >=0 AND score <= 2)," \
              "PRIMARY KEY (feedback_user,rating_user,ISBN13)," \
              "FOREIGN KEY (rating_user) REFERENCES user_account(user_id) ON DELETE CASCADE," \
              "FOREIGN KEY (feedback_user) REFERENCES feedback (feedback_user) ON DELETE CASCADE," \
