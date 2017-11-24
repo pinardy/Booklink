@@ -7,6 +7,17 @@ with con:
     cur = con.cursor()
 
     #TODO: Write Schema here
+    book = "CREATE TABLE book (" \
+           "title TINYTEXT NOT NULL," \
+           "cover_format TINYTEXT CHECK(cover_format='paperback' or cover_format='hardcover')," \
+           "num_pages INT," \
+           "authors TINYTEXT," \
+           "publisher TINYTEXT," \
+           "year_publish YEAR," \
+           "edition INT," \
+           "ISBN10 CHAR(10) NOT NULL," \
+           "ISBN13 CHAR(13) NOT NULL,PRIMARY KEY (ISBN13));"
+
     # creates the user account
     userAccount = "CREATE TABLE user_account(" \
                   "user_id VARCHAR(20)," \
@@ -71,6 +82,8 @@ with con:
         print("userAccount already exists")
 
     #TODO: Fix the remaining of the schema
+    cur.execute(book)
+    print("Created book table")
     cur.execute(purchaseHistory)
     print("Created purchaseHistory table")
 
