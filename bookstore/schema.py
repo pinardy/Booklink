@@ -23,7 +23,6 @@ with con:
                   "user_id VARCHAR(20)," \
                   "login_name VARCHAR(20) UNIQUE," \
                   "user_password VARCHAR(20) NOT NULL," \
-                  "feedback TINYTEXT," \
                   "PRIMARY KEY(user_id));"
 
     purchaseHistory = "CREATE TABLE purchase_history (" \
@@ -45,6 +44,7 @@ with con:
                "feedback_user VARCHAR(20)," \
                "ISBN13 CHAR(13)," \
                "order_date DATE NOT NULL," \
+               "feedback TINYTEXT," \
                "PRIMARY KEY (feedback_user,ISBN13)," \
                "FOREIGN KEY (feedback_user) REFERENCES user_account(user_id) ON DELETE CASCADE," \
                "FOREIGN KEY (ISBN13) REFERENCES book (ISBN13) ON DELETE CASCADE);"
@@ -59,6 +59,13 @@ with con:
              "FOREIGN KEY (feedback_user) REFERENCES feedback (feedback_user) ON DELETE CASCADE," \
              "FOREIGN KEY (ISBN13) REFERENCES book (ISBN13) ON DELETE CASCADE);"
 
+    # Updates the inventory when a purchase is made
+    updateInventory = "CREATE TRIGGER UpdateInventory " \
+                      "AFTER INSERT on purchase_history " \
+                      "FOR EACH Row " \
+                      "UPDATE inventory " \
+                      "SET inventory.no_copies = inventory.no_copies - NEW.no_copies " \
+                      "WHERE inventory.ISBN13 = NEW.ISBN13;"
     # ========== TEST INSERTION SQL CODES =========
 
     # sql = "INSERT into books VALUES ('A Guide to the SQL Standard','paperback',240,'C.J. Date','Addison-Wesley',1989,2,'0201502097','978-0201502091');"
@@ -95,6 +102,9 @@ with con:
 
     cur.execute(rating)
     print("Created rating table")
+
+    cur.execute(updateInventory)
+    print("Created inventory trigger")
 
     print("--- Execution of SQL successful ---")
 
