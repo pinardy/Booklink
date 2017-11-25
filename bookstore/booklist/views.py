@@ -1,10 +1,9 @@
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
 
-from booklist.forms import RegistrationForm
-from booklist.forms import BookForm
-
-from booklist.query import insertBook
+from booklist.query import insertBook, retrieveProfile
+from booklist.forms import BookForm, RegistrationForm
 
 def index(request):
     return render(request, 'booklist/index.html', {})
@@ -38,27 +37,62 @@ def stock(request):
         form = BookForm
     return render(request, 'booklist/stock.html', {'form': form})
 
-def register(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            user.refresh_from_db()  # load the profile instance created by the signal
-            user.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            #TODO: This should redirect to a success page
-            return redirect('index')
 
-    # If GET request
+def register(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     else:
-        form = RegistrationForm()
-    return render(request, 'booklist/register.html', {'form': form})
+        if request.method == 'POST':
+            form = RegistrationForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                user.refresh_from_db()  # load the profile instance created by the signal
+                user.save()
+                username = form.cleaned_data.get('username')
+                raw_password = form.cleaned_data.get('password1')
+                user = authenticate(username=username, password=raw_password)
+                login(request, user)
+                # TODO: This should redirect to a success page
+                return redirect('index')
+
+        # If GET request
+        else:
+            form = RegistrationForm()
+        return render(request, 'booklist/register.html', {'form': form})
+
 
 def logout_view(request):
     logout(request)
     return render(request, 'booklist/index.html', {})
 
+def login_view(request):
+    """
+    Displays the login form and handles the login action.
+    """
+    if request.user.is_authenticated:
+        return redirect('index')
+    else:
+        if request.method == "POST":
+            form = AuthenticationForm(request, data=request.POST)
+            if form.is_valid():
 
+                username = form.cleaned_data.get('username')
+                raw_password = form.cleaned_data.get('password')
+                user = authenticate(username=username, password=raw_password)
+                login(request, user)
+
+                return redirect('index')
+        else:
+            form = AuthenticationForm()
+
+        return render(request, 'booklist/login.html', {'form': form})
+
+def profile(request):
+    """
+    Profile Query
+    """
+    if not (request.user.is_authenticated):
+        return redirect('index')
+    else:
+        user_profile = retrieveProfile(request.user.username)
+        return render(request, 'booklist/profile.html', {'user_profile': user_profile})
