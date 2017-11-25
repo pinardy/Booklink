@@ -1,6 +1,5 @@
 import MySQLdb as mdb
 
-
 # ----------BOOK FUNCTIONS----------
 
 # Retrieve information on all books to display on homepage
@@ -44,6 +43,7 @@ def insertBook(title, cover_format, num_pages, authors, publisher, year_publish,
 		isbn10 = '0894353233'
 		isbn13 = '9780894353239';
 		"""
+
 
         query = "INSERT into book VALUES ('{0}'," \
                 "'{1}',{2},'{3}','{4}'," \
