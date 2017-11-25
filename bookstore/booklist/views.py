@@ -1,26 +1,39 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.template import loader
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+
+from booklist.forms import RegistrationForm
+
 
 def index(request):
-    # template = loader.get_template('booklist/index.html')
     return render(request, 'booklist/index.html', {})
-    # return HttpResponse("<h1> test </h1>")
 
 def work(request):
-    # template = loader.get_template('booklist/index.html')
     return render(request, 'booklist/work.html', {})
-    # return HttpResponse("<h1> test </h1>")
-
-def login(request):
-    # template = loader.get_template('booklist/index.html')
-    return render(request, 'booklist/login.html', {})
-    # return HttpResponse("<h1> test </h1>")
 
 def base(request):
-    # template = loader.get_template('booklist/index.html')
     return render(request, 'booklist/base.html', {})
-    # return HttpResponse("<h1> test </h1>")
 
-def testview(request):
-    return HttpResponse("<h1>testing our view!</h1>")
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            user.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            #TODO: This should redirect to a success page
+            return redirect('index')
+
+    # If GET request
+    else:
+        form = RegistrationForm()
+    return render(request, 'booklist/register.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    #TODO: Redirect to a successful logout page?
+    return redirect('index')
