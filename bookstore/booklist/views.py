@@ -2,7 +2,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 
 from booklist.forms import RegistrationForm
+from booklist.forms import BookForm
 
+from query import insertBook
 
 def index(request):
     return render(request, 'booklist/index.html', {})
@@ -15,6 +17,26 @@ def base(request):
 
 def browse(request):
     return render(request, 'booklist/browse.html', {})
+
+def stock(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data.get(title)
+            covFormat = form.cleaned_data.get(covFormat)
+            noPages = form.cleaned_data.get(noPages)
+            authors = form.cleaned_data.get(authors)
+            publisher = form.cleaned_data.get(publisher)
+            yearPublish = form.cleaned_data.get(yearPublish)
+            edition = form.cleaned_data.get(edition)
+            isbn10 = form.cleaned_data.get(isbn10)
+            isbn13 = form.cleaned_data.get(isbn13)
+            #put update function here
+            insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13)
+            return redirect('index')
+    else:
+        form = BookForm
+    return render(request, 'booklist/stock.html', {'form': form})
 
 def register(request):
     if request.method == 'POST':
