@@ -1,6 +1,4 @@
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from booklist.forms import RegistrationForm
@@ -14,6 +12,9 @@ def work(request):
 
 def base(request):
     return render(request, 'booklist/base.html', {})
+
+def browse(request):
+    return render(request, 'booklist/browse.html', {})
 
 def register(request):
     if request.method == 'POST':
@@ -38,7 +39,4 @@ def logout_view(request):
     logout(request)
     return render(request, 'booklist/index.html', {})
 
-def login_view(request):
-    # login(request)
-    #TODO: Redirect to login page
-    return render(request, 'booklist/login.html', {})
+
