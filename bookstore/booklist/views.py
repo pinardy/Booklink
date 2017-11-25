@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from booklist.forms import RegistrationForm
 from booklist.forms import BookForm
 
-from query import insertBook
+from booklist.query import insertBook
 
 def index(request):
     return render(request, 'booklist/index.html', {})
