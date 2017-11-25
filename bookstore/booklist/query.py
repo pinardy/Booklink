@@ -21,11 +21,14 @@ def getAllBooks():
 			row = cur.fetchall()
 			return row
 
+
+# Add a book
 def insertBook(title,cover_format,num_pages,authors,publisher,year_publish,edition,isbn10,isbn13):
 	con = mdb.connect(host = "127.0.0.1", port=3306, user = "bookstore_user", passwd = "password", db = "bookstore")
 	with con:
-		cur = con.cursor()
+	
 		"""
+		cur = con.cursor()
 		#query = "INSERT INTO book \
 				#VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})".format(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13)
 		#query = "INSERT into book VALUES ('Database Management Systems'," \
@@ -106,3 +109,4 @@ def updateInventory(isbn13, newStock):
 				"WHERE isbn13 = {1}".format(newStock, isbn13)
 				
 # ----------USER FUNCTIONS----------
+
