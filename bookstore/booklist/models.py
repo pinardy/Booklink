@@ -1,6 +1,9 @@
 from django.db import models
 
 # Create your models here.
+
+# Models disallowed for this project
+"""
 class Book(models.Model):
 	title = models.CharField(max_length=100)
 	PAPERBACK = 'PB'
@@ -60,4 +63,4 @@ class Rating (models.Model):
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 	score=models.PositiveIntegerField()
 	entry_date = models.DateField()
-	
+"""
