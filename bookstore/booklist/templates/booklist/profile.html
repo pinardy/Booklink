@@ -54,7 +54,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden-xs hidden-sm"><a href="/order_page/{{user.username}}">My Orders</a></li>
                     <li class="hidden-xs hidden-sm"> <a href="/shop_cart_page/{{user.username}}">Shopping Cart</a></li>
-                    <li class="hidden-xs hidden-sm"><a href="/user/{{user.username}}">My Account</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/profile">My Account</a></li>
                     <li class="hidden-xs hidden-sm"><a href="/booklist/logout">Logout</a></li>
                 </ul><!-- /.nav -->
             </div><!-- /.col -->
@@ -175,7 +175,7 @@
 
 					<div class="col-xs-12 col-sm-4 col-md-4 text-center logo-holder">
 						<!-- ============================================== LOGO ============================================== -->
-<a href="home.html">
+<a href="/booklist/">
 	<h1 class="logo">Booklink</h1>
 	<div class="logo-subtitle">
 		<span>At SUTD's doorstep</span>
@@ -256,13 +256,15 @@
 <!-- ============================================== BANNERS : END ============================================== -->
 			
 			<!-- ============================================== USER PROFILE  ============================================== -->
-
-{% block content %}
+            <h2 class="sub-title">User Profile</h2>
             <div class="profile">
-                <p> It is now {% user_profile %}.</p>
+                <p> Name: {{ user_profile.0.4 }}</p>
+                <p> Email: {{ user_profile.0.7 }}</p>
+                <p> Date joined: {{ user_profile.0.10 }}</p>
 			</div>
-{% endblock %}
-			
+
+            <h2 class="sub-title">Order History</h2>
+            <h2 class="sub-title">Feedback History</h2>
 			<!-- ============================================== USER PROFILE : END ============================================== -->
 
 			
