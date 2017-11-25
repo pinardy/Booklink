@@ -48,7 +48,8 @@
                 <p class='text-center'><a href="#"><span class="icon glyphicon glyphicon-earphone"></span> +1-234-567-8910</a></p>
 
             </div><!-- /.col -->
-            <div class="col-md-4 col-sm-2">
+ {% if user.username %}
+           <div class="col-md-4 col-sm-2">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden-xs hidden-sm"><a href="contact.html">Wishlist</a></li>
                     <li class="hidden-xs hidden-sm"><a href="single-book.html">Shopping Cart</a></li>
@@ -57,6 +58,15 @@
                     <li class="icon hidden-lg hidden-sm hidden-md"><a data-toggle="modal" data-target="#modal-login-small" href="#"><i class="icon fa fa-lock"></i></a></li>
                 </ul><!-- /.nav -->
             </div><!-- /.col -->
+{% else %}
+            <div class="col-md-4 col-sm-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/register/">Register</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/login/">Login</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+{% endif %}
+
         </div><!-- /.row -->
     </div><!-- /.container -->
 </nav><!-- /.navbar -->

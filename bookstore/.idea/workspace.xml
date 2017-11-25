@@ -18,8 +18,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/booklist/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="37" column="48" lean-forward="true" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+            <state relative-caret-position="396">
+              <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -39,11 +39,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="66" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="394" column="31" lean-forward="false" selection-start-line="394" selection-start-column="31" selection-end-line="394" selection-end-column="31" />
+            <state relative-caret-position="211">
+              <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -52,18 +62,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
+            <state relative-caret-position="173">
               <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schema.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,8 +72,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/booklist/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="242">
+              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -92,10 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>css</find>
-      <find>img sr</find>
-      <find>assets/</find>
-      <find>static</find>
       <find>//</find>
       <find>&quot;//</find>
       <find>book-cover</find>
@@ -105,7 +101,6 @@
       <find>assets</find>
       <find>//s</find>
       <find>niger</find>
-      <find>header</find>
       <find>navbar end</find>
       <find>navbar : end</find>
       <find>doorst</find>
@@ -122,6 +117,11 @@
       <find>user</find>
       <find>form.as</find>
       <find>installed</find>
+      <find>= HEADER</find>
+      <find>best se</find>
+      <find>&lt;li class=&quot;hidden-xs hidden-sm&quot;&gt;&lt;a href=&quot;/orde</find>
+      <find>logout</find>
+      <find>header</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -134,9 +134,7 @@
       <list>
         <option value="$PROJECT_DIR$/booklist/migrations/urls.py" />
         <option value="$PROJECT_DIR$/bookstore/urls.py" />
-        <option value="$PROJECT_DIR$/booklist/templates/booklist/login.html" />
         <option value="$PROJECT_DIR$/booklist/raw_templates/index.html" />
-        <option value="$PROJECT_DIR$/booklist/templates/booklist/index.html" />
         <option value="$PROJECT_DIR$/booklist/templates/booklist/base.html" />
         <option value="$PROJECT_DIR$/booklist/templates/booklist/indextest.html" />
         <option value="$PROJECT_DIR$/create_onlineBookStore.py" />
@@ -144,6 +142,9 @@
         <option value="$PROJECT_DIR$/schema.py" />
         <option value="$PROJECT_DIR$/booklist/forms.py" />
         <option value="$PROJECT_DIR$/booklist/urls.py" />
+        <option value="$PROJECT_DIR$/booklist/templates/booklist/index.html" />
+        <option value="$PROJECT_DIR$/booklist/templates/booklist/register.html" />
+        <option value="$PROJECT_DIR$/booklist/templates/booklist/login.html" />
         <option value="$PROJECT_DIR$/booklist/views.py" />
       </list>
     </option>
@@ -175,20 +176,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bookstore" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookstore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookstore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookstore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bookstore" />
@@ -243,15 +230,15 @@
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Pinar\Dropbox\SUTD\Term_6\50.008 Databases\DB-Project\bookstore\booklist\templates\booklist" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Pinar\Dropbox\SUTD\Term_6\50.008 Databases\bookstore_proj\bookstore\booklist\templates\booklist" />
       <recent name="C:\Users\Pinar\Dropbox\SUTD\Term_6\50.008 Databases\bookstore\booklist\templates" />
       <recent name="C:\Users\Pinar\Dropbox\SUTD\Term_6\50.008 Databases\bookstore\booklist\templates\booklist" />
       <recent name="C:\Users\Pinar\Dropbox\SUTD\Term_6\50.008 Databases\bookstore\bookstore" />
       <recent name="C:\Users\Pinar\Dropbox\SUTD\Term_6\50.008 Databases\bookstore\booklist" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pinar\Dropbox\SUTD\Term_6\50.008 Databases\DB-Project\bookstore\booklist\templates\booklist" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -405,7 +392,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="696" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -454,7 +441,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/work.html" />
     <entry file="file://$PROJECT_DIR$/booklist/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -711,13 +697,6 @@
     <entry file="file://$PROJECT_DIR$/booklist/raw_templates/index.html" />
     <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/indextest.html" />
     <entry file="file://$PROJECT_DIR$/create_onlineBookStore.py" />
-    <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2310">
-          <caret line="105" column="14" lean-forward="false" selection-start-line="105" selection-start-column="14" selection-end-line="105" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -725,10 +704,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/login.html">
+    <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        <state relative-caret-position="308">
+          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/logout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,16 +727,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
+        <state relative-caret-position="173">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
@@ -765,28 +745,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="66" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="394" column="31" lean-forward="false" selection-start-line="394" selection-start-column="31" selection-end-line="394" selection-end-column="31" />
+        <state relative-caret-position="211">
+          <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/booklist/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="242">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/booklist/templates/booklist/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="265" column="0" lean-forward="true" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/booklist/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="37" column="48" lean-forward="true" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+        <state relative-caret-position="396">
+          <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>

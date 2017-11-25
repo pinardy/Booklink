@@ -1,5 +1,6 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from booklist.forms import RegistrationForm
@@ -35,5 +36,9 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    #TODO: Redirect to a successful logout page?
-    return redirect('index')
+    return render(request, 'booklist/index.html', {})
+
+def login_view(request):
+    # login(request)
+    #TODO: Redirect to login page
+    return render(request, 'booklist/login.html', {})
