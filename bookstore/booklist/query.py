@@ -110,3 +110,6 @@ def updateInventory(isbn13, newStock):
 				
 # ----------USER FUNCTIONS----------
 
+def createUser():
+	pass
+
