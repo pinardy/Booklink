@@ -2,7 +2,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
-from booklist.query import insertBook, retrieveProfile
+from booklist.query import insertBook, retrieveProfile, setInventory
 from booklist.forms import BookForm, RegistrationForm
 
 from booklist.helperFunctions import input_formatting
@@ -27,15 +27,16 @@ def stock(request):
             edition = form.cleaned_data.get('edition')
             isbn10 = form.cleaned_data.get('isbn10')
             isbn13 = form.cleaned_data.get('isbn13')
-            quantity = form.cleaned_data.get('quantity')
+            initStock = form.cleaned_data.get('quantity')
             # put update function here
             insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13)
-
-            # TODO update quantity
+            # should the check condition be within the function?
+            if initStock > 0:
+                setInventory(isbn13,initStock)
             return redirect('index')
     else:
         form = BookForm
-    return render(request, 'booklist/stock.html', {'test': form})
+    return render(request, 'booklist/stock.html', {'bookForm': form})
 
 def register(request):
     if request.user.is_authenticated:

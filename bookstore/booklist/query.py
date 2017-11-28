@@ -84,9 +84,9 @@ def setInventory(isbn13, initStock):
     with con:
         cur = con.cursor()
 
-        query = "INSERT into inventory('{0}','{1}');".format(isbn13, initStock)
+        query = "INSERT into inventory VALUES ('{0}',{1});".format(isbn13, initStock)
 
-
+        cur.execute(query)
 def getInventory(isbn13):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
@@ -113,6 +113,7 @@ def updateInventory(isbn13, newStock):
                 "SET no_copies = {0}" \
                 "WHERE isbn13 = {1}".format(newStock, isbn13)
 
+        cur.execute(query)
         # ----------USER FUNCTIONS----------
 
 

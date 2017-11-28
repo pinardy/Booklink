@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 COVER_FORMATS = (
-    (1, "paperback"),
-    (2, "hardcover"),
+    ('paperback', "paperback"),
+    ('hardcover', "hardcover"),
 )
 
 
