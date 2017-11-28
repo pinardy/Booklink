@@ -18,7 +18,7 @@ class RegistrationForm(UserCreationForm):
 
 class BookForm(forms.Form):
     title = forms.CharField(label='Title', max_length=100)
-    covFormat = forms.ChoiceField(label='Cover Format', choices=COVER_FORMAT)
+    covFormat = forms.ChoiceField(label='Cover Format', choices=COVER_FORMATS)
     noPages = forms.IntegerField(label='Number of Pages', min_value=0)
     authors = forms.CharField(label='Authors', max_length=100)
     publisher = forms.CharField(label='Publisher', max_length=100)
