@@ -2,7 +2,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
-from booklist.query import insertBook, retrieveProfile, updateInventory, getAllBooks
+from booklist.query.admin import insertBook, updateInventory
+from booklist.query.book import getAllBooks
+from booklist.query.user import retrieveProfile
 from booklist.forms import BookForm, StockForm, RegistrationForm
 
 def index(request):
@@ -21,7 +23,6 @@ def error(request):
     return render(request, 'booklist/error.html', {})
 
 def browse(request):
-
     book_list = getAllBooks()
     context = {
         'book_list': book_list,

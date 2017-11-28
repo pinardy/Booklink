@@ -8,8 +8,8 @@ def insertBook(title, cover_format, num_pages, authors, publisher, year_publish,
 		cur = con.cursor()
 
 		query = "INSERT into book VALUES" \
-                "('{0}','{1}',{2},'{3}','{4}'," \
-                "{5},{6},'{7}','{8}');".format(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13)
+				"('{0}','{1}',{2},'{3}','{4}'," \
+				"{5},{6},'{7}','{8}');".format(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13)
 				
 				
 		cur.execute(query)
@@ -35,7 +35,7 @@ def updateInventory(isbn13, newStock):
 		cur = con.cursor()
 
 		query = "UPDATE inventory " \
-                "SET no_copies = {0} " \
-                "WHERE isbn13 = {1};".format(newStock, isbn13)
+				"SET no_copies = {0} " \
+				"WHERE isbn13 = {1};".format(newStock, isbn13)
 		cur.execute(query)
 		return True

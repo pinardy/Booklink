@@ -9,11 +9,11 @@ def retrieveProfile(uid):
 
 		# TODO: Add price attribute to book
 		query = "SELECT * " \
-                "FROM auth_user " \
-                "WHERE username = '{0}';".format(uid)
+				"FROM auth_user " \
+				"WHERE username = '{0}';".format(uid)
 		cur.execute(query)
 
-        # No row exists
+		# No row exists
 		if cur.rowcount == 0:
 			print("No user profile")
 			return None

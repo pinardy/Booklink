@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from booklist.query import getAllBookIsbnTitle
+from booklist.query.book import getAllBookIsbnTitle
 
 COVER_FORMATS = (
     (1, "paperback"),
