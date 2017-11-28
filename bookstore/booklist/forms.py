@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from booklist.query import getBook
+from booklist.query.book import getAllBookIsbnTitle
+from booklist.query.book import getBook
 COVER_FORMATS = (
     ('paperback', "paperback"),
     ('hardcover', "hardcover"),
@@ -38,8 +39,8 @@ class BookForm(forms.Form):
 
 
 class StockForm(forms.Form):
-    isbn13 = forms.IntegerField(label='ISBN10', min_value=1000000000, max_value=9999999999)
-    quantity = forms.IntegerField(label='Quantity', min_value=0)
+    title = forms.ChoiceField(choices=getAllBookIsbnTitle())
+    quantity = forms.CharField(label='quantity', max_length=100)
 
     class Meta:
-        fields = ('isbn13','quantity')
+        fields = ('title','quantity')

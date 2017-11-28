@@ -2,23 +2,40 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
-from booklist.query import insertBook, retrieveProfile, setInventory
-from booklist.forms import BookForm, RegistrationForm
-
+from booklist.query.admin import insertBook, updateInventory
+from booklist.query.book import getAllBooks
+from booklist.query.user import retrieveProfile
+from booklist.forms import BookForm, StockForm, RegistrationForm
 from booklist.helperFunctions import input_formatting
 
 def index(request):
     return render(request, 'booklist/index.html', {})
 
+def work(request):
+    return render(request, 'booklist/work.html', {})
+
+def staff_view(request):
+    return render(request, 'booklist/staff.html', {})
+
+def base(request):
+    return render(request, 'booklist/base.html', {})
+
+def error(request):
+    return render(request, 'booklist/error.html', {})
+
 def browse(request):
-    return render(request, 'booklist/browse.html', {})
+    book_list = getAllBooks()
+    context = {
+        'book_list': book_list,
+    }
+    print (book_list)
+    return render(request, 'booklist/browse.html', context)
 
 def stock(request):
     if request.method == 'POST':
         form = BookForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data.get('title')
-            title = input_formatting(title)
             covFormat = form.cleaned_data.get('covFormat')
             noPages = form.cleaned_data.get('noPages')
             authors = form.cleaned_data.get('authors')
@@ -29,14 +46,11 @@ def stock(request):
             isbn13 = form.cleaned_data.get('isbn13')
             initStock = form.cleaned_data.get('quantity')
             # put update function here
-            insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13)
-            # should the check condition be within the function?
-            if initStock > 0:
-                setInventory(isbn13,initStock)
-            return redirect('index')
+            insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13, initStock)
     else:
         form = BookForm
     return render(request, 'booklist/stock.html', {'bookForm': form})
+
 
 def register(request):
     if request.user.is_authenticated:
@@ -58,7 +72,7 @@ def register(request):
         # If GET request
         else:
             form = RegistrationForm()
-        return render(request, 'booklist/register.html', {'registration': form})
+        return render(request, 'booklist/register.html', {'form': form})
 
 
 def logout_view(request):
@@ -87,7 +101,6 @@ def login_view(request):
 
         return render(request, 'booklist/login.html', {'form': form})
 
-
 def profile(request):
     """
     Profile Query
@@ -99,6 +112,17 @@ def profile(request):
         return render(request, 'booklist/profile.html', {'user_profile': user_profile})
 
 def staff_view(request):
+    """
+    Staff page. Store managers can insert a new book or increase stock
+    """
+    if not (request.user.is_authenticated):
+        return redirect('login')
+    elif not (request.user.is_superuser):
+        return redirect('error')
+    else:
+            return render(request, 'booklist/staff.html', {})
+
+def addbook(request):
     """
     Staff page. Store managers can insert a new book or increase stock
     """
@@ -121,19 +145,36 @@ def staff_view(request):
                 isbn13 = form.cleaned_data.get('isbn13')
                 quantity = form.cleaned_data.get('quantity')
                 # put update function here
-                if (quantity > 0):
-                    insertBook(title, covFormat, noPages, authors, publisher, yearPublish, edition, isbn10, isbn13, quantity)
-
-                return redirect('index')
+                insertBook(title, covFormat, noPages, authors, publisher, yearPublish, edition, isbn10, isbn13, quantity)
+                return redirect('staff')
         else:
             form = BookForm
-        return render(request, 'booklist/staff.html', {'form': form})
+            return render(request, 'booklist/staff/addbook.html', {'form': form})
+
+def addstock(request):
+    """
+    Staff page. Store managers can insert a new book or increase stock
+    """
+    if not (request.user.is_authenticated):
+        return redirect('login')
+    elif not (request.user.is_superuser):
+        return redirect('error')
+    else:
+        if request.method == 'POST':
+            form = StockForm(request.POST)
+            if form.is_valid():
+                isbn13 = form.cleaned_data.get('title')
+                print(isbn13)
+                quantity = form.cleaned_data.get('quantity')
+                # put update function here
+                updateInventory(isbn13, quantity)
+                return redirect('staff')
+        else:
+            form = StockForm
+            return render(request, 'booklist/staff/addstock.html', {'form': form})
 
 def error(request):
     """
     Error page
     """
     return render(request, 'booklist/error.html', {})
-
-
-
