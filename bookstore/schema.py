@@ -20,11 +20,11 @@ with con:
            "quantity INT);"
 
     # creates the user account
-    userAccount = "CREATE TABLE user_account(" \
-                  "user_id VARCHAR(20)," \
-                  "login_name VARCHAR(20) UNIQUE," \
-                  "user_password VARCHAR(20) NOT NULL," \
-                  "PRIMARY KEY(user_id));"
+    #userAccount = "CREATE TABLE user_account(" \
+    #              "user_id VARCHAR(20)," \
+    #              "login_name VARCHAR(20) UNIQUE," \
+    #              "user_password VARCHAR(20) NOT NULL," \
+    #              "PRIMARY KEY(user_id));"
 
     purchaseHistory = "CREATE TABLE purchase_history (" \
                       "purchase_id VARCHAR(20)," \
@@ -33,7 +33,7 @@ with con:
                       "no_copies INT CHECK (no_copies > 0)," \
                       "order_date DATE NOT NULL," \
                       "PRIMARY KEY (purchase_id)," \
-                      "FOREIGN KEY (user_id) REFERENCES user_account(user_id)," \
+                      "FOREIGN KEY (user_id) REFERENCES auth_user(username)," \
                       "FOREIGN KEY (ISBN13) REFERENCES book (ISBN13));"
 
     inventory = "CREATE TABLE inventory(ISBN13 CHAR(13)," \
@@ -48,7 +48,7 @@ with con:
                "score INT CHECK (score >=0 AND score <= 10)," \
                "feedback TINYTEXT," \
                "PRIMARY KEY (feedback_user,ISBN13)," \
-               "FOREIGN KEY (feedback_user) REFERENCES user_account(user_id) ON DELETE CASCADE," \
+               "FOREIGN KEY (feedback_user) REFERENCES auth_user(username) ON DELETE CASCADE," \
                "FOREIGN KEY (ISBN13) REFERENCES book (ISBN13) ON DELETE CASCADE);"
 
     rating = "CREATE TABLE rating (" \
@@ -58,7 +58,7 @@ with con:
              "entry_date DATE NOT NULL," \
              "score INT CHECK (score >=0 AND score <= 2)," \
              "PRIMARY KEY (feedback_user,rating_user,ISBN13)," \
-             "FOREIGN KEY (rating_user) REFERENCES user_account(user_id) ON DELETE CASCADE," \
+             "FOREIGN KEY (rating_user) REFERENCES auth_user(username) ON DELETE CASCADE," \
              "FOREIGN KEY (feedback_user) REFERENCES feedback (feedback_user) ON DELETE CASCADE," \
              "FOREIGN KEY (ISBN13) REFERENCES book (ISBN13) ON DELETE CASCADE);"
 
