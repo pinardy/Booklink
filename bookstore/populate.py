@@ -8,13 +8,6 @@ with con:
 
     #============= INSERT data ==============#
 
-    insertUser = "INSERT INTO user_account (user_id, login_name, user_password)" \
-                 "VALUES (1, 'pinardy', 'password')," \
-                 "(2, 'eiros', 'password')," \
-                 "(3, 'jinjun', 'password')," \
-                 "(4, 'joshua', 'password')," \
-                 "(5, 'sanjay', 'password');"
-
     insertBook = "INSERT INTO book (title, cover_format, num_pages, authors, publisher, year_publish, edition, ISBN10, ISBN13)" \
                  "VALUES " \
                  "('Database Management Systems: Evolution and Interoperation','hardcover',272,'Bhavani Thuraisingham'" \
@@ -50,12 +43,6 @@ with con:
 
     # Execution of cursor objects for schema
     try:
-        cur.execute(insertUser)
-        print("Inserted into user")
-    except:
-        pass
-
-    try:
         cur.execute(insertBook)
         print("Inserted into book")
     except:
@@ -72,5 +59,6 @@ with con:
         print("Inserted into purchase_history")
     except:
         pass
+
 
     print("--- Execution of SQL successful ---")

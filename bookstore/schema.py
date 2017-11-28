@@ -18,7 +18,6 @@ with con:
            "ISBN10 CHAR(10) NOT NULL," \
            "ISBN13 CHAR(13) NOT NULL,PRIMARY KEY (ISBN13));"
 
-
     purchaseHistory = "CREATE TABLE purchase_history (" \
                       "purchase_id VARCHAR(20)," \
                       "user_id VARCHAR(20) NOT NULL," \
