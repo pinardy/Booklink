@@ -38,7 +38,6 @@
                 <ul class="nav navbar-nav">
                     <li><a href="single-book.html">Online Store</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    {% if user.username %}
                     <li><a href="/booklist/staff/">Staff</a></li>
 
                 </ul><!-- /.nav -->
@@ -254,217 +253,26 @@
 			<!-- ============================================== BANNERS ============================================== -->
 
 <!-- ============================================== BANNERS : END ============================================== -->
-			
-
-			<!-- ============================================== BEST SELLER ============================================== -->
-<section class="best-seller wow fadeInUp">
-    <div id="best-seller" class="module">
-        <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>Bestsellers</span></h2>
-        </div><!-- /.module-heading -->
-        <div class="module-body">
-          <div class="row books full-width">
-            <div class="clearfix text-center">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html">
-                                <div class="book-cover">
-                                    <img width="140" height="212" alt="" src="../../static/images/book-covers/01.jpg">
-                                    <div class="tag">
-                                        <span>sale</span>
-                                    </div>
-                            </div>
-                            </a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">The Brief Wondrous Life of  Oscar Wao</a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Cormac McCarthy</a></p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$14.75</span>               
-                                            <div class="cart-action"> 
-                                                <a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/02.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">Doctor Sleep </a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Stephen King</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$14.45</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/03.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">Wonder Hardcover</a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> R. J. Palacio</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$9.59</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/04.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">The Brief Wondrous  Life of Oscar</a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Hezy Theme</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$12.00</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/05.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">How Dogs Love Us: A  Neuroscientist and His Dog </a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Gregory Berns </a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$7.95</span>
-                                        <div class="cart-action"> 
-                                                <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-              </div>
-			</div>
-        </div>
-    </div>
+<section class="inner-md">
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 center-block">
+				<div class="row info-404">
+					<div class="col-md-6 col-sm-6">
+						<h1 class="title">404</h1>
+					</div>
+					<div class="col-md-6 col-sm-6 right-info inner-top-md">
+						<h2 class="sub-title">error</h2>
+						<p><a href="home.html">&rarr;&nbsp;back to home page</a></p>
+					</div>
+				</div>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /.content -->
 </section>
-			<!-- ============================================== TESTIMONIAL ============================================== -->
-<section class="customer-testimonial wow fadeInUp outer-bottom-xs light-bg">
-    <div id="testimonial" class="module container inner-top-xs">
-        <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>Customer testimonals</span></h2>
-        </div><!-- /.module-heading -->
-        <div class="module-body">
-            <div class="row">
-                <div class="col-md-10 center-block">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="testimonial-block">
-                                <div class="inner-testimonial-block">
-                                    <div class="blockquote">
-                                        <div class="inner-left-xl">
-                                            <blockquote>
-                                              <p>Upon knowing the existence of this bookstore, I have quit playing dota and started indulging myself in books from here. I highly recommend buying books from Booklink.</p>
-                                            </blockquote>
-                                        </div><!-- /.inner-left-xl -->
-                                    </div><!-- /.blockquote -->
-                                </div><!-- /.inner-testimonial-block -->
-                                <div class="row m-t-20">
-                                    <div class="col-md-10 author-block center-block">
-                                        <div class="row">
-                                            <div class="col-md-4 col-xs-5">
-                                                <div class='image'>
-                                                    <img class="img-responsive" src="../../static/images/testimonials/joshua.jpg" alt="">
-                                                </div><!-- /.image -->
-                                            </div><!-- /.col -->
-                                            <div class="col-md-8 col-xs-7">
-                                              <h5 class="author-name outer-top-xs">Joshua Lim Wen Yao</h5>
-                                              ISTD Junior, SUTD<br>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.testimonial-block -->
-                        </div><!-- /.col -->
 
-                         <div class="col-md-6 col-sm-6">
-                            <div class="testimonial-block">
-                                <div class="inner-testimonial-block">
-                                    <div class="blockquote">
-                                        <div class="inner-left-xl">
-                                            <blockquote>
-                                              <p>The books in Booklink are like my sweet, rose-kissed muse, ever free from thorns. Their imminent knowledge flows out like the dashing waterfalls of Niagara. Would recommend Booklink anytime!</p>
-                                            </blockquote>
-                                        </div><!-- /.inner-left-xl -->
-                                    </div><!-- /.blockquote -->
-                                </div><!-- /.inner-testimonial-block -->
-                                <div class="row m-t-20">
-                                    <div class="col-md-10 author-block center-block">
-                                         <div class="row">
-                                            <div class="col-md-4 col-xs-5">
-                                                 <div class='image'>
-                                                   <img class="img-responsive" src="../../static/images/testimonials/eiros.jpg" alt="">
-                                              </div><!-- /.image -->
-                                            </div><!-- /.col -->
-                                            <div class="col-md-8 col-xs-7">
-                                              <h5 class="author-name outer-top-xs">Eiros Tan Yan You</h5>
-                                              <span>ISTD Junior, SUTD</span>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.testimonial-block -->
-                            
-                         </div><!-- /.col -->
-                     </div><!-- /.row -->
-                </div><!-- /.col -->
-      
-            </div><!-- /.row -->
-        </div><!-- /.module-body -->
-    </div><!-- /.module -->
-</section>
-			
-<!-- ============================================== TESTIMONIAL : END ============================================== -->
 
 <div id="cart-dropdown-wrapper">
 	<nav id="menu1" class="cart-dropdown">

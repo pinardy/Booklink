@@ -6,7 +6,7 @@ con = mdb.connect(host = "127.0.0.1", port=3306, user = "bookstore_user", passwd
 with con:
     cur = con.cursor()
 
-    #TODO: Write Schema here
+    # --- Schema ---
     book = "CREATE TABLE book (" \
            "title TINYTEXT NOT NULL," \
            "cover_format TINYTEXT CHECK(cover_format='paperback' or cover_format='hardcover')," \
@@ -16,7 +16,8 @@ with con:
            "year_publish YEAR," \
            "edition INT," \
            "ISBN10 CHAR(10) NOT NULL," \
-           "ISBN13 CHAR(13) NOT NULL,PRIMARY KEY (ISBN13));"
+           "ISBN13 CHAR(13) NOT NULL,PRIMARY KEY (ISBN13)" \
+           "quantity INT);"
 
     # creates the user account
     userAccount = "CREATE TABLE user_account(" \
@@ -90,7 +91,6 @@ with con:
     except:
         print("userAccount already exists")
 
-    #TODO: Fix the remaining of the schema
     cur.execute(book)
     print("Created book table")
     cur.execute(purchaseHistory)
