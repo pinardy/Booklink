@@ -5,6 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from booklist.query import insertBook, retrieveProfile
 from booklist.forms import BookForm, RegistrationForm
 
+from booklist.helperFunctions import input_formatting
+
 def index(request):
     return render(request, 'booklist/index.html', {})
 
@@ -22,6 +24,7 @@ def stock(request):
         form = BookForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data.get('title')
+            title = input_formatting(title)
             covFormat = form.cleaned_data.get('covFormat')
             noPages = form.cleaned_data.get('noPages')
             authors = form.cleaned_data.get('authors')
@@ -30,13 +33,13 @@ def stock(request):
             edition = form.cleaned_data.get('edition')
             isbn10 = form.cleaned_data.get('isbn10')
             isbn13 = form.cleaned_data.get('isbn13')
+            quantity = form.cleaned_data.get('quantity')
             #put update function here
             insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13)
             return redirect('index')
     else:
         form = BookForm
     return render(request, 'booklist/stock.html', {'form': form})
-
 
 def register(request):
     if request.user.is_authenticated:
