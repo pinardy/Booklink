@@ -10,12 +10,6 @@ from booklist.helperFunctions import input_formatting
 def index(request):
     return render(request, 'booklist/index.html', {})
 
-def work(request):
-    return render(request, 'booklist/work.html', {})
-
-def base(request):
-    return render(request, 'booklist/base.html', {})
-
 def browse(request):
     return render(request, 'booklist/browse.html', {})
 
@@ -35,7 +29,7 @@ def stock(request):
             isbn13 = form.cleaned_data.get('isbn13')
             quantity = form.cleaned_data.get('quantity')
             #put update function here
-            insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13)
+            insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13,quantity)
             return redirect('index')
     else:
         form = BookForm
@@ -90,6 +84,7 @@ def login_view(request):
 
         return render(request, 'booklist/login.html', {'form': form})
 
+
 def profile(request):
     """
     Profile Query
@@ -99,3 +94,43 @@ def profile(request):
     else:
         user_profile = retrieveProfile(request.user.username)
         return render(request, 'booklist/profile.html', {'user_profile': user_profile})
+
+def staff_view(request):
+    """
+    Staff page. Store managers can insert a new book or increase stock
+    """
+    if not (request.user.is_authenticated):
+        return redirect('login')
+    elif not (request.user.is_superuser):
+        return redirect('error')
+    else:
+        if request.method == 'POST':
+            form = BookForm(request.POST)
+            if form.is_valid():
+                title = form.cleaned_data.get('title')
+                covFormat = form.cleaned_data.get('covFormat')
+                noPages = form.cleaned_data.get('noPages')
+                authors = form.cleaned_data.get('authors')
+                publisher = form.cleaned_data.get('publisher')
+                yearPublish = form.cleaned_data.get('yearPublish')
+                edition = form.cleaned_data.get('edition')
+                isbn10 = form.cleaned_data.get('isbn10')
+                isbn13 = form.cleaned_data.get('isbn13')
+                quantity = form.cleaned_data.get('quantity')
+                # put update function here
+                if (quantity > 0):
+                    insertBook(title, covFormat, noPages, authors, publisher, yearPublish, edition, isbn10, isbn13, quantity)
+
+                return redirect('index')
+        else:
+            form = BookForm
+        return render(request, 'booklist/staff.html', {'form': form})
+
+def error(request):
+    """
+    Error page
+    """
+    return render(request, 'booklist/error.html', {})
+
+
+
