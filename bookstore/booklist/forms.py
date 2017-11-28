@@ -26,7 +26,7 @@ class BookForm(forms.Form):
     edition = forms.IntegerField(label='Edition', min_value=1)
     isbn10 = forms.IntegerField(label='ISBN10', min_value=1000000000, max_value=9999999999)
     isbn13 = forms.IntegerField(label='ISBN13', min_value=1000000000000, max_value=9999999999999)
-    quantity = forms.IntegerField(label='ISBN13', min_value=0)
+    quantity = forms.IntegerField(label='Quantity', min_value=0)
 
     class Meta:
         fields = ('title','covFormat','noPages','authors','publisher','yearPublish','edition','edition','isbn10','isbn13','quantity')

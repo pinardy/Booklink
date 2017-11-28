@@ -21,9 +21,6 @@
 <body>
 
 
- 
-
-
     <div id="wrapper" >
         <div id="page-content-wrapper" class="st-pusher">
             <div class="st-pusher-after"></div>
@@ -257,7 +254,7 @@
     <h2 class="sub-title">Insert book</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ registration.as_p }}
             <button type="submit">Insert</button>
         </form>
 

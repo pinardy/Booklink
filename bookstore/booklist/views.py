@@ -28,12 +28,14 @@ def stock(request):
             isbn10 = form.cleaned_data.get('isbn10')
             isbn13 = form.cleaned_data.get('isbn13')
             quantity = form.cleaned_data.get('quantity')
-            #put update function here
-            insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13,quantity)
+            # put update function here
+            insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13)
+
+            # TODO update quantity
             return redirect('index')
     else:
         form = BookForm
-    return render(request, 'booklist/stock.html', {'form': form})
+    return render(request, 'booklist/stock.html', {'test': form})
 
 def register(request):
     if request.user.is_authenticated:
@@ -55,7 +57,7 @@ def register(request):
         # If GET request
         else:
             form = RegistrationForm()
-        return render(request, 'booklist/register.html', {'form': form})
+        return render(request, 'booklist/register.html', {'registration': form})
 
 
 def logout_view(request):
