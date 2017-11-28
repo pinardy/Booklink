@@ -2,7 +2,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
-from booklist.query import insertBook, retrieveProfile
+from booklist.query import insertBook, retrieveProfile, getAllBooks
 from booklist.forms import BookForm, RegistrationForm
 
 def index(request):
@@ -15,7 +15,13 @@ def base(request):
     return render(request, 'booklist/base.html', {})
 
 def browse(request):
-    return render(request, 'booklist/browse.html', {})
+
+    book_list = getAllBooks()
+    context = {
+        'book_list': book_list,
+    }
+    print (book_list)
+    return render(request, 'booklist/browse.html', context)
 
 def stock(request):
     if request.method == 'POST':

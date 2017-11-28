@@ -19,6 +19,26 @@ def getAllBooks():
             return
         else:
             row = cur.fetchall()
+            print (row)
+            return row
+
+def getBooks():
+    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+    with con:
+        cur = con.cursor()
+
+        # TODO: Add price attribute to book
+        query = "SELECT title, authors \
+                FROM book"
+        cur.execute(query)
+
+        # No row exists
+        if cur.rowcount == 0:
+            print("No books in booklist")
+            return
+        else:
+            row = cur.fetchall()
+            print (row)
             return row
 
 
