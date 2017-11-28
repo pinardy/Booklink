@@ -49,16 +49,28 @@ with con:
     insertRating = ""
 
     # Execution of cursor objects for schema
-    cur.execute(insertUser)
-    print("Inserted into user")
+    try:
+        cur.execute(insertUser)
+        print("Inserted into user")
+    except:
+        pass
 
-    cur.execute(insertBook)
-    print("Inserted into book")
+    try:
+        cur.execute(insertBook)
+        print("Inserted into book")
+    except:
+        pass
 
-    cur.execute(insertInventory)
-    print("Inserted into inventory")
+    try:
+        cur.execute(insertInventory)
+        print("Inserted into inventory")
+    except:
+        pass
 
-    cur.execute(insertPurchaseHistory)
-    print("Inserted into purchase_history")
+    try:
+        cur.execute(insertPurchaseHistory)
+        print("Inserted into purchase_history")
+    except:
+        pass
 
     print("--- Execution of SQL successful ---")
