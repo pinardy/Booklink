@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from booklist.query import getBook
 COVER_FORMATS = (
     ('paperback', "paperback"),
     ('hardcover', "hardcover"),
@@ -28,6 +28,11 @@ class BookForm(forms.Form):
     isbn13 = forms.IntegerField(label='ISBN13', min_value=1000000000000, max_value=9999999999999)
     quantity = forms.IntegerField(label='Quantity', min_value=0)
 
+    def clean(self):
+        isbn13 = self.cleaned_data['isbn13']
+        book = getBook(isbn13)
+        if book:
+            raise forms.ValidationError("ISBN13 EXISTS!! PLS MERCY ON THE DATABASE PROF")
     class Meta:
         fields = ('title','covFormat','noPages','authors','publisher','yearPublish','edition','edition','isbn10','isbn13','quantity')
 
