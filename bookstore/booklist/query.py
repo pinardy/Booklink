@@ -21,6 +21,18 @@ def getAllBooks():
             row = cur.fetchall()
             return row
 
+def executeQuery(query):
+    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+    with con:
+        cur = con.cursor()
+        cur.execute(query)
+        return cur
+
+def getBookByTitle(title):
+
+    query = ""
+    executeQuery()
+
 
 def insertBook(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
