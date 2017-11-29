@@ -11,14 +11,8 @@ from booklist.helperFunctions import input_formatting
 def index(request):
     return render(request, 'booklist/index.html', {})
 
-def work(request):
-    return render(request, 'booklist/work.html', {})
-
 def staff_view(request):
     return render(request, 'booklist/staff.html', {})
-
-def base(request):
-    return render(request, 'booklist/base.html', {})
 
 def error(request):
     return render(request, 'booklist/error.html', {})
@@ -178,3 +172,4 @@ def error(request):
     Error page
     """
     return render(request, 'booklist/error.html', {})
+
