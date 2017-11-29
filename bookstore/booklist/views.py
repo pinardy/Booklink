@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from booklist.query.admin import *
 from booklist.query.cart import *
-from booklist.query.book import getAllBooks, searchBookByTitle
+from booklist.query.book import getAllBooks, searchBookByTitle, getBook
 from booklist.query.user import retrieveProfile, getPurchaseHistory
 
 from booklist.forms import BookForm, StockForm, RegistrationForm
@@ -192,27 +192,34 @@ def cart(request):
 		return redirect('login')
 	else:
 		if request.method == 'POST':
-			form = BookForm(request.POST)
-			if form.is_valid():
-				title = form.cleaned_data.get('title')
-				covFormat = form.cleaned_data.get('covFormat')
-				noPages = form.cleaned_data.get('noPages')
-				authors = form.cleaned_data.get('authors')
-				publisher = form.cleaned_data.get('publisher')
-				yearPublish = form.cleaned_data.get('yearPublish')
-				edition = form.cleaned_data.get('edition')
-				isbn10 = form.cleaned_data.get('isbn10')
-				isbn13 = form.cleaned_data.get('isbn13')
-				quantity = form.cleaned_data.get('quantity')
-				# put update function here
-				insertBook(title, covFormat, noPages, authors, publisher, yearPublish, edition, isbn10, isbn13, quantity)
-				return redirect('staff')
+			req = request.POST
+			if req.get('update'):
+				modifyCart(req.get('isbn13'),request.user.username,req.get('quantity'))
+			elif req.get('delete'):
+				delFromCart(req.get('isbn13'),request.user.username)
+			elif req.get('placeorder'):
+				user_cart = showCart(request.user.username)
+				successful = PurchaseBook(user_cart)
+				if successful:
+					delAllFromCart(request.user.username)
+					SubmitPurchaseHistory(user_cart,request.user.id)
+					return redirect('orderfinish')
+				else:
+					return redirect('error')
+
+			return redirect('cart')
 		else:
 			cart = showCart(request.user.username)
 			if cart is None:
-				return render(request, 'booklist/cart.html',{'cart':('Cart is empty.')})
+				return render(request, 'booklist/cart.html',{'cart':None})
 			else:
 				return render(request, 'booklist/cart.html',{'cart':cart})
+
+def orderfinish(request):
+	"""
+	Thank you page
+	"""
+	return render(request, 'booklist/orderfinish.html', {})
 
 def error(request):
 	"""
@@ -220,3 +227,15 @@ def error(request):
 	"""
 	return render(request, 'booklist/error.html', {})
 
+def feedback(request):
+	if request.method == "GET":
+		q = request.GET
+		isbn13 = q.__getitem__('isbn')
+
+		book_details = getBook(isbn13)
+		context = {
+			'book_details': book_details,
+		}
+		print(book_details)
+		#TODO: Replace the link with the appropriate one
+		return render(request, 'booklist/feedback.html', context)
