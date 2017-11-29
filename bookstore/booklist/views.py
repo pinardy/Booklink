@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from booklist.query.admin import *
 from booklist.query.cart import *
-from booklist.query.book import getAllBooks, searchBookByTitle
+from booklist.query.book import getAllBooks, searchBookByTitle, getBook
 from booklist.query.user import retrieveProfile, getPurchaseHistory
 
 from booklist.forms import BookForm, StockForm, RegistrationForm
@@ -220,3 +220,15 @@ def error(request):
 	"""
 	return render(request, 'booklist/error.html', {})
 
+def feedback(request):
+	if request.method == "GET":
+		q = request.GET
+		isbn13 = q.__getitem__('isbn')
+
+		book_details = getBook(isbn13)
+		context = {
+			'book_details': book_details,
+		}
+		print(book_details)
+		#TODO: Replace the link with the appropriate one
+		return render(request, 'booklist/feedback.html', context)
