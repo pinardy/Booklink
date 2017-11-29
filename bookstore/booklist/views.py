@@ -2,11 +2,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
-
+from booklist.query.user import *
 from booklist.query.admin import *
 from booklist.query.cart import *
 from booklist.query.book import getAllBooks, searchBookByTitle, getBook
-from booklist.query.user import retrieveProfile, getPurchaseHistory
 
 from booklist.forms import BookForm, StockForm, RegistrationForm
 
@@ -114,12 +113,13 @@ def profile(request):
 	if not (request.user.is_authenticated):
 		return redirect('index')
 	else:
-		print("YOLO")
 		user_profile = retrieveProfile(request.user.username)
-		purchase_history = getPurchaseHistory(request.user.username)         # purchase_history = getPurchaseHistory(request.user.username)
+		purchase_history = getPurchaseHistory(request.user.username)
+		feedback_history = getFeedbackHistory(request.user.username)
 
-		print(user_profile)
-		return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history':purchase_history})
+		rating_history = getRatingHistory(request.user.username)
+		print(rating_history)
+		return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history': purchase_history, 'feedback_history': feedback_history, 'rating_history': rating_history})
 
 def staff_view(request):
 	"""
