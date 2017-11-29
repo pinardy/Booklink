@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -253,10 +270,37 @@
 			<!-- ============================================== BANNERS ============================================== -->
 
 <!-- ============================================== BANNERS : END ============================================== -->
-<h2 class="sub-title">Cart</h2>
-            {% block title %}
-            {{cart}}
-            {% endblock %}
+<h1>Cart</h1>
+{% if cart %}
+{% block content %}
+<table>
+    <tr>
+        <th>Book</th>
+        <th>Qty</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+{% for i in cart %}
+    <tr>
+    <form action="" method="POST"> {% csrf_token %}
+        <input type="hidden" name="isbn13" value={{i.1}}>
+        <td>{{i.0}}</td>
+        <td>{{i.3}}</td>
+        <td><input type="number" name="quantity" value={{i.3}} min="1" max={{i.4}} style="width: 4em"> <!--get max remainding stock!-->
+            <button type="submit" name="update" value="update">Update</button></td>
+        <td><button type="submit" name="delete" value="delete">Delete</button></td>
+    </form>
+    </tr>
+{% endfor %}
+</table>
+    <form action="" method="POST"> {% csrf_token %}
+        <button type="submit" name="placeorder" value="c">Place Order</button>
+    </form>
+{% endblock %}
+{% else %}
+<p>Cart is empty.</p>
+{% endif %}
 <!-- ============================================== TOGGLE RIGHT CONTENT : END ============================================== -->
 
     <script src="../../static/js/jquery-1.11.2.min.js"></script>

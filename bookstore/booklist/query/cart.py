@@ -1,4 +1,5 @@
 import MySQLdb as mdb
+import datetime
 
 def addToCart(isbn13, username, quantity):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
@@ -19,6 +20,7 @@ def delFromCart(isbn13, username):
 def delAllFromCart(username):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
+
         cur = con.cursor()
         query = "DELETE FROM cart "\
         "WHERE username = '{0}';".format(username)
@@ -38,18 +40,52 @@ def showCart(username):
     with con:
         cur = con.cursor()
 
-        query = "SELECT b.title, c.quantity "\
-        "FROM book b, cart c "\
-        "WHERE b.ISBN13 = c.ISBN13 "\
-        "AND c.username = '{0}'".format(username)
+        query = "SELECT b.title, a.* FROM( "\
+            "SELECT * FROM cart "\
+        "NATURAL JOIN inventory) as a "\
+        "NATURAL JOIN book b "\
+        "WHERE a.username = '{0}';".format(username)
         cur.execute(query)
 
         # No row exists
         if cur.rowcount == 0:
-            print("No item in cart")
             return None
         else:
-            print('User profile fetched')
             row = cur.fetchall()
-            print(row)
             return row
+
+def PurchaseBook(orderlist):
+    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+    with con:
+        cur = con.cursor()
+        #Check all orders are within inventory limit first before subtracting
+        for order in orderlist:
+            query = "SELECT no_copies "\
+            "FROM inventory " \
+            "WHERE isbn13 = {0};".format(order[1])
+            cur.execute(query)
+            limit = cur.fetchall()
+            if order[3] > limit[0][0]:
+                return False #One of the orders has exceeded inventory
+
+        #Update inventory
+        for order in orderlist:
+            query = "UPDATE inventory " \
+                    "SET no_copies = no_copies - {0} " \
+                    "WHERE isbn13 = {1};".format(order[3], order[1])
+            cur.execute(query)
+        return True
+
+def SubmitPurchaseHistory(orderlist,userid):
+    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+    with con:
+        cur = con.cursor()
+        cur.execute("SELECT max(purchase_id) FROM bookstore.purchase_history;")
+        last_purchaseid = int(cur.fetchall()[0][0])
+        now = datetime.datetime.now()
+
+        for order in orderlist:
+            last_purchaseid = last_purchaseid + 1
+            query = "INSERT into purchase_history VALUES "\
+            "('{0}','{1}','{2}',{3},'{4}');" .format(last_purchaseid, userid, order[1], order[3],now.strftime("%Y-%m-%d"))
+            cur.execute(query)

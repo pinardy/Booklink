@@ -63,7 +63,7 @@ def getFeedbackHistory(uid):
 		query = "SELECT * " \
 				"FROM feedback,book " \
 				"WHERE feedback_user = '{0}'" \
-				"AND feedback.isbn13 = book.isbn13;;".format(uid)
+				"AND feedback.isbn13 = book.isbn13;".format(uid)
 		cur.execute(query)
 		if cur.rowcount == 0:
 			print("No feedback history")
@@ -73,7 +73,31 @@ def getFeedbackHistory(uid):
 			row = cur.fetchall()
 			print(row)
 			return row
-		
+
+
+def getRatingHistory(uid):
+	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+	with con:
+		cur = con.cursor()
+
+		query = "SELECT * " \
+				"FROM rating,feedback,book " \
+				"WHERE rating.rating_user = '{0}' " \
+				"AND rating.isbn13 = feedback.isbn13 " \
+				"AND feedback.isbn13 = book.isbn13 " \
+				"AND rating.feedback_user = feedback.feedback_user " \
+				"ORDER BY rating.score DESC;".format(uid)
+
+		cur.execute(query)
+		if cur.rowcount == 0:
+			print("No feedback history")
+			return None
+		else:
+			print('User feedback history fetched')
+			row = cur.fetchall()
+			print(row)
+			return row
+
 def rateUser(rating_user, feedback_user, isbn13, date, score,):
 	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
 	with con:

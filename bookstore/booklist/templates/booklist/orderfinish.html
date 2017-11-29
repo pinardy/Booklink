@@ -56,7 +56,7 @@
             <div class="col-md-4 col-sm-2">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden-xs hidden-sm"><a href="/order_page/{{user.username}}">My Orders</a></li>
-                    <li class="hidden-xs hidden-sm"> <a href="/shop_cart_page/{{user.username}}">Shopping Cart</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/shop_cart_page/{{user.username}}">Shopping Cart</a></li>
                     <li class="hidden-xs hidden-sm"><a href="/booklist/profile">My Account</a></li>
                     <li class="hidden-xs hidden-sm"><a href="/booklist/logout">Logout</a></li>
                 </ul><!-- /.nav -->
@@ -257,153 +257,26 @@
 			<!-- ============================================== BANNERS ============================================== -->
 
 <!-- ============================================== BANNERS : END ============================================== -->
-			
-			<!-- ============================================== USER PROFILE  ============================================== -->
-            <h2 class="sub-title">User Profile</h2>
-            <div class="profile">
-                <p> Name: {{ user_profile.0.4 }}</p>
-                <p> Email: {{ user_profile.0.7 }}</p>
-                <p> Date joined: {{ user_profile.0.10 }}</p>
-			</div>
-
-            <h2 class="sub-title">Order History</h2>
-            <div class="orderHistory">
-                <table style="width:50%">
-                    <tr>
-                        <th>Book</th>
-                        <th>Purchase</th>
-                        <th>Date</th>
-
-                    </tr>
-                {% for purchase in purchase_history %}
-                    <tr>
-                        <th>{{ purchase.5 }}</th>
-                        <th>{{ purchase.3 }}</th>
-                        <th>{{ purchase.4 }}</th>
-                    </tr>
-                {% endfor %}
-                </table>
-			</div>
-            <h2 class="sub-title">Feedback History</h2>
-            <div class="feedbackHistory">
-                <table style="width:70%">
-                    <tr>
-                        <th>Book</th>
-                        <th>Feedback</th>
-                        <th>Score</th>
-
-                    </tr>
-                {% for feedback in feedback_history %}
-                    <tr>
-                        <th>{{ feedback.5 }}</th>
-                        <th>{{ feedback.3 }}</th>
-                        <th>{{ feedback.4 }}</th>
-                    </tr>
-                {% endfor %}
-                </table>
-			</div>
-            <h2 class="sub-title">Feedback Rating History</h2>
-            <div class="ratingHistory">
-                <table style="width:70%">
-                    <tr>
-                        <th>Book</th>
-                        <th>Feedback</th>
-                        <th>User</th>
-                        <th>Score</th>
-
-                    </tr>
-                {% for rating in rating_history %}
-                    <tr>
-                        <th>{{ rating.10 }}</th>
-                        <th>{{ rating.9 }}</th>
-                        <th>{{ rating.1 }}</th>
-                        <th>{{ rating.4 }}</th>
-                    </tr>
-                {% endfor %}
-                </table>
-			</div>
-
-			<!-- ============================================== USER PROFILE : END ============================================== -->
-
-			
-
-			<!-- ============================================== TESTIMONIAL ============================================== -->
-<section class="customer-testimonial wow fadeInUp outer-bottom-xs light-bg">
-    <div id="testimonial" class="module container inner-top-xs">
-        <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>Customer testimonals</span></h2>
-        </div><!-- /.module-heading -->
-        <div class="module-body">
-            <div class="row">
-                <div class="col-md-10 center-block">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="testimonial-block">
-                                <div class="inner-testimonial-block">
-                                    <div class="blockquote">
-                                        <div class="inner-left-xl">
-                                            <blockquote>
-                                              <p>Upon knowing the existence of this bookstore, I have quit playing dota and started indulging myself in books from here. I highly recommend buying books from Booklink.</p>
-                                            </blockquote>
-                                        </div><!-- /.inner-left-xl -->
-                                    </div><!-- /.blockquote -->
-                                </div><!-- /.inner-testimonial-block -->
-                                <div class="row m-t-20">
-                                    <div class="col-md-10 author-block center-block">
-                                        <div class="row">
-                                            <div class="col-md-4 col-xs-5">
-                                                <div class='image'>
-                                                    <img class="img-responsive" src="../../static/images/testimonials/joshua.jpg" alt="">
-                                                </div><!-- /.image -->
-                                            </div><!-- /.col -->
-                                            <div class="col-md-8 col-xs-7">
-                                              <h5 class="author-name outer-top-xs">Joshua Lim Wen Yao</h5>
-                                              ISTD Junior, SUTD<br>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.testimonial-block -->
-                        </div><!-- /.col -->
-
-                         <div class="col-md-6 col-sm-6">
-                            <div class="testimonial-block">
-                                <div class="inner-testimonial-block">
-                                    <div class="blockquote">
-                                        <div class="inner-left-xl">
-                                            <blockquote>
-                                              <p>The books in Booklink are like my sweet, rose-kissed muse, ever free from thorns. Their imminent knowledge flows out like the dashing waterfalls of Niagara. Would recommend Booklink anytime!</p>
-                                            </blockquote>
-                                        </div><!-- /.inner-left-xl -->
-                                    </div><!-- /.blockquote -->
-                                </div><!-- /.inner-testimonial-block -->
-                                <div class="row m-t-20">
-                                    <div class="col-md-10 author-block center-block">
-                                         <div class="row">
-                                            <div class="col-md-4 col-xs-5">
-                                                 <div class='image'>
-                                                   <img class="img-responsive" src="../../static/images/testimonials/eiros.jpg" alt="">
-                                              </div><!-- /.image -->
-                                            </div><!-- /.col -->
-                                            <div class="col-md-8 col-xs-7">
-                                              <h5 class="author-name outer-top-xs">Eiros Tan Yan You</h5>
-                                              <span>ISTD Junior, SUTD</span>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.testimonial-block -->
-                            
-                         </div><!-- /.col -->
-                     </div><!-- /.row -->
-                </div><!-- /.col -->
-      
-            </div><!-- /.row -->
-        </div><!-- /.module-body -->
-    </div><!-- /.module -->
+<section class="inner-md">
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 center-block">
+				<div class="row info-404">
+					<!--<div class="col-md-6 col-sm-6">-->
+						<!--<h1 class="title">Thank you</h1>-->
+					<!--</div>-->
+					<div class="col-md-6 col-sm-6 right-info inner-top-md">
+						<h2 class="sub-title">Thank you! Your order is successful.</h2>
+						<p><a href="/booklist">&rarr;&nbsp;back to home page</a></p>
+					</div>
+				</div>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /.content -->
 </section>
-			
-<!-- ============================================== TESTIMONIAL : END ============================================== -->
+
 
 <div id="cart-dropdown-wrapper">
 	<nav id="menu1" class="cart-dropdown">

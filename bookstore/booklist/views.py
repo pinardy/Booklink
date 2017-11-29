@@ -124,6 +124,7 @@ def profile(request):
 		}
 		return render(request, 'booklist/profile.html', context)
 
+
 def staff_view(request):
 	"""
 	Staff page. Store managers can insert a new book or increase stock
@@ -195,27 +196,34 @@ def cart(request):
 		return redirect('login')
 	else:
 		if request.method == 'POST':
-			form = BookForm(request.POST)
-			if form.is_valid():
-				title = form.cleaned_data.get('title')
-				covFormat = form.cleaned_data.get('covFormat')
-				noPages = form.cleaned_data.get('noPages')
-				authors = form.cleaned_data.get('authors')
-				publisher = form.cleaned_data.get('publisher')
-				yearPublish = form.cleaned_data.get('yearPublish')
-				edition = form.cleaned_data.get('edition')
-				isbn10 = form.cleaned_data.get('isbn10')
-				isbn13 = form.cleaned_data.get('isbn13')
-				quantity = form.cleaned_data.get('quantity')
-				# put update function here
-				insertBook(title, covFormat, noPages, authors, publisher, yearPublish, edition, isbn10, isbn13, quantity)
-				return redirect('staff')
+			req = request.POST
+			if req.get('update'):
+				modifyCart(req.get('isbn13'),request.user.username,req.get('quantity'))
+			elif req.get('delete'):
+				delFromCart(req.get('isbn13'),request.user.username)
+			elif req.get('placeorder'):
+				user_cart = showCart(request.user.username)
+				successful = PurchaseBook(user_cart)
+				if successful:
+					delAllFromCart(request.user.username)
+					SubmitPurchaseHistory(user_cart,request.user.id)
+					return redirect('orderfinish')
+				else:
+					return redirect('error')
+
+			return redirect('cart')
 		else:
 			cart = showCart(request.user.username)
 			if cart is None:
-				return render(request, 'booklist/cart.html',{'cart':('Cart is empty.')})
+				return render(request, 'booklist/cart.html',{'cart':None})
 			else:
 				return render(request, 'booklist/cart.html',{'cart':cart})
+
+def orderfinish(request):
+	"""
+	Thank you page
+	"""
+	return render(request, 'booklist/orderfinish.html', {})
 
 def error(request):
 	"""
