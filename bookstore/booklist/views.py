@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
 from booklist.query.admin import insertBook, updateInventory
-from booklist.query.book import getAllBooks
+from booklist.query.book import getAllBooks, searchBookByTitle
 from booklist.query.user import retrieveProfile
 from booklist.forms import BookForm, StockForm, RegistrationForm
 from booklist.helperFunctions import input_formatting
@@ -18,12 +18,25 @@ def error(request):
     return render(request, 'booklist/error.html', {})
 
 def browse(request):
+
     book_list = getAllBooks()
     context = {
         'book_list': book_list,
     }
     print (book_list)
     return render(request, 'booklist/browse.html', context)
+
+def search(request):
+    if request.method == 'GET':
+        q =request.GET
+        title = q.__getitem__('title')
+        book_list = searchBookByTitle(title)
+        context = {
+            'book_list': book_list,
+        }
+        print (book_list)
+        return render(request, 'booklist/browse.html', context)
+
 
 def stock(request):
     if request.method == 'POST':
