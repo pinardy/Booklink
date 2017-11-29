@@ -2,25 +2,18 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 
+
 from booklist.query.admin import *
-from booklist.query.book import getAllBooks
-from booklist.query.user import retrieveProfile
 from booklist.query.cart import *
+from booklist.query.book import getAllBooks, searchBookByTitle
+from booklist.query.user import retrieveProfile, getPurchaseHistory
+
 from booklist.forms import BookForm, StockForm, RegistrationForm
 
 from booklist.helperFunctions import input_formatting
 
 def index(request):
 	return render(request, 'booklist/index.html', {})
-
-def work(request):
-	return render(request, 'booklist/work.html', {})
-
-def staff_view(request):
-	return render(request, 'booklist/staff.html', {})
-
-def base(request):
-	return render(request, 'booklist/base.html', {})
 
 def error(request):
 	return render(request, 'booklist/error.html', {})
@@ -32,6 +25,19 @@ def browse(request):
 	}
 	print (book_list)
 	return render(request, 'booklist/browse.html', context)
+
+
+def search(request):
+	if request.method == 'GET':
+		q =request.GET
+		title = q.__getitem__('title')
+		book_list = searchBookByTitle(title)
+		context = {
+			'book_list': book_list,
+		}
+		print (book_list)
+		return render(request, 'booklist/browse.html', context)
+
 
 def stock(request):
 	if request.method == 'POST':
@@ -105,22 +111,27 @@ def profile(request):
 	"""
 	Profile Query
 	"""
-	if not request.user.is_authenticated:
+	if not (request.user.is_authenticated):
 		return redirect('index')
 	else:
+		print("YOLO")
 		user_profile = retrieveProfile(request.user.username)
-		return render(request, 'booklist/profile.html', {'user_profile': user_profile})
+		purchase_history = getPurchaseHistory(request.user.username)         # purchase_history = getPurchaseHistory(request.user.username)
+
+		print(user_profile)
+		return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history':purchase_history})
 
 def staff_view(request):
 	"""
 	Staff page. Store managers can insert a new book or increase stock
 	"""
-	if not request.user.is_authenticated:
+	if not (request.user.is_authenticated):
 		return redirect('login')
-	elif not request.user.is_superuser:
+	elif not (request.user.is_superuser):
 		return redirect('error')
 	else:
-			return render(request, 'booklist/staff.html', {})
+		return render(request, 'booklist/staff.html', {})
+
 
 def addbook(request):
 	"""
@@ -208,3 +219,4 @@ def error(request):
 	Error page
 	"""
 	return render(request, 'booklist/error.html', {})
+

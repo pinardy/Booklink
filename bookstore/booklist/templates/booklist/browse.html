@@ -9,8 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="../../static/css/working.css" type="text/css" rel="stylesheet">
-    
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -36,47 +34,15 @@
             <div class="row">
                 <div class="col-md-8">
                     <h1>Browse</h1>
-                    <div class="input-group input-group-lg search-bar">
-                        <span class="input-group-addon" id="sizing-addon1">🔎</span>
-                        <input type="text" class="form-control" placeholder="Search for books by title, author, subject and publisher.">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button">Go!</button>
+                    <form action="/booklist/search/" method="get" id="search">
+                        <div class="input-group input-group-lg search-bar">
+                            <span class="input-group-addon" id="sizing-addon1">🔎</span>
+                            <input type="text" name="title" class="form-control" placeholder="Search for books by title.">
+                            <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button submit" form="search">Go!</button>
                      </span>
-                    </div>
-                    <!-- <div class="row">
-                        <div class="card-deck">
-                            <div class="card border-0">
-                                <img class="card-img-top" src="https://images.gr-assets.com/books/1447303603m/2767052.jpg">
-                                <div>
-                                    <p class="card-text text-center"><small class="text-muted">The Hunger Games</small></p>
-                                </div>
-                            </div>
-                            <div class="card border-0">
-                                <img class="card-img-top" src="https://images.gr-assets.com/books/1474154022m/3.jpg">
-                                <div>
-                                    <p class="card-text text-center"><small class="text-muted">Harry Potter and the Philosopher's Stone</small></p>
-                                </div>
-                            </div>
-                            <div class="card border-0">
-                                <img class="card-img-top" src="https://images.gr-assets.com/books/1361039443m/41865.jpg">
-                                <div>
-                                    <p class="card-text text-center"><small class="text-muted">Twilight</small></p>
-                                </div>
-                            </div>
-                            <div class="card border-0">
-                                <img class="card-img-top" src=" https://images.gr-assets.com/books/1361975680m/2657.jpg">
-                                <div>
-                                    <p class="card-text text-center"><small class="text-muted">To Kill a Mockingbird</small></p>
-                                </div>
-                            </div>
-                            <div class="card border-0">
-                                <img class="card-img-top" src="https://images.gr-assets.com/books/1490528560m/4671.jpg">
-                                <div>
-                                    <p class="card-text text-center"><small class="text-muted">The Great Gatsby</small></p>
-                                </div>
-                            </div>
                         </div>
-                    </div> -->
+                    </form>
                     <div>
                         <div class="booklist_container">
                             <ul class="grid">
@@ -119,13 +85,11 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
             <br>
         </div>
         </div>
     </section>
-    
 </body>
 
 </html>

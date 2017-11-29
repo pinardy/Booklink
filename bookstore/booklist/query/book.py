@@ -1,5 +1,18 @@
 import MySQLdb as mdb
 
+def connectAndExecute(query):
+    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+    with con:
+        cur = con.cursor()
+        cur.execute(query)
+
+        if cur.rowcount == 0:
+            print("No books in booklist")
+            return
+        else:
+            row = cur.fetchall()
+            return row
+
 # TODO: Add ID for purchaseBook()
 
 # ----------BOOK FUNCTIONS----------
@@ -41,6 +54,12 @@ def getBook(isbn13):
 		else:
 			row = cur.fetchall()
 			return row
+
+def searchBookByTitle(title):
+    query = "SELECT * " \
+                "FROM book " \
+                "WHERE title LIKE '%{0}%';".format(title)
+    return connectAndExecute(query)
 
 
 def setInventory(isbn13, initStock):

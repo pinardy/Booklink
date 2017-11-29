@@ -44,3 +44,4 @@ class StockForm(forms.Form):
 
     class Meta:
         fields = ('title','quantity')
+

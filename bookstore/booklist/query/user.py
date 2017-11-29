@@ -23,14 +23,16 @@ def retrieveProfile(uid):
 			print(row)
 			return row
 
+
 def getPurchaseHistory(uid):
 	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
 	with con:
 		cur = con.cursor()
 		
 		query = "SELECT * " \
-				"FROM purchase_history " \
-				"WHERE user_id = '{0}';".format(uid)
+				"FROM purchase_history,book " \
+				"WHERE user_id = '{0}'" \
+				"AND purchase_history.isbn13 = book.isbn13;".format(uid)
 		cur.execute(query)
 		
 		# No row exists
