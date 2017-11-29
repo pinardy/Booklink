@@ -20,7 +20,6 @@ def delFromCart(isbn13, username):
 def delAllFromCart(username):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
-
         cur = con.cursor()
         query = "DELETE FROM cart "\
         "WHERE username = '{0}';".format(username)
@@ -39,7 +38,6 @@ def showCart(username):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
-
         query = "SELECT b.title, a.* FROM( "\
             "SELECT * FROM cart "\
         "NATURAL JOIN inventory) as a "\
@@ -47,7 +45,6 @@ def showCart(username):
         "WHERE a.username = '{0}';".format(username)
         cur.execute(query)
 
-        # No row exists
         if cur.rowcount == 0:
             return None
         else:
@@ -76,16 +73,21 @@ def PurchaseBook(orderlist):
             cur.execute(query)
         return True
 
-def SubmitPurchaseHistory(orderlist,userid):
+def SubmitPurchaseHistory(orderlist,username):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
-        cur.execute("SELECT max(purchase_id) FROM bookstore.purchase_history;")
-        last_purchaseid = int(cur.fetchall()[0][0])
+        cur.execute("SELECT max(purchase_id) FROM purchase_history;")
+        last_purchaseid = cur.fetchall()[0][0]
+        if last_purchaseid == None:
+            last_purchaseid = 0
+        else:
+            last_purchaseid = int(last_purchaseid)
         now = datetime.datetime.now()
 
         for order in orderlist:
             last_purchaseid = last_purchaseid + 1
+            print(last_purchaseid, username, order[1], order[3],now.strftime("%Y-%m-%d"))
             query = "INSERT into purchase_history VALUES "\
-            "('{0}','{1}','{2}',{3},'{4}');" .format(last_purchaseid, userid, order[1], order[3],now.strftime("%Y-%m-%d"))
+            "({0},'{1}','{2}',{3},'{4}');" .format(last_purchaseid, username, order[1], order[3],now.strftime("%Y-%m-%d"))
             cur.execute(query)

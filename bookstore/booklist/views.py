@@ -202,9 +202,10 @@ def cart(request):
 				successful = PurchaseBook(user_cart)
 				if successful:
 					delAllFromCart(request.user.username)
-					SubmitPurchaseHistory(user_cart,request.user.id)
+					SubmitPurchaseHistory(user_cart,request.user.username)
 					return redirect('orderfinish')
 				else:
+					print("DEBUG: ONE OF YOUR ORDERS HAS EXCEEDED INVENTORY")
 					return redirect('error')
 
 			return redirect('cart')

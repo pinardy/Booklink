@@ -29,7 +29,7 @@ with con:
                       "('9781305627482',10)," \
                       "('9781449328016',0);"
 
-    insertPurchaseHistory = "INSERT INTO purchase_history (purchase_id, user_id, ISBN13, no_copies, order_date)" \
+    insertPurchaseHistory = "INSERT INTO purchase_history (purchase_id, user_id, ISBN13, no_copies, order_date) " \
                             "VALUES " \
                             "(1, 1, '9780849394935', 1, '2017-11-24')," \
                             "(2, 1, '9781285196145', 1, '2017-11-24')," \
@@ -46,19 +46,19 @@ with con:
         cur.execute(insertBook)
         print("Inserted into book")
     except:
-        pass
+        print("EXCEPTION: Inserted into book")
 
     try:
         cur.execute(insertInventory)
         print("Inserted into inventory")
     except:
-        pass
+        print("EXCEPTION: Inserted into inventory")
 
     try:
         cur.execute(insertPurchaseHistory)
         print("Inserted into purchase_history")
     except:
-        pass
+        print("EXCEPTION: Inserted into purchase_history")
 
 
     print("--- Execution of SQL successful ---")
