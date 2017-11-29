@@ -285,7 +285,7 @@
                 </table>
 			</div>
             <h2 class="sub-title">Feedback History</h2>
-            <div class="orderHistory">
+            <div class="feedbackHistory">
                 <table style="width:70%">
                     <tr>
                         <th>Book</th>
@@ -302,7 +302,26 @@
                 {% endfor %}
                 </table>
 			</div>
-            <!-- TODO Add rating for feedback -->
+            <h2 class="sub-title">Feedback Rating History</h2>
+            <div class="ratingHistory">
+                <table style="width:70%">
+                    <tr>
+                        <th>Book</th>
+                        <th>Feedback</th>
+                        <th>User</th>
+                        <th>Score</th>
+
+                    </tr>
+                {% for rating in rating_history %}
+                    <tr>
+                        <th>{{ rating.10 }}</th>
+                        <th>{{ rating.9 }}</th>
+                        <th>{{ rating.1 }}</th>
+                        <th>{{ rating.4 }}</th>
+                    </tr>
+                {% endfor %}
+                </table>
+			</div>
 
 			<!-- ============================================== USER PROFILE : END ============================================== -->
 

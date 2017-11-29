@@ -107,17 +107,19 @@ def login_view(request):
 		return render(request, 'booklist/login.html', {'form': form})
 
 def profile(request):
-    """
-    Profile Query
-    """
-    if not (request.user.is_authenticated):
-        return redirect('index')
-    else:
-        user_profile = retrieveProfile(request.user.username)
-        purchase_history = getPurchaseHistory(request.user.username)
-        feedback_history = getFeedbackHistory(request.user.username)
-        print(feedback_history)
-        return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history': purchase_history, 'feedback_history': feedback_history})
+	"""
+	Profile Query
+	"""
+	if not (request.user.is_authenticated):
+		return redirect('index')
+	else:
+		user_profile = retrieveProfile(request.user.username)
+		purchase_history = getPurchaseHistory(request.user.username)
+		feedback_history = getFeedbackHistory(request.user.username)
+
+		rating_history = getRatingHistory(request.user.username)
+		print(rating_history)
+		return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history': purchase_history, 'feedback_history': feedback_history, 'rating_history': rating_history})
 
 def staff_view(request):
 	"""
