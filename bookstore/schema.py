@@ -13,7 +13,7 @@ with con:
            "num_pages INT," \
            "authors TINYTEXT," \
            "publisher TINYTEXT," \
-           "year_publish YEAR," \
+           "year_publish INT," \
            "edition INT," \
            "ISBN10 CHAR(10) NOT NULL," \
            "ISBN13 CHAR(13) NOT NULL,PRIMARY KEY (ISBN13));"
@@ -54,6 +54,14 @@ with con:
              "FOREIGN KEY (feedback_user) REFERENCES feedback (feedback_user) ON DELETE CASCADE," \
              "FOREIGN KEY (ISBN13) REFERENCES book (ISBN13) ON DELETE CASCADE);"
 
+    cart =  "CREATE TABLE cart (" \
+            "ISBN13 CHAR(13)," \
+            "username VARCHAR(150)," \
+            "quantity int(8)," \
+            "PRIMARY KEY (ISBN13,username)," \
+            "FOREIGN KEY (ISBN13) REFERENCES book(ISBN13) ON DELETE CASCADE," \
+            "FOREIGN KEY (username) REFERENCES auth_user(username) ON DELETE CASCADE);" \
+
     # Updates the inventory when a purchase is made
     updateInventory = "CREATE TRIGGER UpdateInventory " \
                       "AFTER INSERT on purchase_history " \
@@ -61,6 +69,7 @@ with con:
                       "UPDATE inventory " \
                       "SET inventory.no_copies = inventory.no_copies - NEW.no_copies " \
                       "WHERE inventory.ISBN13 = NEW.ISBN13;"
+
     # ========== TEST INSERTION SQL CODES =========
 
     # sql = "INSERT into books VALUES ('A Guide to the SQL Standard','paperback',240,'C.J. Date','Addison-Wesley',1989,2,'0201502097','978-0201502091');"
@@ -75,22 +84,46 @@ with con:
            "1991,1,'0894353233','978-0894353239');"
 
     # ============================================
+    try:
+        cur.execute(book)
+        print("Created book table")
+    except:
+        print("EXCEPTION: Created book table")
 
-    cur.execute(book)
-    print("Created book table")
-    cur.execute(purchaseHistory)
-    print("Created purchaseHistory table")
+    try:
+        cur.execute(purchaseHistory)
+        print("Created purchaseHistory table")
+    except:
+        print("EXCEPTION: Created purchaseHistory table")
 
-    cur.execute(inventory)
-    print("Created inventory table")
+    try:
+        cur.execute(inventory)
+        print("Created inventory table")
+    except:
+        print("EXCEPTION: Created inventory table")
 
-    cur.execute(feedback)
-    print("Created feedback table")
+    try:
+        cur.execute(feedback)
+        print("Created feedback table")
+    except:
+        print("EXCEPTION: Created feedback table")
 
-    cur.execute(rating)
-    print("Created rating table")
+    try:
+        cur.execute(rating)
+        print("Created rating table")
+    except:
+        print("EXCEPTION: Created rating table")
 
-    cur.execute(updateInventory)
-    print("Created inventory trigger")
+    try:
+        cur.execute(cart)
+        print("Created cart table")
+    except:
+        print("EXCEPTION: Created cart table")
+
+    try:
+        cur.execute(updateInventory)
+        print("Created inventory trigger")
+    except:
+        print("EXCEPTION: Created inventory trigger")
 
     print("--- Execution of SQL successful ---")
