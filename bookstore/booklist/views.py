@@ -5,9 +5,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from booklist.query.user import *
 from booklist.query.admin import *
 from booklist.query.cart import *
-from booklist.query.book import getAllBooks, searchBookByTitle, getBook
+from booklist.query.book import *
 
-from booklist.forms import BookForm, StockForm, RegistrationForm
+from booklist.forms import *
 
 from booklist.helperFunctions import input_formatting
 
@@ -107,17 +107,22 @@ def login_view(request):
 		return render(request, 'booklist/login.html', {'form': form})
 
 def profile(request):
-    """
-    Profile Query
-    """
-    if not (request.user.is_authenticated):
-        return redirect('index')
-    else:
-        user_profile = retrieveProfile(request.user.username)
-        purchase_history = getPurchaseHistory(request.user.username)
-        feedback_history = getFeedbackHistory(request.user.username)
-        print(feedback_history)
-        return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history': purchase_history, 'feedback_history': feedback_history})
+	"""
+	Profile Query
+	"""
+	if not (request.user.is_authenticated):
+		return redirect('index')
+	else:
+		user_profile = retrieveProfile(request.user.username)
+		purchase_history = getPurchaseHistory(request.user.username)
+		feedback_history = getFeedbackHistory(request.user.username)
+		print(feedback_history)
+		context = {
+			'user_profile': user_profile,
+			'purchase_history': purchase_history,
+			'feedback_history': feedback_history
+		}
+		return render(request, 'booklist/profile.html', context)
 
 def staff_view(request):
 	"""
@@ -217,6 +222,34 @@ def error(request):
 	Error page
 	"""
 	return render(request, 'booklist/error.html', {})
+
+def statistics(request):
+	"""
+	Obtain the following:
+	the list of the m most popular books (in terms of copies sold in this month)
+	the list of m most popular authors
+	the list of m most popular publishers
+	"""
+	if not request.user.is_authenticated:
+		return redirect('login')
+	elif not request.user.is_superuser:
+		return redirect('error')
+	else:
+		if request.method == 'POST':
+			form = StatisticsForm(request.POST)
+			if form.is_valid():
+				choices = form.cleaned_data.get('choices')
+				m = form.cleaned_data.get('m')
+				highest = getStatistics(choices, m)
+				print(highest)
+				context = {
+					'highest': highest,
+					'form': form
+				}
+			return render(request, 'booklist/staff/statistics.html', context)
+		else:
+			form = StatisticsForm
+			return render(request, 'booklist/staff/statistics.html', {'form': form})
 
 def feedback(request):
 	if request.method == "GET":

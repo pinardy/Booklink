@@ -7,7 +7,11 @@ COVER_FORMATS = (
     ('paperback', "paperback"),
     ('hardcover', "hardcover"),
 )
-
+STATISTICS = (
+    ('book', "Book"),
+    ('authors', "Authors"),
+    ('publisher', "Publishers"),
+)
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required')
@@ -45,3 +49,9 @@ class StockForm(forms.Form):
     class Meta:
         fields = ('title','quantity')
 
+class StatisticsForm(forms.Form):
+    choices = forms.ChoiceField(choices=STATISTICS)
+    m = forms.IntegerField(label='m', min_value=100)
+
+    class Meta:
+        fields = ('choices','m')

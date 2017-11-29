@@ -17,5 +17,7 @@ urlpatterns = [
     url(r'^staff/$', views.staff_view, name='staff'),
     url(r'^staff/addstock/$', views.addstock, name='addstock'),
     url(r'^staff/addbook/$', views.addbook, name='addbook'),
+    url(r'^staff/statistics/$', views.statistics, name='statistics'),
     url(r'^error/$', views.error, name='error')
 ]
+
