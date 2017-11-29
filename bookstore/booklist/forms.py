@@ -51,7 +51,7 @@ class StockForm(forms.Form):
 
 class StatisticsForm(forms.Form):
     choices = forms.ChoiceField(choices=STATISTICS)
-    m = forms.IntegerField(label='m', min_value=100)
+    m = forms.IntegerField(label='m', min_value=1)
 
     class Meta:
         fields = ('choices','m')
