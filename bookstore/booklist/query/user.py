@@ -61,8 +61,9 @@ def getFeedbackHistory(uid):
 		cur = con.cursor()
 		
 		query = "SELECT * " \
-				"FROM feedback " \
-				"WHERE feedback_user = '{0}';".format(uid)
+				"FROM feedback,book " \
+				"WHERE feedback_user = '{0}'" \
+				"AND feedback.isbn13 = book.isbn13;;".format(uid)
 		cur.execute(query)
 		if cur.rowcount == 0:
 			print("No feedback history")

@@ -39,7 +39,9 @@ VALUES
 (4, 1, '9781305627482', 1, '2017-11-24'),
 (5, 3, '9780132943260', 1, '2017-11-24');
 
-
+INSERT INTO feedback_history(feedback_user, isbn13, order_date, score, feedback)
+VALUES
+('admin','9780849394935', '2017-11-24',8,'This is a great book, as it is written by Eiros');
 /*DELETE FROM user_account;*/
 
 SELECT * FROM BOOK;
