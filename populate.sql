@@ -31,13 +31,13 @@ VALUES
 ('9781305627482',10),
 ('9781449328016',0);
 
-/*INSERT INTO purchase_history (purchase_id, user_id, ISBN13, no_copies, order_date)
+INSERT INTO purchase_history (purchase_id, user_id, ISBN13, no_copies, order_date)
 VALUES 
 (1, 1, '9780849394935', 1, '2017-11-24'),
 (2, 1, '9781285196145', 1, '2017-11-24'),
 (3, 1, '9780132943260', 1, '2017-11-24'),
-(4, 2, '9781305627482', 1, '2017-11-24'),
-(5, 3, '9780132943260', 1, '2017-11-24');*/
+(4, 1, '9781305627482', 1, '2017-11-24'),
+(5, 3, '9780132943260', 1, '2017-11-24');
 
 
 /*DELETE FROM user_account;*/
@@ -46,3 +46,4 @@ SELECT * FROM BOOK;
 SELECT * FROM user_account;
 SELECT * FROM inventory;
 SELECT * FROM purchase_history;
+SELECT * FROM auth_user;

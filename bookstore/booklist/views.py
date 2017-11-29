@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from booklist.query.admin import insertBook, updateInventory
 from booklist.query.book import getAllBooks, searchBookByTitle
-from booklist.query.user import retrieveProfile
+from booklist.query.user import retrieveProfile, getPurchaseHistory
 from booklist.forms import BookForm, StockForm, RegistrationForm
 from booklist.helperFunctions import input_formatting
 
@@ -115,8 +115,12 @@ def profile(request):
     if not (request.user.is_authenticated):
         return redirect('index')
     else:
+        print("YOLO")
         user_profile = retrieveProfile(request.user.username)
-        return render(request, 'booklist/profile.html', {'user_profile': user_profile})
+        purchase_history = getPurchaseHistory(request.user.username)         # purchase_history = getPurchaseHistory(request.user.username)
+
+        print(user_profile)
+        return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history':purchase_history})
 
 def staff_view(request):
     """
@@ -127,7 +131,7 @@ def staff_view(request):
     elif not (request.user.is_superuser):
         return redirect('error')
     else:
-            return render(request, 'booklist/staff.html', {})
+        return render(request, 'booklist/staff.html', {})
 
 def addbook(request):
     """

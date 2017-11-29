@@ -267,6 +267,22 @@
 			</div>
 
             <h2 class="sub-title">Order History</h2>
+            <div class="orderHistory">
+                <!--<p> Order: {{ purchase_history.0.4 }}</p>-->
+                <!--<p> Copies: {{ purchase_history.0.4 }}</p>-->
+                <table style="width:80%">
+                    <tr>
+                        <th>Book</th>
+                        <th>Purchase</th>
+                    </tr>
+                {% for purchase in purchase_history %}
+                    <tr>
+                        <th>{{ purchase.5 }}</th>
+                        <th>{{ purchase.3 }}</th>
+                    </tr>
+                {% endfor %}
+                </table>
+			</div>
             <h2 class="sub-title">Feedback History</h2>
 			<!-- ============================================== USER PROFILE : END ============================================== -->
 
