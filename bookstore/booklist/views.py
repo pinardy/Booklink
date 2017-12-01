@@ -25,6 +25,9 @@ def browse(request):
 	print (book_list)
 	return render(request, 'booklist/browse.html', context)
 
+def checkout(request):
+	return render(request, 'booklist/checkout.html', {})
+
 
 def search(request):
 	if request.method == 'GET':

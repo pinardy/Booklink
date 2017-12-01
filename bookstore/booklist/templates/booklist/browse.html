@@ -29,11 +29,28 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg">
+    <div class="collapse navbar-collapse justify-content-center">
+
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="../browse">Explore</a>
+            <a class="nav-item nav-link" href="../search">Search</a>
+        </div>
+        <h3 class="nav-item" >BookLink</h3>
+        <div class="navbar-nav navbar-right">
+            <a class="nav-item nav-link" href="../profile">Account</a>
+            <a class="nav-item nav-link" href="../checkout">Cart</a>
+        </div>
+
+    </div>
+</nav>
     <section>
         <div class="container">
             <div class="row">
+                <div class="col-md-2 ">
+
+                </div>
                 <div class="col-md-8">
-                    <h1>Browse</h1>
                     <form action="/booklist/search/" method="get" id="search">
                         <div class="input-group input-group-lg search-bar">
                             <span class="input-group-addon" id="sizing-addon1">🔎</span>
@@ -48,43 +65,34 @@
                             <ul class="grid">
                                 {% for book in book_list %}
                                 <li class="book_container rounded" data-toggle="tooltip" data-html="true" title="{{book.0}}">
-                                    <a href="" class="trigger"><img class="rounded" src="http://via.placeholder.com/70x105"></a>
+                                    <a href="" class="trigger" data-toggle="modal" data-target="#{{book.8}}"><img class="rounded" src="http://via.placeholder.com/70x105"></a>
                                 </li>
+                                <div class="modal fade" id="{{book.8}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">{{book.0}}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" id="" isbn="12334" class="btn btn-primary">Add to cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 ">
-                    <div class="card" style="width: 20rem;">
-                        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-                            <div class="card-header">Order details</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Booking ID: 7F45Q </h4>
-                                <p class="card-text">Due on 17th Dec 2017</p>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Harry Potter and the Philosopher's Stone</td>
-                                        <td>3</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-body">
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Place Order</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-md-2 ">
+
             </div>
             <br>
         </div>
