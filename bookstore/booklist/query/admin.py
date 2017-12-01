@@ -1,8 +1,20 @@
 import MySQLdb as mdb
 import datetime
-# ----------ADMIN FUNCTIONS----------	
 
+def connectAndExecute(query):
+	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+	with con:
+		cur = con.cursor()
+		cur.execute(query)
 
+		if cur.rowcount == 0:
+			print("No books in booklist")
+			return
+		else:
+			row = cur.fetchall()
+			return row
+
+# ----------ADMIN FUNCTIONS----------
 
 def insertBook(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13, inventory):
 	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
@@ -12,8 +24,7 @@ def insertBook(title, cover_format, num_pages, authors, publisher, year_publish,
 		query = "INSERT into book VALUES" \
 				"('{0}','{1}',{2},'{3}','{4}'," \
 				"{5},{6},'{7}','{8}');".format(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13)
-				
-				
+
 		cur.execute(query)
 		
 		query = "INSERT into inventory VALUES" \
@@ -43,79 +54,45 @@ def updateInventory(isbn13, newStock):
 		return True
 
 def getHighestCopies(month, year, m):
-	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-	with con:
-		cur = con.cursor()
+	query = "SELECT book.title,SUM(no_copies) " \
+			"from purchase_history,book " \
+			"WHERE MONTH(purchase_history.order_date) = {0} " \
+			"AND YEAR(purchase_history.order_date) = {1} " \
+			"AND book.ISBN13 = purchase_history.ISBN13 " \
+			"GROUP BY purchase_history.ISBN13 " \
+			"ORDER BY SUM(no_copies) DESC " \
+			"LIMIT {2};".format(month, year, m)
+	return connectAndExecute(query)
 
-		query = "SELECT book.title,SUM(no_copies) " \
-				"from purchase_history,book " \
-				"WHERE MONTH(purchase_history.order_date) = {0} " \
-				"AND YEAR(purchase_history.order_date) = {1} " \
-				"AND book.ISBN13 = purchase_history.ISBN13 " \
-				"GROUP BY purchase_history.ISBN13 " \
-				"ORDER BY SUM(no_copies) DESC " \
-				"LIMIT {2};".format(month, year, m)
-
-		cur.execute(query)
-
-		# If no row exists
-		if cur.rowcount == 0:
-			return
-		else:
-			row = cur.fetchall()
-			return row
 
 def getHighestPublishers(month, year, m):
-	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-	with con:
-		cur = con.cursor()
+	query = "SELECT b.publisher, SUM(no_copies) " \
+			"FROM purchase_history ph, book b " \
+			"WHERE MONTH(ph.order_date) = {0} " \
+			"AND YEAR(ph.order_date) = {1} " \
+			"AND b.ISBN13 = ph.ISBN13 " \
+			"GROUP BY b.publisher " \
+			"ORDER BY SUM(no_copies) DESC " \
+			"LIMIT {2};".format(month, year, m)
+	return connectAndExecute(query)
 
-		query = "SELECT b.publisher, SUM(no_copies) " \
-				"FROM purchase_history ph, book b " \
-				"WHERE MONTH(ph.order_date) = {0} " \
-				"AND YEAR(ph.order_date) = {1} " \
-				"AND b.ISBN13 = ph.ISBN13 " \
-				"GROUP BY b.publisher " \
-				"ORDER BY SUM(no_copies) DESC " \
-				"LIMIT {2};".format(month, year, m)
-
-		cur.execute(query)
-
-		# If no row exists
-		if cur.rowcount == 0:
-			return
-		else:
-			row = cur.fetchall()
-			return row
 
 def getHighestAuthors(month, year, m):
-	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-	with con:
-		cur = con.cursor()
+	query = "SELECT b.authors, SUM(no_copies) " \
+			"FROM purchase_history ph, book b " \
+			"WHERE MONTH(ph.order_date) = {0} " \
+			"AND YEAR(ph.order_date) = {1} " \
+			"AND b.ISBN13 = ph.ISBN13 " \
+			"GROUP BY b.authors " \
+			"ORDER BY SUM(no_copies) DESC " \
+			"LIMIT {2};".format(month, year, m)
+	return connectAndExecute(query)
 
-		query = "SELECT b.authors, SUM(no_copies) " \
-				"FROM purchase_history ph, book b " \
-				"WHERE MONTH(ph.order_date) = {0} " \
-				"AND YEAR(ph.order_date) = {1} " \
-				"AND b.ISBN13 = ph.ISBN13 " \
-				"GROUP BY b.authors " \
-				"ORDER BY SUM(no_copies) DESC " \
-				"LIMIT {2};".format(month, year, m)
-
-		cur.execute(query)
-
-		# If no row exists
-		if cur.rowcount == 0:
-			return
-		else:
-			row = cur.fetchall()
-			return row
 
 def getStatistics(choices, m):
 	d = datetime.date.today()
 
 	if choices == 'book':
-
 		return (('Title', 'Count'),) + getHighestCopies(d.month, d.year, m)
 
 	elif choices == 'authors':
