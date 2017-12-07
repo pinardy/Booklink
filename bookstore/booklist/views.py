@@ -5,6 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from booklist.query.user import *
 from booklist.query.admin import *
 from booklist.query.cart import *
+from booklist.query.feedback import *
 from booklist.query.book import getAllBooks, searchBookByTitle, getBook
 
 from booklist.forms import BookForm, StockForm, RegistrationForm
@@ -58,6 +59,7 @@ def stock(request):
 		form = BookForm
 	return render(request, 'booklist/stock.html', {'bookForm': form})
 
+
 def register(request):
 	if request.user.is_authenticated:
 		return redirect('index')
@@ -80,9 +82,11 @@ def register(request):
 			form = RegistrationForm()
 		return render(request, 'booklist/register.html', {'form': form})
 
+
 def logout_view(request):
 	logout(request)
 	return render(request, 'booklist/index.html', {})
+
 
 def login_view(request):
 	"""
@@ -106,6 +110,7 @@ def login_view(request):
 
 		return render(request, 'booklist/login.html', {'form': form})
 
+
 def profile(request):
 	"""
 	Profile Query
@@ -120,6 +125,7 @@ def profile(request):
 		rating_history = getRatingHistory(request.user.username)
 		print(rating_history)
 		return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history': purchase_history, 'feedback_history': feedback_history, 'rating_history': rating_history})
+
 
 def staff_view(request):
 	"""
@@ -162,6 +168,7 @@ def addbook(request):
 			form = BookForm
 			return render(request, 'booklist/staff/addbook.html', {'form': form})
 
+
 def addstock(request):
 	"""
 	Staff page. Store managers can insert a new book or increase stock
@@ -184,6 +191,7 @@ def addstock(request):
 			form = StockForm
 			return render(request, 'booklist/staff/addstock.html', {'form': form})
 
+
 def cart(request):
 	"""
 	Staff page. Store managers can insert a new book or increase stock
@@ -194,15 +202,15 @@ def cart(request):
 		if request.method == 'POST':
 			req = request.POST
 			if req.get('update'):
-				modifyCart(req.get('isbn13'),request.user.username,req.get('quantity'))
+				modifyCart(req.get('isbn13'), request.user.username, req.get('quantity'))
 			elif req.get('delete'):
-				delFromCart(req.get('isbn13'),request.user.username)
+				delFromCart(req.get('isbn13'), request.user.username)
 			elif req.get('placeorder'):
 				user_cart = showCart(request.user.username)
 				successful = PurchaseBook(user_cart)
 				if successful:
 					delAllFromCart(request.user.username)
-					SubmitPurchaseHistory(user_cart,request.user.username)
+					SubmitPurchaseHistory(user_cart, request.user.username)
 					return redirect('orderfinish')
 				else:
 					print("DEBUG: ONE OF YOUR ORDERS HAS EXCEEDED INVENTORY")
@@ -216,17 +224,41 @@ def cart(request):
 			else:
 				return render(request, 'booklist/cart.html',{'cart':cart})
 
+def book(request,isbn13):
+	no_feedback = 5
+	if not request.user.is_authenticated:
+		return redirect('login')
+	else:
+
+		if request.method == 'POST':
+			req = request.POST
+			if req.get('submit_feedback'):
+				writeFeedback(isbn13, request.user.username, req.get('feedback_score'), req.get('feedback_text'))
+			elif req.get('reselect_feedback'):
+				no_feedback = req.get('no_views')
+
+		given_feedback = userHasGivenFeedback(isbn13, request.user.username)
+		feedback_ratings = getNFeedbacksForBook(isbn13, no_feedback)
+		book_title = getBook(isbn13)
+		return render(request, 'booklist/book.html', {'given_feedback': given_feedback,
+													'book_title': book_title,
+													'no_feedback': no_feedback,
+													'feedback_ratings': feedback_ratings})
+
+
 def orderfinish(request):
 	"""
 	Thank you page
 	"""
 	return render(request, 'booklist/orderfinish.html', {})
 
+
 def error(request):
 	"""
 	Error page
 	"""
 	return render(request, 'booklist/error.html', {})
+
 
 def feedback(request):
 	if request.method == "GET":
