@@ -19,30 +19,54 @@
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-    $("#modal").iziModal();
-    $(document).on('click', '.trigger', function(event) {
-        event.preventDefault();
-        $('#modal').iziModal('open');
+
     });
     window.sr = ScrollReveal();
     </script>
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg">
+    <div class="collapse navbar-collapse justify-content-center">
+
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="../browse">Explore</a>
+            <a class="nav-item nav-link" href="../search">Search</a>
+        </div>
+        <h3 class="nav-item" >BookLink</h3>
+        <div class="navbar-nav navbar-right">
+            <a class="nav-item nav-link" href="../profile">Account</a>
+            <a class="nav-item nav-link" href="../checkout">Cart</a>
+        </div>
+
+    </div>
+</nav>
     <section>
         <div class="container">
             <div class="jumbotron">
-                <h1>Search</h1>
+                <h1>Search for books</h1>
                 <form>
-                    <h3>I'm looking for books</h3>
-                    <h3>titled</h3>
-                    <h3>authored by</h3>
-                    <h3>published by</h3>
-                    <h3>in the year</h3>
-                    <h3>sorted by</h3>
-                </form>
+  <div class="form-group">
+
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" placeholder="Enter book title">
+  </div>
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text" class="form-control" id="author" placeholder="Enter author details">
+  </div>
+  <div class="form-group">
+    <label for="publisher">Publisher</label>
+    <input type="text" class="form-control" id="publisher" placeholder="Enter publisher information">
+  </div>
+
+    <div class="form-group">
+      <label for="inputCity">Reference ID</label>
+      <input type="text" class="form-control" id="inputCity" placeholder="Enter ISBN13">
+    </div>
+
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
             </div>
         </div>
     </section>

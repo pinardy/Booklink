@@ -30,15 +30,7 @@ def checkout(request):
 
 
 def search(request):
-	if request.method == 'GET':
-		q =request.GET
-		title = q.__getitem__('title')
-		book_list = searchBookByTitle(title)
-		context = {
-			'book_list': book_list,
-		}
-		print (book_list)
-		return render(request, 'booklist/browse.html', context)
+	return render(request, 'booklist/search.html', {})
 
 
 def stock(request):
