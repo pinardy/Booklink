@@ -1,64 +1,45 @@
 import MySQLdb as mdb
+import csv
+import sys
 
-con = mdb.connect(host = "127.0.0.1", port=3306, user = "bookstore_user", passwd = "password", db = "bookstore")
+def insertValuesFromFile(inputFile):
+    con = mdb.connect(host = "127.0.0.1", port=3306, user = "bookstore_user", passwd = "password", db = "bookstore")
+    
+    print("Inserting values from " + inputFile)
+    errorCount = 0
+    
+    with open(inputFile, newline='') as f:
+        with con:
+            cur = con.cursor()
+            for row in f:                
+                try:
+                    cur.execute(row[:-1])
+                except:
+                    errorCount += 1
+                    print("EXCEPTION: Error encounted at following INSERT:")
+                    print(row[:-1])
+                    continue
+                
+    print("DONE - Insertion of " + inputFile + " completed")
+    if(errorCount > 0):
+        print("ERROR - " + str(errorCount) + " rows could not be inserted")
+    print("\n")
 
-
-with con:
-    cur = con.cursor()
-
-    #============= INSERT data ==============#
-
-    insertBook = "INSERT INTO book (title, cover_format, num_pages, authors, publisher, year_publish, edition, ISBN10, ISBN13)" \
-                 "VALUES " \
-                 "('Database Management Systems: Evolution and Interoperation','hardcover',272,'Bhavani Thuraisingham'" \
-                 ",'CRC Press',1997,1,'0849394937','9780849394935')," \
-                 "('Database Management Systems: Design, Implementation, & Management','hardcover',784,'Carlos Coronel, Steven Morris'" \
-                 ",'Course Technology',2014,11,'1285196147','9781285196145')," \
-                 "('Database Management Systems: A Practical Approach to Design, Implementation, and Management (6th Edition)','hardcover',784,'Thomas Connolly, Carolyn Begg'" \
-                 ",'Pearson',2014,6,'0132943263','9780132943260')," \
-                 "('Database Management Systems: Design, Implementation, & Management','hardcover',791,'Carlos Coronel, Steven Morris'" \
-                 ",'Course Technology',2016,12,'1305627482','9781305627482')," \
-                 "('Database Design and Relational Theory: Normal Forms and All That Jazz (Theory in Practice)','hardcover',278,'C.J.Date'" \
-                 ",'O Reilly Media',2012,1,'1449328016','9781449328016');"
-
-    insertInventory = "INSERT INTO inventory (ISBN13, no_copies)" \
-                      "VALUES " \
-                      "('9780849394935',4)," \
-                      "('9781285196145',3)," \
-                      "('9780132943260',5)," \
-                      "('9781305627482',10)," \
-                      "('9781449328016',0);"
-
-    insertPurchaseHistory = "INSERT INTO purchase_history (purchase_id, user_id, ISBN13, no_copies, order_date) " \
-                            "VALUES " \
-                            "(1, 1, '9780849394935', 1, '2017-11-24')," \
-                            "(2, 1, '9781285196145', 1, '2017-11-24')," \
-                            "(3, 1, '9780132943260', 1, '2017-11-24')," \
-                            "(4, 2, '9781305627482', 1, '2017-11-24')," \
-                            "(5, 3, '9780132943260', 1, '2017-11-24');"
-
-    insertFeedback = ""
-
-    insertRating = ""
-
-    # Execution of cursor objects for schema
-    try:
-        cur.execute(insertBook)
-        print("Inserted into book")
-    except:
-        print("EXCEPTION: Inserted into book")
-
-    try:
-        cur.execute(insertInventory)
-        print("Inserted into inventory")
-    except:
-        print("EXCEPTION: Inserted into inventory")
-
-    try:
-        cur.execute(insertPurchaseHistory)
-        print("Inserted into purchase_history")
-    except:
-        print("EXCEPTION: Inserted into purchase_history")
-
-
-    print("--- Execution of SQL successful ---")
+##### Main Function ##### 
+if __name__ == "__main__":
+    bookFile = "populateBook"
+    inventoryFile = "populateInventory"
+    userFile = "populateUser"
+    purchaseHistoryFile = "populatePurchaseHistory"
+    feedbackFile = "populateFeedback"
+    ratingFile = "populateRating"
+    
+    # Insert rows in File that were generated from createSQL.py
+    insertValuesFromFile(bookFile)
+    insertValuesFromFile(inventoryFile)
+    insertValuesFromFile(userFile)
+    insertValuesFromFile(purchaseHistoryFile)
+    insertValuesFromFile(feedbackFile)
+    insertValuesFromFile(ratingFile)
+    
+    print("Done")
