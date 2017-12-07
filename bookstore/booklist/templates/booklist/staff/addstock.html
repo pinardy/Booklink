@@ -13,7 +13,7 @@
     <link href="../../../static/css/main.min.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../../static/images/favicon.ico">
+    <link rel="shortcut icon" href="../../static/images/favicon/favicon.ico">
 
     <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -36,7 +36,6 @@
         <div class="row">
             <div class="col-md-5 hidden-xs hidden-sm">
                 <ul class="nav navbar-nav">
-                    <li><a href="single-book.html">Online Store</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="/booklist/staff">Staff</a></li>
 
@@ -52,7 +51,7 @@
             <div class="col-md-4 col-sm-2">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden-xs hidden-sm"><a href="/order_page/{{user.username}}">My Orders</a></li>
-                    <li class="hidden-xs hidden-sm"><a href="/shop_cart_page/{{user.username}}">Shopping Cart</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/cart">Shopping Cart</a></li>
                     <li class="hidden-xs hidden-sm"><a href="/booklist/profile">My Account</a></li>
                     <li class="hidden-xs hidden-sm"><a href="/booklist/logout">Logout</a></li>
                 </ul><!-- /.nav -->
@@ -193,20 +192,22 @@
 <!-- ============================================== FREE DELIVERY : END ============================================== -->					</div><!-- /.header-shippment -->
 
 					<div class="col-xs-12 col-sm-4 col-md-2 animate-dropdown1 top-cart-row m-t-10">
-						<!-- ============================================== SHOPPING CART DROPDOWN ============================================== -->                              
+						<!-- ============================================== SHOPPING CART ============================================== -->
+{% if user.username %}
 <ul class="clearfix shopping-cart-block list-unstyled">
     <li class="dropdown">
-        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right">
+        <a class="menu-toggle-right clearfix" href="/booklist/cart">
             <span class="pull-right cart-right-block">
                 <img src="../../../static/images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
             <span class="pull-right cart-left-block">
-                <span class="cart-block-heading">$345.39</span>
-                <span class="hidden-xs">2 items</span>
+                <span class="cart-block-heading">My Cart</span>
             </span><!-- /.cart-left-block -->
         </a>
     </li>
-</ul> <!-- /.list-unstyled --> 
+</ul> <!-- /.list-unstyled -->
+{% else %}
+{% endif %}
 <!-- ============================================== SHOPPING CART DROPDOWN : END ============================================== -->					</div><!-- /.top-cart-row -->
 				</div><!-- /.row -->
 
@@ -233,8 +234,8 @@
     </div><!-- /.navbar-header -->
     <div class="collapse navbar-collapse" id="navbar-primary-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="home.html">Books</a></li>
-             <li><a href="books.html">Nook Books</a></li>
+            <li class="active"><a href="/booklist/browse">Books</a></li>
+             <li><a href="books.html">Stationery</a></li>
              <li class="hidden-sm"><a href="books.html">Audiobooks</a></li>
              <li><a href="books.html">Ratings</a></li>  
         </ul><!-- /.nav -->

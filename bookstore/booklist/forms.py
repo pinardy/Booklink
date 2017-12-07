@@ -2,14 +2,23 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from booklist.query.book import getAllBookIsbnTitle, getBook
+
 COVER_FORMATS = (
     ('paperback', "paperback"),
     ('hardcover', "hardcover"),
 )
-
+STATISTICS = (
+    ('book', "Book"),
+    ('authors', "Authors"),
+    ('publisher', "Publishers"),
+)
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required')
+
+    def __init__(self, *args, **kwargs):
+        super(RegistrationForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.pop('autofocus')
 
     class Meta:
         model = User
@@ -44,3 +53,9 @@ class StockForm(forms.Form):
     class Meta:
         fields = ('title','quantity')
 
+class StatisticsForm(forms.Form):
+    choices = forms.ChoiceField(choices=STATISTICS)
+    m = forms.IntegerField(label='m', min_value=1)
+
+    class Meta:
+        fields = ('choices','m')

@@ -6,9 +6,9 @@ from booklist.query.user import *
 from booklist.query.admin import *
 from booklist.query.cart import *
 from booklist.query.feedback import *
-from booklist.query.book import getAllBooks, searchBookByTitle, getBook
+from booklist.query.book import *
 
-from booklist.forms import BookForm, StockForm, RegistrationForm
+from booklist.forms import *
 
 from booklist.helperFunctions import input_formatting
 
@@ -19,24 +19,44 @@ def error(request):
 	return render(request, 'booklist/error.html', {})
 
 def browse(request):
-	book_list = getAllBooks()
+
+	if request.method == "GET":
+		q = request.GET
+		try:
+			title = q.__getitem__('title')
+		except:
+			title='%'
+
+		try:
+			authors = q.__getitem__('authors')
+		except:
+			authors='%'
+
+		try:
+			publisher = q.__getitem__('publisher')
+		except:
+			publisher='%'
+
+		try:
+			isbn13 = q.__getitem__('isbn13')
+		except:
+			isbn13='%'
+
+		print(title, authors, publisher, isbn13)
+		book_list = getBooksByQuery(title, authors, publisher, isbn13)
+
+
 	context = {
 		'book_list': book_list,
 	}
-	print (book_list)
 	return render(request, 'booklist/browse.html', context)
+
+def checkout(request):
+	return render(request, 'booklist/checkout.html', {})
 
 
 def search(request):
-	if request.method == 'GET':
-		q =request.GET
-		title = q.__getitem__('title')
-		book_list = searchBookByTitle(title)
-		context = {
-			'book_list': book_list,
-		}
-		print (book_list)
-		return render(request, 'booklist/browse.html', context)
+	return render(request, 'booklist/search.html', {})
 
 
 def stock(request):
@@ -121,10 +141,14 @@ def profile(request):
 		user_profile = retrieveProfile(request.user.username)
 		purchase_history = getPurchaseHistory(request.user.username)
 		feedback_history = getFeedbackHistory(request.user.username)
+		print(feedback_history)
+		context = {
+			'user_profile': user_profile,
+			'purchase_history': purchase_history,
+			'feedback_history': feedback_history
+		}
+		return render(request, 'booklist/profile.html', context)
 
-		rating_history = getRatingHistory(request.user.username)
-		print(rating_history)
-		return render(request, 'booklist/profile.html', {'user_profile': user_profile, 'purchase_history': purchase_history, 'feedback_history': feedback_history, 'rating_history': rating_history})
 
 
 def staff_view(request):
@@ -266,6 +290,33 @@ def error(request):
 	"""
 	return render(request, 'booklist/error.html', {})
 
+def statistics(request):
+	"""
+	Obtain the following:
+	the list of the m most popular books (in terms of copies sold in this month)
+	the list of m most popular authors
+	the list of m most popular publishers
+	"""
+	if not request.user.is_authenticated:
+		return redirect('login')
+	elif not request.user.is_superuser:
+		return redirect('error')
+	else:
+		if request.method == 'POST':
+			form = StatisticsForm(request.POST)
+			if form.is_valid():
+				choices = form.cleaned_data.get('choices')
+				m = form.cleaned_data.get('m')
+				highest = getStatistics(choices, m)
+				print(highest)
+				context = {
+					'highest': highest,
+					'form': form
+				}
+			return render(request, 'booklist/staff/statistics.html', context)
+		else:
+			form = StatisticsForm
+			return render(request, 'booklist/staff/statistics.html', {'form': form})
 
 def feedback(request):
 	if request.method == "GET":

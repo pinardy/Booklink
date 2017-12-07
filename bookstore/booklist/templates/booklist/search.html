@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="../../static/css/working.css" type="text/css" rel="stylesheet">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+    });
+    </script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="collapse navbar-collapse justify-content-center">
+
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="../browse">Explore</a>
+            <a class="nav-item nav-link" href="../search">Search</a>
+        </div>
+        <h3 class="nav-item" >BookLink</h3>
+        <div class="navbar-nav navbar-right">
+            <a class="nav-item nav-link" href="../profile">Account</a>
+            <a class="nav-item nav-link" href="../cart">Cart</a>
+        </div>
+
+    </div>
+</nav>
+    <section>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Search for books</h1>
+                <form action="/booklist/browse/" method="get" id="search">
+  <div class="form-group">
+
+    <label for="title">Title</label>
+    <input type="text" class="form-control" name="title" id="title" placeholder="Enter book title">
+  </div>
+  <div class="form-group">
+    <label for="authors">Author</label>
+    <input type="text" class="form-control" name="authors" id="authors" placeholder="Enter author details">
+  </div>
+  <div class="form-group">
+    <label for="publisher">Publisher</label>
+    <input type="text" class="form-control" name="publisher" id="publisher" placeholder="Enter publisher information">
+  </div>
+
+    <div class="form-group">
+      <label for="isbn13">Reference ID</label>
+      <input type="text" class="form-control" name="isbn13" id="isbn13" placeholder="Enter ISBN13">
+    </div>
+
+  <button type="submit" class="btn btn-primary" form="search">Search</button>
+</form>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Browse</h1>
+                    <form action="/booklist/search/" method="get" id="search">
+                        <div class="input-group input-group-lg search-bar">
+                            <span class="input-group-addon" id="sizing-addon1">🔎</span>
+                            <input type="text" name="title" class="form-control" placeholder="Search for books by title." value="{{title}}">
+                            <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button submit" form="search">Go!</button>
+                     </span>
+                        </div>
+                    </form>
+                    <div>
+                        <div class="booklist_container">
+                            <ul class="grid revealContainer">
+                                {% for book in book_list %}
+                                <li class="book_container rounded reveal" data-toggle="tooltip" data-html="true" title="{{book.0}}">
+                                    <a href="" class="trigger"><img class="rounded" src="http://via.placeholder.com/70x105"></a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="card" style="width: 20rem;">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                            <div class="card-header">Order details</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Booking ID: 7F45Q </h4>
+                                <p class="card-text">Due on 17th Dec 2017</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Harry Potter and the Philosopher's Stone</td>
+                                        <td>3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-body">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+        </div>
+    </section> -->
+    <script>
+    sr.reveal('.reveal', { container: '.revealContainer' });
+    </script>
+</body>
+
+</html>

@@ -13,7 +13,7 @@
     <link href="../../static/css/main.min.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../static/images/favicon.ico">
+    <link rel="shortcut icon" href="../../static/images/favicon/favicon.ico">
 
     <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -36,7 +36,6 @@
         <div class="row">
             <div class="col-md-5 hidden-xs hidden-sm">
                 <ul class="nav navbar-nav">
-                    <li><a href="single-book.html">Online Store</a></li>
                     <li><a href="about.html">About Us</a></li>
                 {% if user.is_superuser %}
                     <li><a href="/booklist/staff/">Staff</a></li>
@@ -193,20 +192,22 @@
 <!-- ============================================== FREE DELIVERY : END ============================================== -->					</div><!-- /.header-shippment -->
 
 					<div class="col-xs-12 col-sm-4 col-md-2 animate-dropdown1 top-cart-row m-t-10">
-						<!-- ============================================== SHOPPING CART DROPDOWN ============================================== -->                              
+						<!-- ============================================== SHOPPING CART  ============================================== -->
+{% if user.username %}
 <ul class="clearfix shopping-cart-block list-unstyled">
     <li class="dropdown">
-        <a class="menu-toggle-right clearfix" href="/.menu-toggle-right">
+        <a class="menu-toggle-right clearfix" href="/booklist/cart">
             <span class="pull-right cart-right-block">
                 <img src="../../static/images/cart-icon.png" alt="" width="46" height="39" />
             </span><!-- /.cart-right-block -->
             <span class="pull-right cart-left-block">
-                <span class="cart-block-heading">$345.39</span>
-                <span class="hidden-xs">2 items</span>
+                <span class="cart-block-heading">My Cart</span>
             </span><!-- /.cart-left-block -->
         </a>
     </li>
-</ul> <!-- /.list-unstyled --> 
+</ul> <!-- /.list-unstyled -->
+{% else %}
+{% endif %}
 <!-- ============================================== SHOPPING CART DROPDOWN : END ============================================== -->					</div><!-- /.top-cart-row -->
 				</div><!-- /.row -->
 
@@ -233,8 +234,8 @@
     </div><!-- /.navbar-header -->
     <div class="collapse navbar-collapse" id="navbar-primary-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="home.html">Books</a></li>
-             <li><a href="books.html">Nook Books</a></li>
+            <li class="active"><a href="/booklist/browse">Books</a></li>
+             <li><a href="books.html">Stationery</a></li>
              <li class="hidden-sm"><a href="books.html">Audiobooks</a></li>
              <li><a href="books.html">Ratings</a></li>  
         </ul><!-- /.nav -->
@@ -253,161 +254,18 @@
 			<!-- ============================================== BANNERS ============================================== -->
 
 <!-- ============================================== BANNERS : END ============================================== -->
-			
 
-			<!-- ============================================== BEST SELLER ============================================== -->
-<section class="best-seller wow fadeInUp">
-    <div id="best-seller" class="module">
-        <div class="module-heading home-page-module-heading">
-            <h2 class="module-title home-page-module-title"><span>Bestsellers</span></h2>
-        </div><!-- /.module-heading -->
-        <div class="module-body">
-          <div class="row books full-width">
-            <div class="clearfix text-center">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html">
-                                <div class="book-cover">
-                                    <img width="140" height="212" alt="" src="../../static/images/book-covers/01.jpg">
-                                    <div class="tag">
-                                        <span>sale</span>
-                                    </div>
-                            </div>
-                            </a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">The Brief Wondrous Life of  Oscar Wao</a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Cormac McCarthy</a></p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$14.75</span>               
-                                            <div class="cart-action"> 
-                                                <a class="add-to-cart" title="Add to Cart" href="javascript:void(0);">Add to Cart</a>       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/02.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">Doctor Sleep </a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Stephen King</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$14.45</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/03.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">Wonder Hardcover</a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> R. J. Palacio</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$9.59</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/04.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">The Brief Wondrous  Life of Oscar</a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Hezy Theme</a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$12.00</span>
-                                        <div class="cart-action"> 
-                                                 <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="book">
-                            <a href="single-book.html"><div class="book-cover">
-                                <img width="140" height="212" alt="" src="../../static/images/book-covers/05.jpg">
-                            </div></a>
-                            <div class="book-details clearfix">
-                                <div class="book-description">
-                                    <h3 class="book-title"><a href="single-book.html">How Dogs Love Us: A  Neuroscientist and His Dog </a></h3>
-                                    <p class="book-subtitle">by <a href="single-book.html"> Gregory Berns </a></p>
-                                </div>
-                                 <div class="text-center">
-                                    <div class="actions">
-                                        <span class="book-price price">$7.95</span>
-                                        <div class="cart-action"> 
-                                                <a class="add-to-cart" title="Add to Cart" href="single-book.html">Add to Cart</a>       
-                                       
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-              </div>
-			</div>
-        </div>
-    </div>
-</section>
-
-            <section class="inner-md">
-<div class="content">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 center-block">
-				<div class="row info-404">
-
-					<div class="col-md-6 col-sm-6 right-info inner-top-md" >
-						<h2 class="sub-title">Login</h2>
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit">Login</button>
-                        </form>
-					</div>
-				</div>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.content -->
+<section class="inner-md">
+    <div class="content">
+        <div class="col-md-offset-5">
+            <h2 class="fancy">Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Login</button>
+                </form>
+        </div><!-- /.col -->
+    </div><!-- /.content -->
 </section>
 
 			<!-- ============================================== TESTIMONIAL ============================================== -->

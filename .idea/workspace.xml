@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d7a93c9-f70e-4184-a864-a4e5c0c867c8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/base.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/forms.py" afterPath="$PROJECT_DIR$/bookstore/booklist/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/query/book.py" afterPath="$PROJECT_DIR$/bookstore/booklist/query/book.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/query/user.py" afterPath="$PROJECT_DIR$/bookstore/booklist/query/user.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/error.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/error.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/index.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/login.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/profile.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/register.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/staff.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/staff.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/statistics.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/statistics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/urls.py" afterPath="$PROJECT_DIR$/bookstore/booklist/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/views.py" afterPath="$PROJECT_DIR$/bookstore/booklist/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/populate.sql" afterPath="$PROJECT_DIR$/populate.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="54" column="34" lean-forward="false" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+            <state relative-caret-position="2741">
+              <caret line="231" column="44" lean-forward="true" selection-start-line="231" selection-start-column="44" selection-end-line="231" selection-end-column="44" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -41,10 +26,40 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="staff.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/staff.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="637">
+              <caret line="269" column="37" lean-forward="true" selection-start-line="269" selection-start-column="37" selection-end-line="269" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="orderfinish.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/orderfinish.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1705">
+              <caret line="313" column="90" lean-forward="false" selection-start-line="313" selection-start-column="86" selection-end-line="313" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="cart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/cart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
+            <state relative-caret-position="-703">
               <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
               <folding />
             </state>
@@ -54,19 +69,20 @@
       <file leaf-file-name="cart.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/cart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schema.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookstore/schema.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="59" column="22" lean-forward="false" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="255">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <marker date="1511967027476" expanded="true" signature="249:302" ph="INSERT INTO cart... " />
+                <marker date="1511967027476" expanded="true" signature="570:640" ph="DELETE FROM " />
+                <marker date="1511967027476" expanded="true" signature="894:945" ph="DELETE FROM " />
+                <marker date="1511967027476" expanded="true" signature="1207:1304" ph="UPDATE cart " />
+                <marker date="1511967027476" expanded="true" signature="1565:1735" ph="SELECT b.tit... *" />
+                <marker date="1511967027476" expanded="true" signature="1607:1660" ph="SELECT * FRO... cart" />
+                <marker date="1511967027476" expanded="true" signature="2242:2322" ph="SELECT no_co... inventory" />
+                <marker date="1511967027476" expanded="true" signature="2601:2715" ph="UPDATE inven... " />
+                <marker date="1511967027476" expanded="true" signature="3016:3071" ph="SELECT max(p... purchase_history" />
+                <marker date="1511967027476" expanded="true" signature="3269:3350" ph="INSERT into purchase_history... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,18 +90,42 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="360">
+              <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/book.py">
+      <file leaf-file-name="populate.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookstore/populate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="19" column="74" lean-forward="false" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="74" />
+              <folding>
+                <marker date="1511933420838" expanded="true" signature="238:1473" ph="INSERT INTO book... " />
+                <marker date="1511933420838" expanded="true" signature="1500:1810" ph="INSERT INTO inventory... " />
+                <marker date="1511933420838" expanded="true" signature="1843:2334" ph="INSERT INTO purchase_history... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="browse.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -108,8 +148,9 @@
       <find>user profiel</find>
       <find>RegistrationForm</find>
       <find>user_account</find>
-      <find>cart</find>
       <find>if not</find>
+      <find>add</find>
+      <find>cart</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,10 +172,20 @@
         <option value="$PROJECT_DIR$/bookstore/booklist/query/user.py" />
         <option value="$PROJECT_DIR$/bookstore/booklist/urls.py" />
         <option value="$PROJECT_DIR$/bookstore/booklist/templates/booklist/cart.html" />
-        <option value="$PROJECT_DIR$/bookstore/booklist/views.py" />
         <option value="$PROJECT_DIR$/bookstore/booklist/query/cart.py" />
+        <option value="$PROJECT_DIR$/bookstore/booklist/query/book.py" />
+        <option value="$PROJECT_DIR$/bookstore/booklist/templates/booklist/checkout.html" />
+        <option value="$PROJECT_DIR$/bookstore/booklist/views.py" />
+        <option value="$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html" />
+        <option value="$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="953" />
@@ -156,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,13 +253,12 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/Anaconda3/envs/django/python.exe" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -244,18 +295,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1453125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -265,16 +316,17 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09010417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -286,34 +338,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bookstore/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/bookstore/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/bookstore/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/populate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="47" lean-forward="false" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/query.py" />
     <entry file="file://$PROJECT_DIR$/bookstore/schema.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -468,13 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/populate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/bookstore/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -503,14 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -527,13 +536,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/stock.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/stock.html" />
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -562,14 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/book.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -577,24 +572,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5031">
-          <caret line="10" column="72" lean-forward="true" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -607,34 +588,147 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/schema.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="59" column="22" lean-forward="false" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+        <state relative-caret-position="360">
+          <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+          <folding>
+            <marker date="1511967027485" expanded="true" signature="205:624" ph="CREATE TABLE... book" />
+            <marker date="1511967027485" expanded="true" signature="651:1162" ph="CREATE TABLE... purchase_history" />
+            <marker date="1511967027485" expanded="true" signature="1183:1406" ph="CREATE TABLE... inventory" />
+            <marker date="1511967027485" expanded="true" signature="1426:1914" ph="CREATE TABLE... feedback" />
+            <marker date="1511967027485" expanded="true" signature="1932:2517" ph="CREATE TABLE... rating" />
+            <marker date="1511967027485" expanded="true" signature="2534:2874" ph="CREATE TABLE... cart" />
+            <marker date="1511967027485" expanded="true" signature="3113:3281" ph="UPDATE inven... " />
+            <marker date="1511967027485" expanded="true" signature="3895:4083" ph="INSERT into books... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/checkout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="59" column="54" lean-forward="false" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/book.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <marker date="1512645595884" expanded="true" signature="525:551" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="672:727" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="820:881" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="1120:1168" ph="INSERT into inventory... " />
+            <marker date="1512645595884" expanded="true" signature="1269:1337" ph="SELECT no_co... inventory" />
+            <marker date="1512645595884" expanded="true" signature="1604:1680" ph="INSERT into purchase_history... " />
+            <marker date="1512645595884" expanded="true" signature="1931:1996" ph="SELECT AVG(s... feedback" />
+            <marker date="1512645595884" expanded="true" signature="2371:2425" ph="SELECT * FRO... feedback" />
+            <marker date="1512645595884" expanded="true" signature="2545:2571" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2573" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2580" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2611" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2666" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2667" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2699" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2848:2883" ph="SELECT isbn1... book" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/orderfinish.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/cart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+        <state relative-caret-position="255">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <marker date="1511967027476" expanded="true" signature="249:302" ph="INSERT INTO cart... " />
+            <marker date="1511967027476" expanded="true" signature="570:640" ph="DELETE FROM " />
+            <marker date="1511967027476" expanded="true" signature="894:945" ph="DELETE FROM " />
+            <marker date="1511967027476" expanded="true" signature="1207:1304" ph="UPDATE cart " />
+            <marker date="1511967027476" expanded="true" signature="1565:1735" ph="SELECT b.tit... *" />
+            <marker date="1511967027476" expanded="true" signature="1607:1660" ph="SELECT * FRO... cart" />
+            <marker date="1511967027476" expanded="true" signature="2242:2322" ph="SELECT no_co... inventory" />
+            <marker date="1511967027476" expanded="true" signature="2601:2715" ph="UPDATE inven... " />
+            <marker date="1511967027476" expanded="true" signature="3016:3071" ph="SELECT max(p... purchase_history" />
+            <marker date="1511967027476" expanded="true" signature="3269:3350" ph="INSERT into purchase_history... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/staff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="269" column="37" lean-forward="true" selection-start-line="269" selection-start-column="37" selection-end-line="269" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/views.py">
+    <entry file="file://$PROJECT_DIR$/bookstore/populate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="54" column="34" lean-forward="false" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+        <state relative-caret-position="285">
+          <caret line="19" column="74" lean-forward="false" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="74" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <marker date="1511933420838" expanded="true" signature="238:1473" ph="INSERT INTO book... " />
+            <marker date="1511933420838" expanded="true" signature="1500:1810" ph="INSERT INTO inventory... " />
+            <marker date="1511933420838" expanded="true" signature="1843:2334" ph="INSERT INTO purchase_history... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/cart.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
+        <state relative-caret-position="-703">
           <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2741">
+          <caret line="231" column="44" lean-forward="true" selection-start-line="231" selection-start-column="44" selection-end-line="231" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1705">
+          <caret line="313" column="90" lean-forward="false" selection-start-line="313" selection-start-column="86" selection-end-line="313" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding />
         </state>
       </provider>
