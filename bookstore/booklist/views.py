@@ -18,11 +18,36 @@ def error(request):
 	return render(request, 'booklist/error.html', {})
 
 def browse(request):
-	book_list = getAllBooks()
+
+	if request.method == "GET":
+		q = request.GET
+		try:
+			title = q.__getitem__('title')
+		except:
+			title='%'
+
+		try:
+			authors = q.__getitem__('authors')
+		except:
+			authors='%'
+
+		try:
+			publisher = q.__getitem__('publisher')
+		except:
+			publisher='%'
+
+		try:
+			isbn13 = q.__getitem__('isbn13')
+		except:
+			isbn13='%'
+
+		print(title, authors, publisher, isbn13)
+		book_list = getBooksByQuery(title, authors, publisher, isbn13)
+
+
 	context = {
 		'book_list': book_list,
 	}
-	print (book_list)
 	return render(request, 'booklist/browse.html', context)
 
 def checkout(request):

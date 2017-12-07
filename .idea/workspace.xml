@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d7a93c9-f70e-4184-a864-a4e5c0c867c8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/DB-Project.iml" afterPath="$PROJECT_DIR$/.idea/DB-Project.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/query/book.py" afterPath="$PROJECT_DIR$/bookstore/booklist/query/book.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html" afterPath="$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookstore/booklist/views.py" afterPath="$PROJECT_DIR$/bookstore/booklist/views.py" />
@@ -21,8 +18,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="587">
+              <caret line="43" column="48" lean-forward="true" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -33,25 +30,35 @@
       <file leaf-file-name="cart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/cart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="-590">
               <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/book.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1650">
+              <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding>
-                <marker date="1512640829429" expanded="true" signature="11636:11791" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:11816" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:11861" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:12039" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:12071" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:12100" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:12248" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:14351" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="11636:14358" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="12666:13314" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="12675:12776" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="12806:13292" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="12841:13282" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="12979:13186" ph="..." />
-                <marker date="1512640829429" expanded="false" signature="13058:13068" ph="..." />
-                <marker date="1512640829429" expanded="true" signature="13349:13457" ph="..." />
+                <marker date="1512645595884" expanded="true" signature="525:551" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="672:727" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="820:881" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="1120:1168" ph="INSERT into inventory... " />
+                <marker date="1512645595884" expanded="true" signature="1269:1337" ph="SELECT no_co... inventory" />
+                <marker date="1512645595884" expanded="true" signature="1604:1680" ph="INSERT into purchase_history... " />
+                <marker date="1512645595884" expanded="true" signature="1931:1996" ph="SELECT AVG(s... feedback" />
+                <marker date="1512645595884" expanded="true" signature="2371:2425" ph="SELECT * FRO... feedback" />
+                <marker date="1512645595884" expanded="true" signature="2545:2571" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="2545:2573" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="2545:2580" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="2545:2611" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="2545:2666" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="2545:2667" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="2545:2699" ph="SELECT * FRO... book" />
+                <marker date="1512645595884" expanded="true" signature="2848:2883" ph="SELECT isbn1... book" />
               </folding>
             </state>
           </provider>
@@ -60,7 +67,7 @@
       <file leaf-file-name="cart.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/cart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="418">
               <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
               <folding>
                 <marker date="1511967027476" expanded="true" signature="249:302" ph="INSERT INTO cart... " />
@@ -81,9 +88,33 @@
       <file leaf-file-name="browse.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="55" column="87" lean-forward="true" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="87" />
+            <state relative-caret-position="396">
+              <caret line="56" column="59" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="59" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="populate.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bookstore/populate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+              <folding>
+                <marker date="1511933420838" expanded="true" signature="238:1473" ph="INSERT INTO book... " />
+                <marker date="1511933420838" expanded="true" signature="1500:1810" ph="INSERT INTO inventory... " />
+                <marker date="1511933420838" expanded="true" signature="1843:2334" ph="INSERT INTO purchase_history... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,20 +129,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="schema.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/schema.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="360">
               <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
               <folding>
                 <marker date="1511967027485" expanded="true" signature="205:624" ph="CREATE TABLE... book" />
@@ -130,43 +151,9 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookstore/booklist/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="360">
               <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-              <folding>
-                <marker date="1512640829419" expanded="true" signature="676:781" ph="..." />
-                <marker date="1512640829419" expanded="true" signature="695:781" ph="..." />
-                <marker date="1512640829419" expanded="true" signature="811:1884" ph="..." />
-                <marker date="1512640829419" expanded="true" signature="1551:1734" ph="..." />
-                <marker date="1512640829419" expanded="true" signature="1750:1884" ph="..." />
-                <marker date="1512640829419" expanded="true" signature="1915:2096" ph="..." />
-                <marker date="1512640829419" expanded="true" signature="2058:2096" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="book.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/book.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="106" column="37" lean-forward="true" selection-start-line="106" selection-start-column="37" selection-end-line="106" selection-end-column="37" />
-              <folding>
-                <marker date="1512642913774" expanded="true" signature="525:551" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="672:727" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="820:881" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="1120:1168" ph="INSERT into inventory... " />
-                <marker date="1512642913774" expanded="true" signature="1269:1337" ph="SELECT no_co... inventory" />
-                <marker date="1512642913774" expanded="true" signature="1604:1680" ph="INSERT into purchase_history... " />
-                <marker date="1512642913774" expanded="true" signature="1931:1996" ph="SELECT AVG(s... feedback" />
-                <marker date="1512642913774" expanded="true" signature="2371:2425" ph="SELECT * FRO... feedback" />
-                <marker date="1512642913774" expanded="true" signature="2553:2579" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="2553:2581" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="2553:2610" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="2553:2638" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="2553:2667" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="2553:2669" ph="SELECT * FRO... book" />
-                <marker date="1512642913774" expanded="true" signature="2847:2882" ph="SELECT isbn1... book" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -212,8 +199,8 @@
         <option value="$PROJECT_DIR$/bookstore/booklist/urls.py" />
         <option value="$PROJECT_DIR$/bookstore/booklist/templates/booklist/cart.html" />
         <option value="$PROJECT_DIR$/bookstore/booklist/query/cart.py" />
-        <option value="$PROJECT_DIR$/bookstore/booklist/query/book.py" />
         <option value="$PROJECT_DIR$/bookstore/booklist/views.py" />
+        <option value="$PROJECT_DIR$/bookstore/booklist/query/book.py" />
         <option value="$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html" />
       </list>
     </option>
@@ -543,13 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/populate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/bookstore/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -575,22 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <marker date="1512640829419" expanded="true" signature="676:781" ph="..." />
-            <marker date="1512640829419" expanded="true" signature="695:781" ph="..." />
-            <marker date="1512640829419" expanded="true" signature="811:1884" ph="..." />
-            <marker date="1512640829419" expanded="true" signature="1551:1734" ph="..." />
-            <marker date="1512640829419" expanded="true" signature="1750:1884" ph="..." />
-            <marker date="1512640829419" expanded="true" signature="1915:2096" ph="..." />
-            <marker date="1512640829419" expanded="true" signature="2058:2096" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -667,9 +631,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/schema.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+          <folding>
+            <marker date="1511967027485" expanded="true" signature="205:624" ph="CREATE TABLE... book" />
+            <marker date="1511967027485" expanded="true" signature="651:1162" ph="CREATE TABLE... purchase_history" />
+            <marker date="1511967027485" expanded="true" signature="1183:1406" ph="CREATE TABLE... inventory" />
+            <marker date="1511967027485" expanded="true" signature="1426:1914" ph="CREATE TABLE... feedback" />
+            <marker date="1511967027485" expanded="true" signature="1932:2517" ph="CREATE TABLE... rating" />
+            <marker date="1511967027485" expanded="true" signature="2534:2874" ph="CREATE TABLE... cart" />
+            <marker date="1511967027485" expanded="true" signature="3113:3281" ph="UPDATE inven... " />
+            <marker date="1511967027485" expanded="true" signature="3895:4083" ph="INSERT into books... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/cart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="418">
           <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
           <folding>
             <marker date="1511967027476" expanded="true" signature="249:302" ph="INSERT INTO cart... " />
@@ -686,87 +667,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/cart.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="-590">
           <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding>
-            <marker date="1512640829429" expanded="true" signature="11636:11791" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:11816" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:11861" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:12039" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:12071" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:12100" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:12248" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:14351" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="11636:14358" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="12666:13314" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="12675:12776" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="12806:13292" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="12841:13282" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="12979:13186" ph="..." />
-            <marker date="1512640829429" expanded="false" signature="13058:13068" ph="..." />
-            <marker date="1512640829429" expanded="true" signature="13349:13457" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/schema.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-          <folding>
-            <marker date="1511967027485" expanded="true" signature="205:624" ph="CREATE TABLE... book" />
-            <marker date="1511967027485" expanded="true" signature="651:1162" ph="CREATE TABLE... purchase_history" />
-            <marker date="1511967027485" expanded="true" signature="1183:1406" ph="CREATE TABLE... inventory" />
-            <marker date="1511967027485" expanded="true" signature="1426:1914" ph="CREATE TABLE... feedback" />
-            <marker date="1511967027485" expanded="true" signature="1932:2517" ph="CREATE TABLE... rating" />
-            <marker date="1511967027485" expanded="true" signature="2534:2874" ph="CREATE TABLE... cart" />
-            <marker date="1511967027485" expanded="true" signature="3113:3281" ph="UPDATE inven... " />
-            <marker date="1511967027485" expanded="true" signature="3895:4083" ph="INSERT into books... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/book.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="106" column="37" lean-forward="true" selection-start-line="106" selection-start-column="37" selection-end-line="106" selection-end-column="37" />
-          <folding>
-            <marker date="1512642913774" expanded="true" signature="525:551" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="672:727" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="820:881" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="1120:1168" ph="INSERT into inventory... " />
-            <marker date="1512642913774" expanded="true" signature="1269:1337" ph="SELECT no_co... inventory" />
-            <marker date="1512642913774" expanded="true" signature="1604:1680" ph="INSERT into purchase_history... " />
-            <marker date="1512642913774" expanded="true" signature="1931:1996" ph="SELECT AVG(s... feedback" />
-            <marker date="1512642913774" expanded="true" signature="2371:2425" ph="SELECT * FRO... feedback" />
-            <marker date="1512642913774" expanded="true" signature="2553:2579" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="2553:2581" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="2553:2610" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="2553:2638" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="2553:2667" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="2553:2669" ph="SELECT * FRO... book" />
-            <marker date="1512642913774" expanded="true" signature="2847:2882" ph="SELECT isbn1... book" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="587">
+          <caret line="43" column="48" lean-forward="true" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html">
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/query/book.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="55" column="87" lean-forward="true" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="87" />
-          <folding />
+        <state relative-caret-position="1650">
+          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <marker date="1512645595884" expanded="true" signature="525:551" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="672:727" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="820:881" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="1120:1168" ph="INSERT into inventory... " />
+            <marker date="1512645595884" expanded="true" signature="1269:1337" ph="SELECT no_co... inventory" />
+            <marker date="1512645595884" expanded="true" signature="1604:1680" ph="INSERT into purchase_history... " />
+            <marker date="1512645595884" expanded="true" signature="1931:1996" ph="SELECT AVG(s... feedback" />
+            <marker date="1512645595884" expanded="true" signature="2371:2425" ph="SELECT * FRO... feedback" />
+            <marker date="1512645595884" expanded="true" signature="2545:2571" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2573" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2580" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2611" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2666" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2667" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2545:2699" ph="SELECT * FRO... book" />
+            <marker date="1512645595884" expanded="true" signature="2848:2883" ph="SELECT isbn1... book" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -778,11 +726,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/browse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="56" column="59" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bookstore/booklist/templates/booklist/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+        <state relative-caret-position="576">
+          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookstore/populate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding>
+            <marker date="1511933420838" expanded="true" signature="238:1473" ph="INSERT INTO book... " />
+            <marker date="1511933420838" expanded="true" signature="1500:1810" ph="INSERT INTO inventory... " />
+            <marker date="1511933420838" expanded="true" signature="1843:2334" ph="INSERT INTO purchase_history... " />
+          </folding>
         </state>
       </provider>
     </entry>
