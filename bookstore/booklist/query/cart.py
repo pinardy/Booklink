@@ -51,26 +51,37 @@ def showCart(username):
             row = cur.fetchall()
             return row
 
-def PurchaseBook(orderlist):
+def ValidPurchase(username):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
-        #Check all orders are within inventory limit first before subtracting
-        for order in orderlist:
-            query = "SELECT no_copies "\
-            "FROM inventory " \
-            "WHERE isbn13 = {0};".format(order[1])
-            cur.execute(query)
-            limit = cur.fetchall()
-            if order[3] > limit[0][0]:
-                return False #One of the orders has exceeded inventory
+        # This query returns something if there are items on the cart that exceeds inventory
+        # else it returns nothing
+        query = "SELECT * FROM INVENTORY, cart " \
+                "WHERE cart.isbn13 = inventory.isbn13 " \
+                "and cart.username = '{0}' " \
+                "and no_copies < quantity;".format(username)
 
-        #Update inventory
-        for order in orderlist:
-            query = "UPDATE inventory " \
-                    "SET no_copies = no_copies - {0} " \
-                    "WHERE isbn13 = {1};".format(order[3], order[1])
-            cur.execute(query)
+        cur.execute(query)
+
+        if cur.rowcount == 0:
+
+            return None
+        else:
+            row = cur.fetchall()
+            return row
+
+def PurchaseBook(username):
+    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
+    with con:
+        cur = con.cursor()
+        now = datetime.datetime.now()
+        #Check all orders are within inventory limit first before subtracting
+        query = "INSERT INTO purchase_history (purchase_id, user_id, ISBN13, no_copies, order_date) " \
+                "SELECT null, username, isbn13, quantity, '{0}' FROM cart " \
+                "WHERE cart.username = '{1}';".format(now.strftime("%Y-%m-%d"),username)
+
+        cur.execute(query)
         return True
 
 def SubmitPurchaseHistory(orderlist,username):

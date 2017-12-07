@@ -279,7 +279,7 @@
             <hr>
             <h2 class="title">User Feedbacks</h2>
             <form action="" method="POST"> {% csrf_token %}
-                <label>Select top feedbacks {{no_feedback}}:</label>
+                <label>Select top feedbacks:</label>
                 <input type="number" required name="no_views" min="1" max="50" value={{no_feedback}} style="width: 3em">
                 <button type="submit" name="reselect_feedback" value="reselect_feedback">Change</button>
             </form>
@@ -287,7 +287,7 @@
             <section class="customer-testimonial wow fadeInUp outer-bottom-xs light-bg">
                 <div id="testimonial" class="module container inner-top-xs">
                     <div class="module-heading home-page-module-heading">
-                        <h2 class="module-title home-page-module-title"><span>User Feedbacks</span></h2>
+                        <h2 class="module-title home-page-module-title"><span>Top {{no_feedback}} User Feedbacks</span></h2>
                     </div><!-- /.module-heading -->
                     {% for fb in feedback_ratings %}
                         <div class="module-body">
@@ -314,8 +314,20 @@
                                                                 </div><!-- /.image -->
                                                             </div><!-- /.col -->
                                                             <div class="col-md-8 col-xs-7">
-                                                              <h5 class="author-name outer-top-xs">{{fb.0}}</h5>
-                                                              Rating: {{fb.2}}<br>
+                                                                <h5 class="author-name outer-top-xs">{{fb.0}}</h5>
+                                                                Rating: {{fb.2}}<br>
+                                                                {% if username == fb.0 %}
+                                                                You can submit your own rating.
+                                                                {% elif fb.5 is None %}
+                                                                    <form action="" method="POST"> {% csrf_token %}
+                                                                        <input type="hidden" name="feedback_username" value={{fb.0}}>
+                                                                        <input type="number" required name="rating_score" min="0" max="2" style="width: 3em">
+                                                                        <button type="submit" name="submit_rating" value="submit_rating">Submit Rating</button>
+                                                                    </form>
+                                                                {% else %}
+                                                                    <input type="number" disabled name="quantity" value={{fb.5}} style="width: 3em">
+                                                                    <button type="submit" disabled name="submit_rating" value="submit_rating">Submitted</button>
+                                                                {% endif %}
                                                             </div><!-- /.col -->
                                                         </div><!-- /.row -->
                                                     </div><!-- /.col -->

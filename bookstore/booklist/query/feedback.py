@@ -66,18 +66,22 @@ def rateFeedback(isbn13,rating_username,feedback_username,score):
                     "('{0}','{1}',{2},'{3}',{4});".format(rating_username,feedback_username,isbn13,now.strftime("%Y-%m-%d"),score)
             cur.execute(query)
 
-def getNFeedbacksForBook(isbn13,n):
+def getNFeedbacksForBook(isbn13,n,username):
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
         query = "SELECT * FROM feedback NATURAL JOIN ("\
-                "SELECT * FROM " \
+                "SELECT feedback_user,isbn13,average,score AS rat_score FROM (SELECT * FROM " \
                 "(SELECT feedback_user, isbn13, AVG(score) as average " \
                 "FROM rating " \
                 "GROUP BY feedback_user, isbn13) A " \
                 "WHERE A.isbn13 = '{0}' " \
                 "ORDER BY A.average DESC " \
-                "LIMIT {1}) J;".format(isbn13,n) #Limit selects top n rows for MYSQL. If SQL server use SELECT TOP n FROM
+                "LIMIT {1}) J "\
+                "NATURAL LEFT JOIN "\
+                "(SELECT * FROM rating "\
+                "WHERE rating_user = '{2}' "\
+                "AND isbn13 = '{0}') K) L;".format(isbn13,n,username) #Limit selects top n rows for MYSQL. If SQL server use SELECT TOP n FROM
         cur.execute(query)
         if cur.rowcount == 0:
             return None

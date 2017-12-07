@@ -19,7 +19,7 @@ with con:
            "ISBN13 CHAR(13) NOT NULL,PRIMARY KEY (ISBN13));"
 
     purchaseHistory = "CREATE TABLE purchase_history (" \
-                      "purchase_id int(20)," \
+                      "purchase_id int(20) AUTO_INCREMENT," \
                       "user_id VARCHAR(20) NOT NULL," \
                       "ISBN13 CHAR(13) NOT NULL," \
                       "no_copies INT CHECK (no_copies > 0)," \

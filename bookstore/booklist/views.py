@@ -193,36 +193,39 @@ def addstock(request):
 
 
 def cart(request):
-	"""
-	Staff page. Store managers can insert a new book or increase stock
-	"""
-	if not request.user.is_authenticated:
-		return redirect('login')
-	else:
-		if request.method == 'POST':
-			req = request.POST
-			if req.get('update'):
-				modifyCart(req.get('isbn13'), request.user.username, req.get('quantity'))
-			elif req.get('delete'):
-				delFromCart(req.get('isbn13'), request.user.username)
-			elif req.get('placeorder'):
-				user_cart = showCart(request.user.username)
-				successful = PurchaseBook(user_cart)
-				if successful:
-					delAllFromCart(request.user.username)
-					SubmitPurchaseHistory(user_cart, request.user.username)
-					return redirect('orderfinish')
-				else:
-					print("DEBUG: ONE OF YOUR ORDERS HAS EXCEEDED INVENTORY")
-					return redirect('error')
+ """
+ Staff page. Store managers can insert a new book or increase stock
+ """
+ if not request.user.is_authenticated:
+  return redirect('login')
+ else:
+  if request.method == 'POST':
+   req = request.POST
+   if req.get('update'):
+    modifyCart(req.get('isbn13'), request.user.username, req.get('quantity'))
+   elif req.get('delete'):
+    delFromCart(req.get('isbn13'), request.user.username)
+   elif req.get('placeorder'):
+    # isValid is None if there are no problematic purchases
+    # isValid is a list if there are problematic purchases
 
-			return redirect('cart')
-		else:
-			cart = showCart(request.user.username)
-			if cart is None:
-				return render(request, 'booklist/cart.html',{'cart':None})
-			else:
-				return render(request, 'booklist/cart.html',{'cart':cart})
+    isValid = ValidPurchase(request.user.username)
+    print(isValid)
+    if isValid is None:
+     PurchaseBook(request.user.username)
+     delAllFromCart(request.user.username)
+     return redirect('orderfinish')
+    else:
+     print("DEBUG: ONE OF YOUR ORDERS HAS EXCEEDED INVENTORY")
+     return redirect('error')
+
+   return redirect('cart')
+  else:
+   cart = showCart(request.user.username)
+   if cart is None:
+    return render(request, 'booklist/cart.html',{'cart':None})
+   else:
+    return render(request, 'booklist/cart.html',{'cart':cart})
 
 def book(request,isbn13):
 	no_feedback = 5
@@ -236,14 +239,18 @@ def book(request,isbn13):
 				writeFeedback(isbn13, request.user.username, req.get('feedback_score'), req.get('feedback_text'))
 			elif req.get('reselect_feedback'):
 				no_feedback = req.get('no_views')
+			elif req.get('submit_rating'):
+				rateFeedback(isbn13, request.user.username, req.get("feedback_username"), req.get('rating_score'))
+
 
 		given_feedback = userHasGivenFeedback(isbn13, request.user.username)
-		feedback_ratings = getNFeedbacksForBook(isbn13, no_feedback)
+		feedback_ratings = getNFeedbacksForBook(isbn13, no_feedback, request.user.username)
 		book_title = getBook(isbn13)
 		return render(request, 'booklist/book.html', {'given_feedback': given_feedback,
 													'book_title': book_title,
 													'no_feedback': no_feedback,
-													'feedback_ratings': feedback_ratings})
+													'feedback_ratings': feedback_ratings,
+													'username': request.user.username})
 
 
 def orderfinish(request):
