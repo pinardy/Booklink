@@ -136,7 +136,7 @@ def profile(request):
 	Profile Query
 	"""
 	if not (request.user.is_authenticated):
-		return redirect('index')
+		return redirect('login')
 	else:
 		user_profile = retrieveProfile(request.user.username)
 		purchase_history = getPurchaseHistory(request.user.username)

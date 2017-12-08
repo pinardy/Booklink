@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bookshop</title>
+
+    <!-- Bootstrap -->
+    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../static/css/animate.min.css" rel="stylesheet">
+    <link href="../../static/css/main.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../static/images/favicon/favicon.ico">
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+ 
+
+
+    <div id="wrapper" >
+        <div id="page-content-wrapper" class="st-pusher">
+            <div class="st-pusher-after"></div>
+            <!-- ============================================== HEADER ============================================== -->
+	
+	<header class="header">
+
+		<nav class="navbar navbar-bookshop navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 hidden-xs hidden-sm">
+                <ul class="nav navbar-nav">
+                    <li><a href="about.html">About Us</a></li>
+
+                {% if user.is_superuser %}
+                    <li><a href="/booklist/staff">Staff</a></li>
+                {% endif %}
+
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-xs-10 col-sm-10 navbar-left">
+
+                <p class='text-center'><a href="#">Hello {{user.username}}!</a></p>
+
+            </div><!-- /.col -->
+{% if user.username %}
+
+            <div class="col-md-4 col-sm-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden-xs hidden-sm"><a href="/order_page/{{user.username}}">My Orders</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/cart">Shopping Cart</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/profile">My Account</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/logout">Logout</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+{% else %}
+            <div class="col-md-4 col-sm-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/register/">Register</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/login/">Login</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+{% endif %}
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+
+<!-- Modal -->
+<div id="modal-login-big" class="modal login fade hidden-xs"  tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <ul class="login-list clearfix ">
+                        <li class='active'>Login</li> 
+                        <li class="divider"></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul><!-- /.login-list -->	
+                    <form role="form" class="inner-top-50">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="sr-only">Email address</label>
+                            <input type="email" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="sr-only">Password</label>
+                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-uppercase">Login</button>
+                        <a href="#" class='forgot-password'>forgot password</a>
+                    </form>
+                </div>
+            </div><!-- /.modal-body -->
+            <div class="modal-footer">
+                <div class="text-center">
+                    <ul class='social-list text-center'>
+                        <li><a href="#" class="facebook"></a></li>
+                        <li><a href="#" class="google-plus"></a></li>
+                        <li><a href="#" class="twitter"></a></li>
+                        <li><a href="#" class="pinterest"></a></li>
+                    </ul><!-- /.social-list -->
+                </div>
+            </div><!-- /.modal-footer -->
+            <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal -->
+<div id="modal-login-small" class="modal fade login login-xs hidden-sm hidden-lg"  tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="logo-holder">
+                        <h1 class="logo">BookShop</h1>
+                        <div class="logo-subtitle">
+                            <span>World of books</span>
+                        </div><!-- /.logo-subtitle --> 
+                    </div>
+
+                    <form role="form" class="inner-top-50">
+                        <div class="form-group">
+                            <label for="entername" class="sr-only">Email</label>
+                            <input type="email" class="form-control bookshop-form-control" id="entername" placeholder="Hezy Theme">
+                        </div>
+                        <div class="form-group">
+                            <label for="enterpassword" class="sr-only">Password</label>
+                            <input type="password" class="form-control bookshop-form-control" id="enterpassword">
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-block btn-uppercase">Login</button>
+                        <a href="#" class='forgot-password'>forgot password</a>
+                    </form>
+                </div>
+            </div><!-- /.modal-body -->
+            <div class="modal-footer">
+                <div class="text-center">
+                    <ul class='social-list text-center'>
+                        <li><a href="#" class="facebook"></a></li>
+                        <li><a href="#" class="google-plus"></a></li>
+                        <li><a href="#" class="twitter"></a></li>
+                        <li><a href="#" class="pinterest"></a></li>
+                    </ul><!-- /.social-list -->
+                </div>
+            </div><!-- /.modal-footer -->
+            <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+		<div class="main-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 top-search-holder m-t-10">
+						<!-- ============================================== SEARCH BAR ============================================== -->
+<form class="search-form" role="search">
+	<div class="form-group">
+		<label class="sr-only" for="page-search">Type your search here</label>
+		<input id="page-search" class="search-input form-control" type="search" placeholder="Search product">
+	</div>
+	<button class="page-search-button">
+		<span class="fa fa-search">
+			<span class="sr-only">Search</span>
+		</span>
+	</button>
+</form>
+<!-- ============================================== SEARCH BAR : END ============================================== -->					</div><!-- /.top-search-holder -->
+
+					<div class="col-xs-12 col-sm-4 col-md-4 text-center logo-holder">
+						<!-- ============================================== LOGO ============================================== -->
+<a href="/booklist/">
+	<h1 class="logo">Booklink</h1>
+	<div class="logo-subtitle">
+		<span>At SUTD's doorstep</span>
+	</div><!-- /.logo-subtitle -->
+</a>
+<!-- ============================================== LOGO : END ============================================== -->					</div><!-- /.logo-holder -->
+
+					<div class="col-xs-12  col-md-2 header-shippment hidden-sm m-t-10">
+						<!-- ============================================== FREE DELIVERY ============================================== -->
+<div class="media free-delivery hidden-xs ">
+	<span class="media-left"><img src="../../static/images/delivery-icon.png" height="48" width="48" alt=""></span>
+	<div class="media-body">
+		<h5 class="media-heading">Free delivery</h5>
+	</div>
+</div>
+<!-- ============================================== FREE DELIVERY : END ============================================== -->					</div><!-- /.header-shippment -->
+
+					<div class="col-xs-12 col-sm-4 col-md-2 animate-dropdown1 top-cart-row m-t-10">
+						<!-- ============================================== SHOPPING CART ============================================== -->
+{% if user.username %}
+<ul class="clearfix shopping-cart-block list-unstyled">
+    <li class="dropdown">
+        <a class="menu-toggle-right clearfix" href="/booklist/cart">
+            <span class="pull-right cart-right-block">
+                <img src="../../static/images/cart-icon.png" alt="" width="46" height="39" />
+            </span><!-- /.cart-right-block -->
+            <span class="pull-right cart-left-block">
+                <span class="cart-block-heading">My Cart</span>
+            </span><!-- /.cart-left-block -->
+        </a>
+    </li>
+</ul> <!-- /.list-unstyled -->
+{% else %}
+{% endif %}
+<!-- ============================================== SHOPPING CART DROPDOWN : END ============================================== -->					</div><!-- /.top-cart-row -->
+				</div><!-- /.row -->
+
+			</div><!-- /.container -->
+
+		</div><!-- /.main-header -->
+
+		
+
+
+<!-- ============================================== NAVBAR ============================================== -->
+<div class="header-nav animate-dropdown">
+		<div class="container">			
+			<div class="nav-bg-class">
+				<!-- ============================================================= NAVBAR PRIMARY ============================================================= -->
+<nav class="yamm navbar navbar-primary animate-dropdown" role="navigation">
+    <div class="navbar-header">
+        <button id="btn-navbar-primary-collapse" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div><!-- /.navbar-header -->
+    <div class="collapse navbar-collapse" id="navbar-primary-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/booklist/browse">Books</a></li>
+             <li><a href="books.html">Stationery</a></li>
+             <li class="hidden-sm"><a href="books.html">Audiobooks</a></li>
+             <li><a href="books.html">Ratings</a></li>  
+        </ul><!-- /.nav -->
+    </div><!-- /.collapse navbar-collapse -->   
+</nav><!-- /.yamm -->
+<!-- ============================================================= NAVBAR PRIMARY : END ============================================================= -->			</div><!-- /.nav-bg-class -->
+		</div><!-- /.container -->
+	
+</div><!-- /.header-nav -->
+<!-- ============================================== NAVBAR : END ============================================== -->
+	</header>
+
+
+<!-- ============================================== HEADER : END ============================================== -->           
+
+			<!-- ============================================== BANNERS ============================================== -->
+
+<!-- ============================================== BANNERS : END ============================================== -->
+<h1>Cart</h1>
+{% if cart %}
+{% block content %}
+<table>
+    <tr>
+        <th>Book</th>
+        <th>Qty</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+{% for i in cart %}
+    <tr>
+    <form action="" method="POST"> {% csrf_token %}
+        <input type="hidden" name="isbn13" value={{i.1}}>
+        <td>{{i.0}}</td>
+        <td>{{i.3}}</td>
+        <td><input type="number" name="quantity" value={{i.3}} min="1" max={{i.4}} style="width: 4em"> <!--get max remainding stock!-->
+            <button type="submit" name="update" value="update">Update</button></td>
+        <td><button type="submit" name="delete" value="delete">Delete</button></td>
+    </form>
+    </tr>
+{% endfor %}
+</table>
+    <form action="" method="POST"> {% csrf_token %}
+        <button type="submit" name="placeorder" value="c">Place Order</button>
+    </form>
+{% endblock %}
+{% else %}
+<p>Cart is empty.</p>
+{% endif %}
+<!-- ============================================== TOGGLE RIGHT CONTENT : END ============================================== -->
+
+    <script src="../../static/js/jquery-1.11.2.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="../../static/js/owl.carousel.min.js"></script>
+    <script src="../../static/js/perfect-scrollbar.min.js"></script>
+    <script src="../../static/js/jquery-ui.min.js"></script>
+    <script src="../../static/js/jquery.customSelect.min.js"></script>
+    <script src="../../static/js/jquery.easing-1.3.min.js"></script>
+    <script src="../../static/js/wow.min.js"></script>
+    <script src="../../static/js/echo.min.js"></script>
+    <script src="../../static/js/scripts.js"></script>
+</body>
+</html>

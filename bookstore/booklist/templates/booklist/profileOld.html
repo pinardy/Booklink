@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Booklink: Books</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="../../static/css/working.css" type="text/css" rel="stylesheet">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
+    <script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+ 
+
+
+    <div id="wrapper" >
+        <div id="page-content-wrapper" class="st-pusher">
+            <div class="st-pusher-after"></div>
+            <!-- ============================================== HEADER ============================================== -->
+	
+	<header class="header">
+
+		<nav class="navbar navbar-bookshop navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 hidden-xs hidden-sm">
+                <ul class="nav navbar-nav">
+                    <li><a href="about.html">About Us</a></li>
+                {% if user.is_superuser %}
+                    <li><a href="/booklist/staff/">Staff</a></li>
+                {% endif %}
+
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+
+            <div class="col-md-3 col-xs-10 col-sm-10 navbar-left">
+            {% if user.username %}
+                <p class='text-center'><a href="">Hello {{user.username}}!</a></p>
+            {% endif %}
+            </div><!-- /.col -->
+
+{% if user.username %}
+
+            <div class="col-md-4 col-sm-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden-xs hidden-sm"><a href="/order_page/{{user.username}}">My Orders</a></li>
+                    <li class="hidden-xs hidden-sm"> <a href="/booklist/cart">Shopping Cart</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/profile">My Account</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/logout">Logout</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+{% else %}
+            <div class="col-md-4 col-sm-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/register/">Register</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/booklist/login/">Login</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+{% endif %}
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+
+<!-- Modal -->
+<div id="modal-login-big" class="modal login fade hidden-xs"  tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <ul class="login-list clearfix ">
+                        <li class='active'>Login</li> 
+                        <li class="divider"></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul><!-- /.login-list -->	
+                    <form role="form" class="inner-top-50">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="sr-only">Email address</label>
+                            <input type="email" class="form-control bookshop-form-control" id="exampleInputEmail1" placeholder="Hezy Theme">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="sr-only">Password</label>
+                            <input type="password" class="form-control bookshop-form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-uppercase">Login</button>
+                        <a href="#" class='forgot-password'>forgot password</a>
+                    </form>
+                </div>
+            </div><!-- /.modal-body -->
+            <div class="modal-footer">
+                <div class="text-center">
+                    <ul class='social-list text-center'>
+                        <li><a href="#" class="facebook"></a></li>
+                        <li><a href="#" class="google-plus"></a></li>
+                        <li><a href="#" class="twitter"></a></li>
+                        <li><a href="#" class="pinterest"></a></li>
+                    </ul><!-- /.social-list -->
+                </div>
+            </div><!-- /.modal-footer -->
+            <a href="#" data-dismiss="modal" class="remove-icon"><i class="fa fa-times"></i></a>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal -->
+
+{% if user.username %}
+<ul class="clearfix shopping-cart-block list-unstyled">
+    <li class="dropdown">
+        <a class="menu-toggle-right clearfix" href="/booklist/cart">
+            <span class="pull-right cart-right-block">
+                <img src="../../static/images/cart-icon.png" alt="" width="46" height="39" />
+            </span><!-- /.cart-right-block -->
+            <span class="pull-right cart-left-block">
+                <span class="cart-block-heading">My Cart</span>
+            </span><!-- /.cart-left-block -->
+        </a>
+    </li>
+</ul> <!-- /.list-unstyled -->
+{% else %}
+{% endif %}
+<!-- ============================================== SHOPPING CART DROPDOWN : END ============================================== -->					</div><!-- /.top-cart-row -->
+				</div><!-- /.row -->
+
+			</div><!-- /.container -->
+
+		</div><!-- /.main-header -->
+
+		
+
+
+<!-- ============================================== NAVBAR ============================================== -->
+<div class="header-nav animate-dropdown">
+		<div class="container">			
+			<div class="nav-bg-class">
+				<!-- ============================================================= NAVBAR PRIMARY ============================================================= -->
+<nav class="yamm navbar navbar-primary animate-dropdown" role="navigation">
+    <div class="navbar-header">
+        <button id="btn-navbar-primary-collapse" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div><!-- /.navbar-header -->
+    <div class="collapse navbar-collapse" id="navbar-primary-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/booklist/browse">Books</a></li>
+             <li><a href="books.html">Stationery</a></li>
+             <li class="hidden-sm"><a href="books.html">Audiobooks</a></li>
+             <li><a href="books.html">Ratings</a></li>  
+        </ul><!-- /.nav -->
+    </div><!-- /.collapse navbar-collapse -->   
+</nav><!-- /.yamm -->
+<!-- ============================================================= NAVBAR PRIMARY : END ============================================================= -->			</div><!-- /.nav-bg-class -->
+		</div><!-- /.container -->
+	
+</div><!-- /.header-nav -->
+<!-- ============================================== NAVBAR : END ============================================== -->
+	</header>
+
+
+<!-- ============================================== HEADER : END ============================================== -->           
+
+			<!-- ============================================== BANNERS ============================================== -->
+
+<!-- ============================================== BANNERS : END ============================================== -->
+			
+			<!-- ============================================== USER PROFILE  ============================================== -->
+            <h2 class="sub-title">User Profile</h2>
+            <div class="profile">
+                <p> Name: {{ user_profile.0.4 }}</p>
+                <p> Email: {{ user_profile.0.7 }}</p>
+                <p> Date joined: {{ user_profile.0.10 }}</p>
+			</div>
+
+            <h2 class="sub-title">Order History</h2>
+            <div class="orderHistory">
+                <table style="width:50%">
+                    <tr>
+                        <th>Book</th>
+                        <th>Purchase</th>
+                        <th>Date</th>
+
+                    </tr>
+                {% for purchase in purchase_history %}
+                    <tr>
+                        <th>{{ purchase.5 }}</th>
+                        <th>{{ purchase.3 }}</th>
+                        <th>{{ purchase.4 }}</th>
+                    </tr>
+                {% endfor %}
+                </table>
+			</div>
+            <h2 class="sub-title">Feedback History</h2>
+            <div class="feedbackHistory">
+                <table style="width:70%">
+                    <tr>
+                        <th>Book</th>
+                        <th>Feedback</th>
+                        <th>Score</th>
+
+                    </tr>
+                {% for feedback in feedback_history %}
+                    <tr>
+                        <th>{{ feedback.5 }}</th>
+                        <th>{{ feedback.3 }}</th>
+                        <th>{{ feedback.4 }}</th>
+                    </tr>
+                {% endfor %}
+                </table>
+			</div>
+            <h2 class="sub-title">Feedback Rating History</h2>
+            <div class="ratingHistory">
+                <table style="width:70%">
+                    <tr>
+                        <th>Book</th>
+                        <th>Feedback</th>
+                        <th>User</th>
+                        <th>Score</th>
+
+                    </tr>
+                {% for rating in rating_history %}
+                    <tr>
+                        <th>{{ rating.10 }}</th>
+                        <th>{{ rating.9 }}</th>
+                        <th>{{ rating.1 }}</th>
+                        <th>{{ rating.4 }}</th>
+                    </tr>
+                {% endfor %}
+                </table>
+			</div>
+
+			<!-- ============================================== USER PROFILE : END ============================================== -->
+
+
+</body>
+</html>

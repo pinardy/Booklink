@@ -9,17 +9,15 @@ with con:
     # --- Schema ---
     book = "CREATE TABLE book (" \
            "title TINYTEXT NOT NULL," \
-           "cover_format TINYTEXT CHECK(cover_format='paperback' or cover_format='hardcover')," \
-           "num_pages INT," \
            "authors TINYTEXT," \
            "publisher TINYTEXT," \
            "year_publish INT," \
-           "edition INT," \
+           "cost INT," \
            "ISBN10 CHAR(10) NOT NULL," \
            "ISBN13 CHAR(13) NOT NULL,PRIMARY KEY (ISBN13));"
 
     purchaseHistory = "CREATE TABLE purchase_history (" \
-                      "purchase_id int(20) AUTO_INCREMENT," \
+                      "purchase_id INT(20) AUTO_INCREMENT," \
                       "user_id VARCHAR(20) NOT NULL," \
                       "ISBN13 CHAR(13) NOT NULL," \
                       "no_copies INT CHECK (no_copies > 0)," \

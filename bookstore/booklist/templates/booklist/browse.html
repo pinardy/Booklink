@@ -50,10 +50,11 @@
                                 {% for book in book_list %}
 
                                 <li class="book_container rounded" data-toggle="tooltip" data-html="true" title="{{book.0}}">
-                                    <a href="" class="trigger" data-toggle="modal" data-target="#{{book.8}}"><img class="rounded" src="http://via.placeholder.com/70x105"></a>
+
+                                    <a href="" class="trigger " data-toggle="modal" data-target="#{{book.6}}"><img class="rounded resizeImg" src="/static/images/book-covers_PROJECT/{{book.6}}.jpg"/></a>
                                 </li>
 
-                                <div class="modal fade" id="{{book.8}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal fade" id="{{book.6}}" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -63,7 +64,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                <img class="rounded" src="/static/images/book-covers_PROJECT/{{book.6}}.jpg"/>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

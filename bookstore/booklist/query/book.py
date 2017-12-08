@@ -100,7 +100,7 @@ def getBookFeedback(isbn13):
 			"WHERE isbn13 = '{0}';".format(isbn13)
 	return connectAndExecute(query)
 
-def getBooksByQuery(title, author, publisher, isbn13):
+def getBooksByQuery(title='%', author='%', publisher='%', isbn13='%'):
 	query = "SELECT * " \
 			"FROM book " \
 			"WHERE title LIKE '%{0}%'"\
@@ -115,17 +115,17 @@ def getAllBookIsbnTitle():
 			FROM book"
 	return connectAndExecute(query)
 
-def recommendation():
+def recommendation(uid, isbn13):
 	query = "# Recommendations outside current purchase (considers history of purchase " \
 			"SELECT isbn13, count(isbn13) " \
 			"FROM purchase_history ph, " \
 			"(SELECT DISTINCT user_id " \
 			"FROM purchase_history ph " \
-			"WHERE ph.ISBN13 = 9781305627482 AND ph.user_id != 'pinardy') " \
+			"WHERE ph.ISBN13 = {0} AND ph.user_id != '{1}') " \
 			"AS T WHERE ph.user_id = T.user_id AND ph.isbn13 " \
 			"NOT IN " \
 			"(SELECT DISTINCT isbn13 FROM purchase_history ph " \
-			"WHERE ph.user_id = 'pinardy') " \
-			"GROUP BY isbn13 ORDER BY COUNT(isbn13) DESC;"
+			"WHERE ph.user_id = '{1}') " \
+			"GROUP BY isbn13 ORDER BY COUNT(isbn13) DESC;".format(uid,isbn13)
 
 	return connectAndExecute(query)

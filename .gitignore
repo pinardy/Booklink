@@ -1,9 +1,3 @@
 *.pyc
-*.pyc
-*.pyc
-<<<<<<< HEAD
 .idea/inspectionProfiles/Project_Default.xml
-=======
 *.xml
->>>>>>> master
-*.pyc
