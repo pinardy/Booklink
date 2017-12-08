@@ -262,9 +262,9 @@
             <h2 class="title">Your Book Feedback</h2>
             <h4 class="book_title">{{book_title.0.0}}</h4>
             {% if given_feedback %}
-                <textarea disabled rows="4" cols="50" style="resize: none">{{given_feedback.0.3}}</textarea><br />
+                <textarea disabled rows="4" cols="50" style="resize: none">{{given_feedback.0.4}}</textarea><br />
                 <h5 class="sub-title">Your Book Rating</h5>
-                <input type="number" disabled name="quantity" value={{given_feedback.0.2}} style="width: 3em"><br />
+                <input type="number" disabled name="quantity" value={{given_feedback.0.3}} style="width: 3em"><br />
 
 
             {% else %}
@@ -300,7 +300,7 @@
                                                     <div class="blockquote">
                                                         <div class="inner-left-xl">
                                                             <blockquote>
-                                                              <p>{{fb.3}}</p>
+                                                              <p>{{fb.4}}</p>
                                                             </blockquote>
                                                         </div><!-- /.inner-left-xl -->
                                                     </div><!-- /.blockquote -->
@@ -315,17 +315,17 @@
                                                             </div><!-- /.col -->
                                                             <div class="col-md-8 col-xs-7">
                                                                 <h5 class="author-name outer-top-xs">{{fb.0}}</h5>
-                                                                Rating: {{fb.2}}<br>
+                                                                Rating: {{fb.3}}<br>
                                                                 {% if username == fb.0 %}
-                                                                You can submit your own rating.
-                                                                {% elif fb.5 is None %}
+                                                                    You can't submit your own rating.
+                                                                {% elif fb.6 is None %}
                                                                     <form action="" method="POST"> {% csrf_token %}
                                                                         <input type="hidden" name="feedback_username" value={{fb.0}}>
                                                                         <input type="number" required name="rating_score" min="0" max="2" style="width: 3em">
                                                                         <button type="submit" name="submit_rating" value="submit_rating">Submit Rating</button>
                                                                     </form>
                                                                 {% else %}
-                                                                    <input type="number" disabled name="quantity" value={{fb.5}} style="width: 3em">
+                                                                    <input type="number" disabled name="quantity" value={{fb.6}} style="width: 3em">
                                                                     <button type="submit" disabled name="submit_rating" value="submit_rating">Submitted</button>
                                                                 {% endif %}
                                                             </div><!-- /.col -->

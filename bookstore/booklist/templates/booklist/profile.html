@@ -292,10 +292,12 @@
                         <th>Book</th>
                         <th>Feedback</th>
                         <th>Score</th>
+                        <th>Date</th>
 
                     </tr>
                 {% for feedback in feedback_history %}
                     <tr>
+                        <td>{{ feedback.5 }}</td>
                         <td>{{ feedback.4 }}</td>
                         <td>{{ feedback.3 }}</td>
                         <td>{{ feedback.2 }}</td>
@@ -311,6 +313,7 @@
                         <th>Feedback</th>
                         <th>User</th>
                         <th>Score</th>
+                        <th>Date</th>
 
                     </tr>
                 {% for rating in rating_history %}
@@ -319,6 +322,7 @@
                         <td>{{ rating.6 }}</td>
                         <td>{{ rating.1 }}</td>
                         <td>{{ rating.4 }}</td>
+                        <td>{{ rating.3 }}</td>
                     </tr>
                 {% endfor %}
                 </table>

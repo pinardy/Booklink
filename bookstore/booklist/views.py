@@ -262,7 +262,15 @@ def book(request,isbn13):
 		if request.method == 'POST':
 			req = request.POST
 			if req.get('submit_feedback'):
-				writeFeedback(isbn13, request.user.username, req.get('feedback_score'), req.get('feedback_text'))
+				if req.get('feedback_text')=='':
+					text = 'No comments.'
+				else:
+					text = req.get('feedback_text')
+				print(text)
+				# print(req.get('feedback_text')=='')
+				# print(type(req.get('feedback_text')))
+				# print("Req:"+req.get('feedback_text')+"End")
+				writeFeedback(isbn13, request.user.username, req.get('feedback_score'), text)
 			elif req.get('reselect_feedback'):
 				no_feedback = req.get('no_views')
 			elif req.get('submit_rating'):

@@ -10,7 +10,7 @@ def userHasGivenFeedback(isbn13,username):
         cur = con.cursor()
         query = "SELECT * " \
                 "FROM feedback " \
-                "WHERE feedback_user = '{0}' and isbn13 = {1};".format(username, isbn13)
+                "WHERE feedback_user = '{0}' and isbn13 = '{1}';".format(username, isbn13)
         cur.execute(query)
         if cur.rowcount == 0:
             return None
@@ -29,8 +29,9 @@ def writeFeedback(isbn13,username,score,text):
         con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
         with con:
             cur = con.cursor()
+            now = datetime.datetime.now()
             query = "INSERT INTO feedback VALUES " \
-                    "('{0}',{1},{2},'{3}');".format(username, isbn13, score, text)
+                    "('{0}','{1}','{2}','{3}','{4}');".format(username, isbn13, now.strftime("%Y-%m-%d"), score, text)
             cur.execute(query)
         rateFeedback(isbn13, 'admin', username, 0) #Initialize an admin rating of 0, so it can appear in testimonial
 
@@ -43,7 +44,7 @@ def userHasRateFeedback(isbn13,rating_username,feedback_username):
         cur = con.cursor()
         query = "SELECT * " \
                 "FROM rating " \
-                "WHERE rating_user = '{0}' and feedback_user = '{1}' and isbn13 = {2};".format(rating_username, feedback_username, isbn13)
+                "WHERE rating_user = '{0}' and feedback_user = '{1}' and isbn13 = '{2}';".format(rating_username, feedback_username, isbn13)
         cur.execute(query)
         if cur.rowcount == 0:
             return False

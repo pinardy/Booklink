@@ -76,7 +76,7 @@ def bookRating(isbn13):
 
 		query = "SELECT AVG(score) " \
 				"FROM feedback " \
-				"WHERE isbn13 = {0};".format(isbn13)
+				"WHERE isbn13 = '{0}';".format(isbn13)
 		cur.execute(query)
 
 		# No row exists
@@ -97,7 +97,7 @@ def bookRating(isbn13):
 def getBookFeedback(isbn13):
 	query = "SELECT * " \
 			"FROM feedback " \
-			"WHERE isbn13 = {0};".format(isbn13)
+			"WHERE isbn13 = '{0}';".format(isbn13)
 	return connectAndExecute(query)
 
 def getBooksByQuery(title, author, publisher, isbn13):

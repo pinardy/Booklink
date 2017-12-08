@@ -48,8 +48,8 @@ def updateInventory(isbn13, newStock):
 		cur = con.cursor()
 
 		query = "UPDATE inventory " \
-				"SET no_copies = {0} " \
-				"WHERE isbn13 = {1};".format(newStock, isbn13)
+				"SET no_copies = '{0}' " \
+				"WHERE isbn13 = '{1}';".format(newStock, isbn13)
 		cur.execute(query)
 		return True
 

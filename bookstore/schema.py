@@ -36,6 +36,7 @@ with con:
     feedback = "CREATE TABLE feedback (" \
                "feedback_user VARCHAR(20)," \
                "ISBN13 CHAR(13)," \
+               "order_date DATE NOT NULL," \
                "score INT CHECK (score >=0 AND score <= 10)," \
                "feedback TINYTEXT," \
                "PRIMARY KEY (feedback_user,ISBN13)," \
