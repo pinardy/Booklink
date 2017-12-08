@@ -16,14 +16,14 @@ def connectAndExecute(query):
 
 # ----------ADMIN FUNCTIONS----------
 
-def insertBook(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13, inventory):
+def insertBook(title, authors, publisher, year_publish, edition, cost, isbn10, isbn13, inventory):
 	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
 	with con:
 		cur = con.cursor()
 
 		query = "INSERT into book VALUES" \
 				"('{0}','{1}',{2},'{3}','{4}'," \
-				"{5},{6},'{7}','{8}');".format(title, cover_format, num_pages, authors, publisher, year_publish, edition, isbn10, isbn13)
+				"{5},{6},'{7}','{8}');".format(title, authors, publisher, year_publish, edition, cost, isbn10, isbn13)
 
 		cur.execute(query)
 		

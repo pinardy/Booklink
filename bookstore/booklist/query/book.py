@@ -126,6 +126,8 @@ def recommendation(uid, isbn13):
 			"NOT IN " \
 			"(SELECT DISTINCT isbn13 FROM purchase_history ph " \
 			"WHERE ph.user_id = '{1}') " \
-			"GROUP BY isbn13 ORDER BY COUNT(isbn13) DESC;".format(uid,isbn13)
+			"GROUP BY isbn13 " \
+			"ORDER BY COUNT(isbn13) DESC " \
+			"LIMIT 3;".format(uid,isbn13)
 
 	return connectAndExecute(query)
