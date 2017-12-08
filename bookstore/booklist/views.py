@@ -141,11 +141,13 @@ def profile(request):
 		user_profile = retrieveProfile(request.user.username)
 		purchase_history = getPurchaseHistory(request.user.username)
 		feedback_history = getFeedbackHistory(request.user.username)
+		rating_history = getRatingHistory(request.user.username)
 		print(feedback_history)
 		context = {
 			'user_profile': user_profile,
 			'purchase_history': purchase_history,
-			'feedback_history': feedback_history
+			'feedback_history': feedback_history,
+			'rating_history': rating_history
 		}
 		return render(request, 'booklist/profile.html', context)
 

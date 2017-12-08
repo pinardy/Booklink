@@ -61,7 +61,7 @@ def getFeedbackHistory(uid):
 		cur = con.cursor()
 		
 		query = "SELECT * " \
-				"FROM feedback,book " \
+				"FROM feedback NATURAL JOIN (SELECT ISBN13,title FROM book) book " \
 				"WHERE feedback_user = '{0}'" \
 				"AND feedback.isbn13 = book.isbn13;".format(uid)
 		cur.execute(query)
@@ -80,13 +80,11 @@ def getRatingHistory(uid):
 	with con:
 		cur = con.cursor()
 
-		query = "SELECT * " \
-				"FROM rating,feedback,book " \
-				"WHERE rating.rating_user = '{0}' " \
-				"AND rating.isbn13 = feedback.isbn13 " \
-				"AND feedback.isbn13 = book.isbn13 " \
-				"AND rating.feedback_user = feedback.feedback_user " \
-				"ORDER BY rating.score DESC;".format(uid)
+		query = "SELECT * FROM( " \
+				"SELECT * FROM rating " \
+				"NATURAL JOIN (SELECT ISBN13,title FROM book) book " \
+				"WHERE rating_user = '{0}') A NATURAL JOIN " \
+				"(SELECT feedback_user,ISBN13,feedback FROM feedback) B;".format(uid)
 
 		cur.execute(query)
 		if cur.rowcount == 0:
