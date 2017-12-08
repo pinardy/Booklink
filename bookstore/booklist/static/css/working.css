@@ -16,6 +16,11 @@
 	-webkit-background-clip:padding-box;
 }
 
+.resizeImg {
+  width: 70px;
+	height: 105px;
+}
+
 .grid {
 	list-style: none;
 	display: flex;

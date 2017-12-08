@@ -100,7 +100,7 @@ def getBookFeedback(isbn13):
 			"WHERE isbn13 = {0};".format(isbn13)
 	return connectAndExecute(query)
 
-def getBooksByQuery(title, author, publisher, isbn13):
+def getBooksByQuery(title='%', author='%', publisher='%', isbn13='%'):
 	query = "SELECT * " \
 			"FROM book " \
 			"WHERE title LIKE '%{0}%'"\

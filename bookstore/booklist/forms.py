@@ -14,15 +14,13 @@ STATISTICS = (
 )
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, help_text='Required')
-
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.pop('autofocus')
 
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2', 'email')
+        fields = ('username', 'password1', 'password2')
 
 
 class BookForm(forms.Form):
