@@ -81,7 +81,8 @@ def getNFeedbacksForBook(isbn13,n,username):
                 "NATURAL LEFT JOIN "\
                 "(SELECT * FROM rating "\
                 "WHERE rating_user = '{2}' "\
-                "AND isbn13 = '{0}') K) L;".format(isbn13,n,username) #Limit selects top n rows for MYSQL. If SQL server use SELECT TOP n FROM
+                "AND isbn13 = '{0}') K) L " \
+                "ORDER BY average DESC;".format(isbn13,n,username) #Limit selects top n rows for MYSQL. If SQL server use SELECT TOP n FROM
         cur.execute(query)
         if cur.rowcount == 0:
             return None
