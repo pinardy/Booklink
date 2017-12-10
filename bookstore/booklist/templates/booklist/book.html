@@ -11,22 +11,21 @@
     <link href="../../static/css/working.css" type="text/css" rel="stylesheet">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
     <script>
 
     $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-
-        function getCookie(name) {
+        // using jQuery
+function getCookie(name) {
     var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
+    if (document.cookie && document.cookie !== '') {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
             var cookie = jQuery.trim(cookies[i]);
             // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
             }
@@ -34,33 +33,35 @@
     }
     return cookieValue;
 }
+var csrftoken = getCookie('csrftoken');
 
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
-        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-            // Only send the token to relative URLs i.e. locally.
-            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
 });
 
-        $("#sendtocart").click(function (e) {
-            console.log('test');
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $("#sendToCart").click(function (e) {
+
             e.preventDefault();
       var data = {
-          isbn13: $("#isbn13").val();
-            }
+          isbn13: $("#isbn13").val()
+            };
+      console.log(data);
 
       $.ajax({
     "type": "POST",
-    "url": "ajax/addBookToCart/",
-    "data": data,
-
-    "success": function(result) {
-        console.log(result);
-    }
+    "url": "/booklist/ajax/addBookToCart/",
+    "data": data
 })
-
     });
     });
 
@@ -107,7 +108,9 @@ $.ajaxSetup({
 
                         {% csrf_token %}
                         <input type="hidden" id="isbn13" name="isbn13" value={{book_title.0.6}}>
-                        <button type="button" id="sendtocart" class="btn btn-primary">Add to Cart</button>
+                        <button type="button" name="sendToCart" id="sendToCart" class="btn btn-primary">Add to Cart</button>
+
+
 
 
 
@@ -145,7 +148,7 @@ $.ajaxSetup({
           </div>
            <hr>
             <h2 class="title">User Feedbacks</h2>
-            <form action="" method="POST"> {% csrf_token %}
+            <form method="POST"> {% csrf_token %}
                 <label>Select top feedbacks:</label>
                 <input type="number" required name="no_views" min="1" max="50" value={{no_feedback}} style="width: 3em">
                 <button type="submit" name="reselect_feedback" value="reselect_feedback">Change</button>

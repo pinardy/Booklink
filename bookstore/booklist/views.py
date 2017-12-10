@@ -21,11 +21,12 @@ def error(request):
 
 #AJAX
 def addBooktoCart(request):
-	q = request.POST
-	isbn13 = q.isbn13
-	username = request.user.username
-	quantity = 1
-	addToCart(isbn13,username, quantity)
+	if request.method== "POST":
+		q = request.POST
+		isbn13 = q.__getitem__('isbn13')
+		username = request.user.username
+		quantity = 1
+		addToCart(isbn13,username, quantity)
 	return HttpResponse(200)
 
 
