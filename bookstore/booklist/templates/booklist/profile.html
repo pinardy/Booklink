@@ -66,10 +66,22 @@
   <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="home-tab">
       <div class="profile">
           <div class="jumbotron bg-white">
-                <h2> Name: {{ user_profile.0.4 }}</h2>
-                <h2> Email: {{ user_profile.0.7 }}</h2>
-                <h2> Date joined: {{ user_profile.0.10 }}</h2>
+              {% if user.is_superuser %}<p class="badge badge-secondary">Staff account</p>{% endif %}
+                <h3> Welcome {{ user_profile.0.4 }}!  </h3>
+
+                <p> Date joined: {{ user_profile.0.10 }}</p>
+
+              {% if user.is_superuser %}
+             <a href="/booklist/staff/addbook"><button class="btn btn-primary">Add new book</button></a>
+              <a href="/booklist/staff/addstock"><button class="btn btn-success">Modify book</button></a>
+              <a href="/booklist/staff/statistics"><button class="btn btn-warning">Statistics</button></a>
+                {% endif %}
+              <a href="/booklist/logout"><button class="btn btn-danger">Logout</button></a>
+
+
               </div>
+
+
 			</div>
   </div>
   <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="profile-tab">

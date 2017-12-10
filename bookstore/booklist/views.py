@@ -117,7 +117,7 @@ def register(request):
 
 def logout_view(request):
 	logout(request)
-	return render(request, 'booklist/index.html', {})
+	return redirect('browse')
 
 
 def login_view(request):
@@ -125,7 +125,7 @@ def login_view(request):
 	Displays the login form and handles the login action.
 	"""
 	if request.user.is_authenticated:
-		return redirect('index')
+		return redirect('browse')
 	else:
 		if request.method == "POST":
 			form = AuthenticationForm(request, data=request.POST)
@@ -136,7 +136,7 @@ def login_view(request):
 				user = authenticate(username=username, password=raw_password)
 				login(request, user)
 
-				return redirect('index')
+				return redirect('browse')
 		else:
 			form = AuthenticationForm()
 
@@ -266,7 +266,6 @@ def cart(request):
     return render(request, 'booklist/cart.html',{'cart':cart})
 
 def book(request,isbn13):
-	isbn13= str(isbn13)
 	no_feedback = 5
 	if not request.user.is_authenticated:
 		return redirect('login')
