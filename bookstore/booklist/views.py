@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
+from django.http import HttpResponse
 
 from booklist.query.user import *
 from booklist.query.admin import *
@@ -17,6 +18,16 @@ def index(request):
 
 def error(request):
 	return render(request, 'booklist/error.html', {})
+
+#AJAX
+def addBooktoCart(request):
+	q = request.POST
+	isbn13 = q.isbn13
+	username = request.user.username
+	quantity = 1
+	addToCart(isbn13,username, quantity)
+	return HttpResponse(200)
+
 
 def browse(request):
 
@@ -254,6 +265,7 @@ def cart(request):
     return render(request, 'booklist/cart.html',{'cart':cart})
 
 def book(request,isbn13):
+	isbn13= str(isbn13)
 	no_feedback = 5
 	if not request.user.is_authenticated:
 		return redirect('login')
@@ -284,7 +296,8 @@ def book(request,isbn13):
 													'book_title': book_title,
 													'no_feedback': no_feedback,
 													'feedback_ratings': feedback_ratings,
-													'username': request.user.username})
+													'username': request.user.username,
+													  'isbn13': isbn13})
 
 
 def orderfinish(request):

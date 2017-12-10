@@ -50,29 +50,10 @@
                                 {% for book in book_list %}
 
                                 <li class="book_container rounded" data-toggle="tooltip" data-html="true" title="{{book.0}}">
-
-                                    <a href="" class="trigger " data-toggle="modal" data-target="#{{book.6}}"><img class="rounded resizeImg" src="/static/images/book-covers_PROJECT/{{book.6}}.jpg"/></a>
+                                    <a href="/booklist/{{book.6}}" class="trigger" data-target="#{{book.6}}"><img class="rounded resizeImg" src="/static/images/book-covers_PROJECT/{{book.6}}.jpg"/></a>
                                 </li>
 
-                                <div class="modal fade" id="{{book.6}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">{{book.0}}</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img class="rounded" src="/static/images/book-covers_PROJECT/{{book.6}}.jpg"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" name="addToCart" class="btn btn-primary" onPress="">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 {% endfor %}
                             </ul>
                         </div>
