@@ -31,6 +31,19 @@ def addBooktoCart(request):
 
 
 def browse(request):
+	recommendations = []
+	user = request.user.username
+
+	if request.user.is_authenticated:
+
+		ph = getPurchaseHistory(user)
+		if (ph != None):
+			ph = list(ph)
+			for purchase in ph:
+				rec = recommendation(request.user.username, purchase[2]);
+				if rec != None:
+					recommendations.append(rec);
+
 
 	if request.method == "GET":
 		q = request.GET
@@ -54,12 +67,12 @@ def browse(request):
 		except:
 			isbn13='%'
 
-		print(title, authors, publisher, isbn13)
 		book_list = getBooksByQuery(title, authors, publisher, isbn13)
 
-
+	print(recommendations);
 	context = {
 		'book_list': book_list,
+		'rec':recommendations
 	}
 	return render(request, 'booklist/browse.html', context)
 

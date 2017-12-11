@@ -44,8 +44,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
+{% if user.is_authenticated %}
+                        <h2>Recommendations</h2>
+                    {% endif %}
 
                         <div class="booklist_container">
+
                             <ul class="grid">
                                 {% for book in book_list %}
 
