@@ -64,7 +64,7 @@ def rateFeedback(isbn13,rating_username,feedback_username,score):
             cur = con.cursor()
             now = datetime.datetime.now()
             query = "INSERT INTO rating VALUES " \
-                    "('{0}','{1}',{2},'{3}',{4});".format(rating_username,feedback_username,isbn13,now.strftime("%Y-%m-%d"),score)
+                    "('{0}','{1}','{2}','{3}',{4});".format(rating_username,feedback_username,isbn13,now.strftime("%Y-%m-%d"),score)
             cur.execute(query)
 
 def getNFeedbacksForBook(isbn13,n,username):

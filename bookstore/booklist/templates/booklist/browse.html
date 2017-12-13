@@ -48,19 +48,30 @@
                         <h2>Recommendations</h2>
                     {% endif %}
 
+
                         <div class="booklist_container">
-
                             <ul class="grid">
-                                {% for book in book_list %}
-
-                                <li class="book_container rounded" data-toggle="tooltip" data-html="true" title="{{book.0}}">
-                                    <a href="/booklist/{{book.6}}" class="trigger" data-target="#{{book.6}}"><img class="rounded resizeImg" src="/static/images/book-covers_PROJECT/{{book.6}}.jpg"/></a>
+                                {% for rec in recommendations %}
+                                <li class="book_container rounded" data-toggle="tooltip" data-html="true" title="{{rec.0}}">
+                                    <a href="/booklist/{{rec.0}}" class="trigger" data-target="#{{rec.0}}"><img class="rounded resizeImg" src="/static/images/book-covers_PROJECT/{{rec.0}}.jpg"/></a>
                                 </li>
-
-
                                 {% endfor %}
                             </ul>
                         </div>
+
+                        <h2>Books available</h2>
+
+                        <div class="booklist_container">
+                            <ul class="grid">
+
+                                {% for book in book_list %}
+                                <li class="book_container rounded" data-toggle="tooltip" data-html="true" title="{{book.0}}">
+                                    <a href="/booklist/{{book.6}}" class="trigger" data-target="#{{book.6}}"><img class="rounded resizeImg" src="/static/images/book-covers_PROJECT/{{book.6}}.jpg"/></a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
                     </div>
             </div>
                 </div>

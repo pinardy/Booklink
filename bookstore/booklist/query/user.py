@@ -7,7 +7,6 @@ def retrieveProfile(uid):
 	with con:
 		cur = con.cursor()
 
-		# TODO: Add price attribute to book
 		query = "SELECT * " \
 				"FROM auth_user " \
 				"WHERE username = '{0}';".format(uid)

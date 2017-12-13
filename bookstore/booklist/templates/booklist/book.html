@@ -153,7 +153,9 @@ $.ajaxSetup({
                 <input type="number" required name="no_views" min="1" max="50" value={{no_feedback}} style="width: 3em">
                 <button type="submit" name="reselect_feedback" value="reselect_feedback">Change</button>
             </form>
+                                                            {% for fb in feedback_ratings %}
                                                                 <h5 class="author-name outer-top-xs">{{fb.0}}</h5>
+                                                                Feedback: {{fb.4}}<br>
                                                                 Rating: {{fb.3}}<br>
                                                                 {% if username == fb.0 %}
                                                                     You can't submit your own rating.
@@ -167,6 +169,8 @@ $.ajaxSetup({
                                                                     <input type="number" disabled name="quantity" value={{fb.6}} style="width: 3em">
                                                                     <button type="submit" disabled name="submit_rating" value="submit_rating">Submitted</button>
                                                                 {% endif %}
+                                                            <hr>
+                                                            {% endfor %}
       </div>
         <div>
 

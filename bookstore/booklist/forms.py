@@ -39,7 +39,7 @@ class BookForm(forms.Form):
         if book:
             raise forms.ValidationError("ISBN13 EXISTS!! PLS MERCY ON THE DATABASE PROF")
     class Meta:
-        fields = ('title','covFormat','noPages','authors','publisher','yearPublish','edition','edition','isbn10','isbn13','quantity')
+        fields = ('title','authors','publisher','yearPublish','cost','isbn10','isbn13','quantity')
 
 
 class StockForm(forms.Form):

@@ -13,13 +13,11 @@ def connectAndExecute(query):
 			row = cur.fetchall()
 			return row
 
-# TODO: Add ID for purchaseBook()
 
 # ----------BOOK FUNCTIONS----------
 
 # Retrieve information on all books to display on homepage
 def getAllBooks():
-	# TODO: Add price attribute to book
 	query = "SELECT * " \
 			"FROM book;"
 	return connectAndExecute(query)
@@ -62,7 +60,6 @@ def purchaseBook(uid, isbn13, no_copies, date):
 	with con:
 		cur = con.cursor()
 
-		#TODO: Add ID
 		query = "INSERT into purchase_history VALUES" \
 				"('SomeID','{0}','{1}',{2},'{3}');".format(uid, isbn13, no_copies, date)
 		cur.execute(query)
@@ -110,22 +107,20 @@ def getBooksByQuery(title='%', author='%', publisher='%', isbn13='%'):
 	return connectAndExecute(query)
 
 def getAllBookIsbnTitle():
-	# TODO: Add price attribute to book
 	query = "SELECT isbn13, title \
 			FROM book"
 	return connectAndExecute(query)
 
 def recommendation(uid, isbn13):
-	query = "# Recommendations outside current purchase (considers history of purchase " \
-			"SELECT isbn13, count(isbn13) " \
+	query = "SELECT isbn13, count(isbn13) " \
 			"FROM purchase_history ph, " \
 			"(SELECT DISTINCT user_id " \
 			"FROM purchase_history ph " \
-			"WHERE ph.ISBN13 = {0} AND ph.user_id != '{1}') " \
+			"WHERE ph.ISBN13 = '{1}' AND ph.user_id != '{0}') " \
 			"AS T WHERE ph.user_id = T.user_id AND ph.isbn13 " \
 			"NOT IN " \
 			"(SELECT DISTINCT isbn13 FROM purchase_history ph " \
-			"WHERE ph.user_id = '{1}') " \
+			"WHERE ph.user_id = '{0}') " \
 			"GROUP BY isbn13 " \
 			"ORDER BY COUNT(isbn13) DESC " \
 			"LIMIT 3;".format(uid,isbn13)

@@ -31,18 +31,7 @@ def addBooktoCart(request):
 
 
 def browse(request):
-	recommendations = []
 	user = request.user.username
-
-	if request.user.is_authenticated:
-
-		ph = getPurchaseHistory(user)
-		if (ph != None):
-			ph = list(ph)
-			for purchase in ph:
-				rec = recommendation(request.user.username, purchase[2]);
-				if rec != None:
-					recommendations.append(rec);
 
 
 	if request.method == "GET":
@@ -69,12 +58,26 @@ def browse(request):
 
 		book_list = getBooksByQuery(title, authors, publisher, isbn13)
 
-	print(recommendations);
-	context = {
-		'book_list': book_list,
-		'rec':recommendations
-	}
-	return render(request, 'booklist/browse.html', context)
+	if request.user.is_authenticated:
+
+		ph = getPurchaseHistory(user)
+		if (ph != None):
+			ph = list(ph)
+			recommendations = recommendation(request.user.username, ph[-1][2]);
+		else:
+			recommendations = None
+
+		context = {
+			'book_list': book_list,
+			'recommendations': recommendations
+		}
+		return render(request, 'booklist/browse.html', context)
+
+
+	else:
+		return render(request, 'booklist/browse.html', {'book_list':book_list})
+
+
 
 def checkout(request):
 	return render(request, 'booklist/checkout.html', {})
@@ -89,17 +92,15 @@ def stock(request):
 		form = BookForm(request.POST)
 		if form.is_valid():
 			title = form.cleaned_data.get('title')
-			covFormat = form.cleaned_data.get('covFormat')
-			noPages = form.cleaned_data.get('noPages')
 			authors = form.cleaned_data.get('authors')
 			publisher = form.cleaned_data.get('publisher')
 			yearPublish = form.cleaned_data.get('yearPublish')
-			edition = form.cleaned_data.get('edition')
+			cost = form.cleaned_data.get('cost')
 			isbn10 = form.cleaned_data.get('isbn10')
 			isbn13 = form.cleaned_data.get('isbn13')
-			initStock = form.cleaned_data.get('quantity')
+			quantity = form.cleaned_data.get('quantity')
 			# put update function here
-			insertBook (title,covFormat,noPages,authors,publisher,yearPublish,edition,isbn10,isbn13, initStock)
+			insertBook (title,authors,publisher,yearPublish,cost,isbn10,isbn13,quantity)
 	else:
 		form = BookForm
 	return render(request, 'booklist/stock.html', {'bookForm': form})
@@ -119,7 +120,6 @@ def register(request):
 				raw_password = form.cleaned_data.get('password1')
 				user = authenticate(username=username, password=raw_password)
 				login(request, user)
-				# TODO: This should redirect to a success page
 				return redirect('index')
 
 		# If GET request
@@ -203,8 +203,6 @@ def addbook(request):
 			form = BookForm(request.POST)
 			if form.is_valid():
 				title = form.cleaned_data.get('title')
-				covFormat = form.cleaned_data.get('covFormat')
-				noPages = form.cleaned_data.get('noPages')
 				authors = form.cleaned_data.get('authors')
 				publisher = form.cleaned_data.get('publisher')
 				yearPublish = form.cleaned_data.get('yearPublish')
@@ -213,7 +211,6 @@ def addbook(request):
 				isbn13 = form.cleaned_data.get('isbn13')
 				quantity = form.cleaned_data.get('quantity')
 				# put update function here
-				insertBook(title, covFormat, noPages, authors, publisher, yearPublish, edition, isbn10, isbn13, quantity)
 				return redirect('staff')
 		else:
 			form = BookForm
@@ -295,7 +292,11 @@ def book(request,isbn13):
 				# print(req.get('feedback_text')=='')
 				# print(type(req.get('feedback_text')))
 				# print("Req:"+req.get('feedback_text')+"End")
-				writeFeedback(isbn13, request.user.username, req.get('feedback_score'), text)
+				try:
+					writeFeedback(isbn13, request.user.username, req.get('feedback_score'), text)
+				except:
+					pass
+
 			elif req.get('reselect_feedback'):
 				no_feedback = req.get('no_views')
 			elif req.get('submit_rating'):
@@ -364,5 +365,4 @@ def feedback(request):
 			'book_details': book_details,
 		}
 		print(book_details)
-		#TODO: Replace the link with the appropriate one
 		return render(request, 'booklist/feedback.html', context)
