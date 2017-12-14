@@ -14,7 +14,7 @@ from booklist.forms import *
 from booklist.helperFunctions import input_formatting
 
 def index(request):
-	return render(request, 'booklist/index.html', {})
+	return redirect('browse')
 
 def error(request):
 	return render(request, 'booklist/error.html', {})
@@ -56,7 +56,17 @@ def browse(request):
 		except:
 			isbn13='%'
 
-		book_list = getBooksByQuery(title, authors, publisher, isbn13)
+		try:
+			order = q.__getitem__('order')
+		except:
+			order='year_publish'
+
+		try:
+			sort = q.__getitem__('sort')
+		except:
+			sort='DESC'
+
+		book_list = getBooksByQuery(title, authors, publisher, isbn13, order, sort)
 
 	if request.user.is_authenticated:
 
@@ -69,7 +79,8 @@ def browse(request):
 
 		context = {
 			'book_list': book_list,
-			'recommendations': recommendations
+			'recommendations': recommendations,
+			'params':q.values()
 		}
 		return render(request, 'booklist/browse.html', context)
 
@@ -108,7 +119,7 @@ def stock(request):
 
 def register(request):
 	if request.user.is_authenticated:
-		return redirect('index')
+		return redirect('browse')
 	else:
 		if request.method == 'POST':
 			form = RegistrationForm(request.POST)
@@ -120,7 +131,7 @@ def register(request):
 				raw_password = form.cleaned_data.get('password1')
 				user = authenticate(username=username, password=raw_password)
 				login(request, user)
-				return redirect('index')
+				return redirect('browse')
 
 		# If GET request
 		else:

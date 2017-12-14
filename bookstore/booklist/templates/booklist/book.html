@@ -12,7 +12,6 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
     <script>
 
@@ -142,23 +141,24 @@ $.ajaxSetup({
           <h5 class="text-muted">and what did you think of it?</h5>
           <input placeholder='Optional' type="text" rows="4" cols="50" name="feedback_text" style="resize: none"></input>
                     <br />
-                    <button type="submit" name="submit_feedback" value="submit_feedback">Submit Feedback</button>
+                    <button class="btn btn-success" style="margin: 15px" type="submit" name="submit_feedback" value="submit_feedback">Submit Feedback</button>
                 </form>
             {% endif %}
           </div>
            <hr>
-            <h2 class="title">User Feedbacks</h2>
+          {% if feedback_ratings %}
+            <h4 class="title">User Feedbacks</h4>
             <form method="POST"> {% csrf_token %}
-                <label>Select top feedbacks:</label>
-                <input type="number" required name="no_views" min="1" max="50" value={{no_feedback}} style="width: 3em">
-                <button type="submit" name="reselect_feedback" value="reselect_feedback">Change</button>
+                <p class="text-muted">Viewing top: <input type="number" required name="no_views" min="1" max="50" value={{no_feedback}} style="width: 3em">
+                <button type="submit" name="reselect_feedback" value="reselect_feedback">Change</button></p>
+
             </form>
                                                             {% for fb in feedback_ratings %}
                                                                 <h5 class="author-name outer-top-xs">{{fb.0}}</h5>
                                                                 Feedback: {{fb.4}}<br>
                                                                 Rating: {{fb.3}}<br>
                                                                 {% if username == fb.0 %}
-                                                                    You can't submit your own rating.
+          <p class="text-muted">You can't submit your own rating.</p>
                                                                 {% elif fb.6 is None %}
                                                                     <form class="input-group" action="" method="POST"> {% csrf_token %}
                                                                         <input type="hidden" name="feedback_username" value={{fb.0}}>
@@ -171,6 +171,9 @@ $.ajaxSetup({
                                                                 {% endif %}
                                                             <hr>
                                                             {% endfor %}
+          {% else %}
+          <h5>No other buyers have left feedback yet.</h5>
+          {% endif %}
       </div>
         <div>
 

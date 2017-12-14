@@ -97,14 +97,16 @@ def getBookFeedback(isbn13):
 			"WHERE isbn13 = '{0}';".format(isbn13)
 	return connectAndExecute(query)
 
-def getBooksByQuery(title='%', author='%', publisher='%', isbn13='%'):
-	query = "SELECT * " \
-			"FROM book " \
+def getBooksByQuery(title='%', author='%', publisher='%', isbn13='%', order = '%', sort = '%' ):
+	query = "SELECT * FROM BOOK LEFT JOIN (SELECT isbn13, AVG(score) AS avgscore FROM feedback GROUP BY isbn13) AS B USING (ISBN13) " \
 			"WHERE title LIKE '%{0}%'"\
 			"AND authors LIKE '%{1}%'" \
 			"AND isbn13 LIKE '%{2}%'"\
-			"AND publisher LIKE '%{3}%';".format(title,author,isbn13,publisher)
+			"AND publisher LIKE '%{3}%'" \
+			"ORDER BY {4} {5};".format(title,author,isbn13,publisher, order,sort)
 	return connectAndExecute(query)
+
+
 
 def getAllBookIsbnTitle():
 	query = "SELECT isbn13, title \

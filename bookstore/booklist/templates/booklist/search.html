@@ -63,6 +63,21 @@
       <label for="isbn13">Reference ID</label>
       <input type="text" class="form-control" name="isbn13" id="isbn13" placeholder="Enter ISBN13">
     </div>
+                    <div class="form-group">
+      <label>Order by</label>
+      <select class="form-control" name="order" id="order">
+  <option value="year_publish">Year</option>
+          <option value="avgscore">Rating</option>
+</select>
+    </div>
+                    <div class="form-group">
+
+      <select class="form-control" name="sort" id="sort">
+          <label>Sorting</label>
+  <option value="ASC">Ascending</option>
+          <option value="DESC">Descending</option>
+</select>
+    </div>
 
   <button type="submit" class="btn btn-primary" form="search">Search</button>
 </form>
@@ -70,67 +85,6 @@
         </div>
     </section>
 
-    <!-- <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1>Browse</h1>
-                    <form action="/booklist/search/" method="get" id="search">
-                        <div class="input-group input-group-lg search-bar">
-                            <span class="input-group-addon" id="sizing-addon1">🔎</span>
-                            <input type="text" name="title" class="form-control" placeholder="Search for books by title." value="{{title}}">
-                            <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button submit" form="search">Go!</button>
-                     </span>
-                        </div>
-                    </form>
-                    <div>
-                        <div class="booklist_container">
-                            <ul class="grid revealContainer">
-                                {% for book in book_list %}
-                                <li class="book_container rounded reveal" data-toggle="tooltip" data-html="true" title="{{book.0}}">
-                                    <a href="" class="trigger"><img class="rounded" src="http://via.placeholder.com/70x105"></a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ">
-                    <div class="card" style="width: 20rem;">
-                        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-                            <div class="card-header">Order details</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Booking ID: 7F45Q </h4>
-                                <p class="card-text">Due on 17th Dec 2017</p>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Harry Potter and the Philosopher's Stone</td>
-                                        <td>3</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-body">
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Place Order</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
-        </div>
-    </section> -->
     <script>
     sr.reveal('.reveal', { container: '.revealContainer' });
     </script>
