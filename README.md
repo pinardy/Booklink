@@ -21,7 +21,7 @@ After setting up the database, perform the following steps:
 - Run <b>schema.py</b> to create the tables. (schema.py contains the DDL)
 - Run createSQL.py (Inserts dummy data into the database, so we can view some books in the bookstore)
 - Run populate.py to populate the database.
-- Create a superuser with the command 'python manage.py createsuperuser'. This superuser account will act as the bookstore manager account which will allow us to do commands specific to staff accounts
+- Create a superuser with the command 'python manage.py createsuperuser'. This superuser account will act as the bookstore manager account which will allow us to do commands specific to staff accounts. Name the superuser account as 'admin'
 
 Run the command 'python manage.py runserver' and go to <b>127.0.0.1:8000/booklist/browse</b> once you are done.
 
