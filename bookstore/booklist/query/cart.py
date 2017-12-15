@@ -2,6 +2,12 @@ import MySQLdb as mdb
 import datetime
 
 def addToCart(isbn13, username, quantity):
+    '''
+    :param isbn13: single book isbn13 to add to cart
+    :param username: logged in user
+    :param quantity: how many of that book to add to cart
+    :return: None, insert values into cart
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -10,6 +16,11 @@ def addToCart(isbn13, username, quantity):
         cur.execute(query)
 
 def delFromCart(isbn13, username):
+    '''
+    :param isbn13: single book isbn13 to delete from cart
+    :param username: logged in user
+    :return: None, delete book entirely from cart
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -18,6 +29,10 @@ def delFromCart(isbn13, username):
         cur.execute(query)
 
 def delAllFromCart(username):
+    '''
+    :param username: logged in user
+    :return: None, delete user's cart entirely
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -26,6 +41,12 @@ def delAllFromCart(username):
         cur.execute(query)
 
 def modifyCart(isbn13, username, newquantity):
+    '''
+    :param isbn13: single book isbn13 currently in cart to modify
+    :param username: logged in user
+    :param newquantity: specify the new quantity to update (not addition, update)
+    :return: None, updates the user's specified book quantity in his cart
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -35,14 +56,19 @@ def modifyCart(isbn13, username, newquantity):
         cur.execute(query)
 
 def showCart(username):
+    '''
+    :param username: logged in user
+    :return: nested list of user's cart
+    Query: Inner subquery - join cart, inventory and book tables
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
         query = "SELECT b.title, a.* FROM( "\
-            "SELECT * FROM cart "\
-        "NATURAL JOIN inventory) as a "\
-        "NATURAL JOIN book b "\
-        "WHERE a.username = '{0}';".format(username)
+                "SELECT * FROM cart "\
+                "NATURAL JOIN inventory) as a "\
+                "NATURAL JOIN book b "\
+                "WHERE a.username = '{0}';".format(username)
         cur.execute(query)
 
         if cur.rowcount == 0:
@@ -52,11 +78,13 @@ def showCart(username):
             return row
 
 def ValidPurchase(username):
+    '''
+    :param username: logged in user
+    :return: rows for books in the cart whose quantity exceeds its inventory, else None
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
-        # This query returns something if there are items on the cart that exceeds inventory
-        # else it returns nothing
         query = "SELECT * FROM INVENTORY, cart " \
                 "WHERE cart.isbn13 = inventory.isbn13 " \
                 "and cart.username = '{0}' " \
@@ -73,9 +101,9 @@ def ValidPurchase(username):
 
 def PurchaseBook(username):
     '''
-    :param username: takes in current user
+    :param username: logged in user
     :return: True to indicate that the query run successful
-    Query: Submits a purchase_history based on contents on cart
+    Query: Submits a purchase_history based on contents on cart (insert values from cart into purchase_history)
     '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:

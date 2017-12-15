@@ -68,20 +68,6 @@ with con:
                       "SET inventory.no_copies = inventory.no_copies - NEW.no_copies " \
                       "WHERE inventory.ISBN13 = NEW.ISBN13;"
 
-    # ========== TEST INSERTION SQL CODES =========
-
-    # sql = "INSERT into books VALUES ('A Guide to the SQL Standard','paperback',240,'C.J. Date','Addison-Wesley',1989,2,'0201502097','978-0201502091');"
-
-    # sql1 = "INSERT into books VALUES ('Database in Depth: Relational Theory for Practitioners',"\
-    # 	  "'paperback',208,'C.J. Date','O''Reilly Media',2005,1,'0596100124','978-0596100124);"
-
-    # sql2 = "INSERT into books VALUES ( 'Logic and Databases: The Roots of Relational Theory', 'paperback', 460, 'C.J. Date', 'Trafford Publishing', 2007, 1, '1425122906', '978-1425122904');"
-
-    sql3 = "INSERT into books VALUES ('Database Management Systems'," \
-           "'hardcover',454,'Michael M. Gorman','QED Information Sciences'," \
-           "1991,1,'0894353233','978-0894353239');"
-
-    # ============================================
     try:
         cur.execute(book)
         print("Created book table")
