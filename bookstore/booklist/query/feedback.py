@@ -40,6 +40,7 @@ def writeFeedback(isbn13,username,score,text):
             query = "INSERT INTO feedback VALUES " \
                     "('{0}','{1}','{2}','{3}','{4}');".format(username, isbn13, now.strftime("%Y-%m-%d"), score, text)
             cur.execute(query)
+        rateFeedback(isbn13, 'admin', username, 0)  # Initialize an admin rating of 0, so it can appear in testimonial
 
 def userHasRateFeedback(isbn13,rating_username,feedback_username):
     '''
