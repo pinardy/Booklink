@@ -2,6 +2,12 @@ import MySQLdb as mdb
 import datetime
 
 def addToCart(isbn13, username, quantity):
+    '''
+    :param isbn13: single book isbn13 to add to cart
+    :param username: logged in user
+    :param quantity: how many of that book to add to cart
+    :return: None, insert values into cart
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -10,6 +16,11 @@ def addToCart(isbn13, username, quantity):
         cur.execute(query)
 
 def delFromCart(isbn13, username):
+    '''
+    :param isbn13: single book isbn13 to delete from cart
+    :param username: logged in user
+    :return: None, delete book entirely from cart
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -18,6 +29,10 @@ def delFromCart(isbn13, username):
         cur.execute(query)
 
 def delAllFromCart(username):
+    '''
+    :param username: logged in user
+    :return: None, delete user's cart entirely
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -26,6 +41,12 @@ def delAllFromCart(username):
         cur.execute(query)
 
 def modifyCart(isbn13, username, newquantity):
+    '''
+    :param isbn13: single book isbn13 currently in cart to modify
+    :param username: logged in user
+    :param newquantity: specify the new quantity to update (not addition, update)
+    :return: None, updates the user's specified book quantity in his cart
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -35,14 +56,19 @@ def modifyCart(isbn13, username, newquantity):
         cur.execute(query)
 
 def showCart(username):
+    '''
+    :param username: logged in user
+    :return: nested list of user's cart
+    Query: Inner subquery - join cart, inventory and book tables
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
         query = "SELECT b.title, a.* FROM( "\
-            "SELECT * FROM cart "\
-        "NATURAL JOIN inventory) as a "\
-        "NATURAL JOIN book b "\
-        "WHERE a.username = '{0}';".format(username)
+                "SELECT * FROM cart "\
+                "NATURAL JOIN inventory) as a "\
+                "NATURAL JOIN book b "\
+                "WHERE a.username = '{0}';".format(username)
         cur.execute(query)
 
         if cur.rowcount == 0:
@@ -52,11 +78,13 @@ def showCart(username):
             return row
 
 def ValidPurchase(username):
+    '''
+    :param username: logged in user
+    :return: rows for books in the cart whose quantity exceeds its inventory, else None
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
-        # This query returns something if there are items on the cart that exceeds inventory
-        # else it returns nothing
         query = "SELECT * FROM INVENTORY, cart " \
                 "WHERE cart.isbn13 = inventory.isbn13 " \
                 "and cart.username = '{0}' " \
@@ -72,6 +100,10 @@ def ValidPurchase(username):
             return row
 
 def PurchaseBook(username):
+    '''
+    :param username: logged in user
+    :return: True if query succeeds, insert values from cart into purchase_history
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -83,22 +115,3 @@ def PurchaseBook(username):
 
         cur.execute(query)
         return True
-
-def SubmitPurchaseHistory(orderlist,username):
-    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT max(purchase_id) FROM purchase_history;")
-        last_purchaseid = cur.fetchall()[0][0]
-        if last_purchaseid == None:
-            last_purchaseid = 0
-        else:
-            last_purchaseid = int(last_purchaseid)
-        now = datetime.datetime.now()
-
-        for order in orderlist:
-            last_purchaseid = last_purchaseid + 1
-            print(last_purchaseid, username, order[1], order[3],now.strftime("%Y-%m-%d"))
-            query = "INSERT into purchase_history VALUES "\
-            "({0},'{1}','{2}',{3},'{4}');" .format(last_purchaseid, username, order[1], order[3],now.strftime("%Y-%m-%d"))
-            cur.execute(query)
