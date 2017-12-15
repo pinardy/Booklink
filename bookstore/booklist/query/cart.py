@@ -72,6 +72,11 @@ def ValidPurchase(username):
             return row
 
 def PurchaseBook(username):
+    '''
+    :param username: takes in current user
+    :return: True to indicate that the query run successful
+    Query: Submits a purchase_history based on contents on cart
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
@@ -79,26 +84,7 @@ def PurchaseBook(username):
         #Check all orders are within inventory limit first before subtracting
         query = "INSERT INTO purchase_history (purchase_id, user_id, ISBN13, no_copies, order_date) " \
                 "SELECT null, username, isbn13, quantity, '{0}' FROM cart " \
-                "WHERE cart.username = '{1}';".format(now.strftime("%Y-%m-%d"),username)
-
+                "WHERE cart.username = '{1}';".format(now.strftime("%Y-%m-%d"), username)
+        print(query)
         cur.execute(query)
         return True
-
-def SubmitPurchaseHistory(orderlist,username):
-    con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT max(purchase_id) FROM purchase_history;")
-        last_purchaseid = cur.fetchall()[0][0]
-        if last_purchaseid == None:
-            last_purchaseid = 0
-        else:
-            last_purchaseid = int(last_purchaseid)
-        now = datetime.datetime.now()
-
-        for order in orderlist:
-            last_purchaseid = last_purchaseid + 1
-            print(last_purchaseid, username, order[1], order[3],now.strftime("%Y-%m-%d"))
-            query = "INSERT into purchase_history VALUES "\
-            "({0},'{1}','{2}',{3},'{4}');" .format(last_purchaseid, username, order[1], order[3],now.strftime("%Y-%m-%d"))
-            cur.execute(query)

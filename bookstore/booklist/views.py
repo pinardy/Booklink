@@ -253,39 +253,40 @@ def addstock(request):
 
 
 def cart(request):
- """
- Staff page. Store managers can insert a new book or increase stock
- """
- if not request.user.is_authenticated:
-  return redirect('login')
- else:
-  if request.method == 'POST':
-   req = request.POST
-   if req.get('update'):
-    modifyCart(req.get('isbn13'), request.user.username, req.get('quantity'))
-   elif req.get('delete'):
-    delFromCart(req.get('isbn13'), request.user.username)
-   elif req.get('placeorder'):
-    # isValid is None if there are no problematic purchases
-    # isValid is a list if there are problematic purchases
+	"""
+	Staff page. Store managers can insert a new book or increase stock
+	"""
+	if not request.user.is_authenticated:
+		return redirect('login')
+	else:
+		if request.method == 'POST':
+			req = request.POST
+			if req.get('update'):
+				modifyCart(req.get('isbn13'), request.user.username, req.get('quantity'))
+			elif req.get('delete'):
+				delFromCart(req.get('isbn13'), request.user.username)
+			elif req.get('placeorder'):
+				# isValid is None if there are no problematic purchases
+				# isValid is a list if there are problematic purchases
 
-    isValid = ValidPurchase(request.user.username)
-    print(isValid)
-    if isValid is None:
-     PurchaseBook(request.user.username)
-     delAllFromCart(request.user.username)
-     return redirect('orderfinish')
-    else:
-     print("DEBUG: ONE OF YOUR ORDERS HAS EXCEEDED INVENTORY")
-     return redirect('error')
+				isValid = ValidPurchase(request.user.username)
 
-   return redirect('cart')
-  else:
-   cart = showCart(request.user.username)
-   if cart is None:
-    return render(request, 'booklist/cart.html',{'cart':None})
-   else:
-    return render(request, 'booklist/cart.html',{'cart':cart})
+				print(isValid)
+				if isValid is None:
+					PurchaseBook(request.user.username)
+					delAllFromCart(request.user.username)
+					return redirect('orderfinish')
+			else:
+				print("DEBUG: ONE OF YOUR ORDERS HAS EXCEEDED INVENTORY")
+				return redirect('error')
+
+			return redirect('cart')
+		else:
+			cart = showCart(request.user.username)
+			if cart is None:
+				return render(request, 'booklist/cart.html',{'cart':None})
+			else:
+				return render(request, 'booklist/cart.html',{'cart':cart})
 
 def book(request,isbn13):
 	no_feedback = 5

@@ -16,13 +16,6 @@ def connectAndExecute(query):
 
 # ----------BOOK FUNCTIONS----------
 
-# Retrieve information on all books to display on homepage
-def getAllBooks():
-	query = "SELECT * " \
-			"FROM book;"
-	return connectAndExecute(query)
-
-
 # Retrieve information on single book for book page
 def getBook(isbn13):
 	query = "SELECT * " \
@@ -31,74 +24,17 @@ def getBook(isbn13):
 	return connectAndExecute(query)
 
 
-def searchBookByTitle(title):
-	query = "SELECT * " \
-				"FROM book " \
-				"WHERE title LIKE '%{0}%';".format(title)
-	return connectAndExecute(query)
-
-
-def setInventory(isbn13, initStock):
-	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-	with con:
-		cur = con.cursor()
-
-		query = "INSERT into inventory VALUES" \
-				"('{0}',{1});".format(isbn13, initStock)
-		cur.execute(query)
-		return True
-
-def getInventory(isbn13):
-	query = "SELECT no_copies " \
-			"FROM inventory " \
-			"WHERE isbn13 = '{0}';".format(isbn13)
-	return connectAndExecute(query)
-
-
-def purchaseBook(uid, isbn13, no_copies, date):
-	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-	with con:
-		cur = con.cursor()
-
-		query = "INSERT into purchase_history VALUES" \
-				"('SomeID','{0}','{1}',{2},'{3}');".format(uid, isbn13, no_copies, date)
-		cur.execute(query)
-
-		return True
-
-
-def bookRating(isbn13):
-	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
-	with con:
-		cur = con.cursor()
-
-		query = "SELECT AVG(score) " \
-				"FROM feedback " \
-				"WHERE isbn13 = '{0}';".format(isbn13)
-		cur.execute(query)
-
-		# No row exists
-		if cur.rowcount == 0:
-			print("No book rating")
-			return
-		else:
-			print('Book rating fetched')
-			row = cur.fetchall()[0][0]
-			if(bool(row==None)):
-				print('No rating had been given')
-				return 0;
-			else:
-				print('Rating fetched')
-				print(row)
-				return row
-
-def getBookFeedback(isbn13):
-	query = "SELECT * " \
-			"FROM feedback " \
-			"WHERE isbn13 = '{0}';".format(isbn13)
-	return connectAndExecute(query)
-
+# This is the conjunctive query
 def getBooksByQuery(title='%', author='%', publisher='%', isbn13='%', order = '%', sort = '%' ):
+	'''
+	:param title: title of book
+	:param author: author input
+	:param publisher: publisher input
+	:param isbn13: isbn13 input
+	:param order: Year or Rating
+	:param sort: ascending or descending
+	:return: a nested tuple of books that matches the query
+	'''
 	query = "SELECT * FROM BOOK LEFT JOIN (SELECT isbn13, AVG(score) AS avgscore FROM feedback GROUP BY isbn13) AS B USING (ISBN13) " \
 			"WHERE title LIKE '%{0}%'"\
 			"AND authors LIKE '%{1}%'" \
@@ -108,19 +44,36 @@ def getBooksByQuery(title='%', author='%', publisher='%', isbn13='%', order = '%
 	return connectAndExecute(query)
 
 
-
 def getAllBookIsbnTitle():
+	'''
+	:return: tuple of book titles
+	'''
 	query = "SELECT isbn13, title \
 			FROM book"
 	return connectAndExecute(query)
 
+
+# This is the recommender code
 def recommendation(uid, isbn13):
+	'''
+	:param uid: current user id
+	:param isbn13: the last book that the person has purchased
+	:return: a suggested tuple of 3 books that is popular based on highest purchased
+	Query:
+	1st SELECT
+	Aggregates the books based on the books bought buy people who bought the same book as the user
+	Groups by isbn13 and returns top 3
+	2nd SELECT
+	Finds all distinct users that bought the same book as the user
+	3rd SELECT
+	Finds all the books that the user has already bought so that you will not recommend those books
+	'''
 	query = "SELECT isbn13, count(isbn13) " \
 			"FROM purchase_history ph, " \
 			"(SELECT DISTINCT user_id " \
 			"FROM purchase_history ph " \
-			"WHERE ph.ISBN13 = '{1}' AND ph.user_id != '{0}') " \
-			"AS T WHERE ph.user_id = T.user_id AND ph.isbn13 " \
+			"WHERE ph.ISBN13 = '{1}' AND ph.user_id != '{0}') AS T " \
+			"WHERE ph.user_id = T.user_id AND ph.isbn13 " \
 			"NOT IN " \
 			"(SELECT DISTINCT isbn13 FROM purchase_history ph " \
 			"WHERE ph.user_id = '{0}') " \
