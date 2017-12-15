@@ -63,6 +63,7 @@ def purchaseBook(uid, isbn13, no_copies, date):
 		query = "INSERT into purchase_history VALUES" \
 				"('SomeID','{0}','{1}',{2},'{3}');".format(uid, isbn13, no_copies, date)
 		cur.execute(query)
+
 		return True
 
 

@@ -26,7 +26,7 @@ def insertBook(title, authors, publisher, year_publish, cost, isbn10, isbn13, qu
 				"'{5}','{6}');".format(title, authors, publisher, year_publish, cost, isbn10, isbn13)
 
 		cur.execute(query)
-		
+		print("New books:", query)
 		query = "INSERT into inventory VALUES" \
 				"('{0}',{1});".format(isbn13,quantity)
 		cur.execute(query)

@@ -217,11 +217,12 @@ def addbook(request):
 				authors = form.cleaned_data.get('authors')
 				publisher = form.cleaned_data.get('publisher')
 				yearPublish = form.cleaned_data.get('yearPublish')
-				edition = form.cleaned_data.get('edition')
+				cost = form.cleaned_data.get('cost')
 				isbn10 = form.cleaned_data.get('isbn10')
 				isbn13 = form.cleaned_data.get('isbn13')
 				quantity = form.cleaned_data.get('quantity')
 				# put update function here
+				insertBook(title, authors, publisher, yearPublish, cost, isbn10, isbn13, quantity)
 				return redirect('staff')
 		else:
 			form = BookForm
