@@ -11,8 +11,6 @@ from booklist.query.book import *
 
 from booklist.forms import *
 
-from booklist.helperFunctions import input_formatting
-
 def index(request):
 	return redirect('browse')
 
@@ -110,8 +108,9 @@ def stock(request):
 			isbn10 = form.cleaned_data.get('isbn10')
 			isbn13 = form.cleaned_data.get('isbn13')
 			quantity = form.cleaned_data.get('quantity')
-			# put update function here
-			insertBook (title,authors,publisher,yearPublish,cost,isbn10,isbn13,quantity)
+
+			# Insert a book
+			insertBook(title,authors,publisher,yearPublish,cost,isbn10,isbn13,quantity)
 	else:
 		form = BookForm
 	return render(request, 'booklist/stock.html', {'bookForm': form})
@@ -301,9 +300,7 @@ def book(request,isbn13):
 				else:
 					text = req.get('feedback_text')
 				print(text)
-				# print(req.get('feedback_text')=='')
-				# print(type(req.get('feedback_text')))
-				# print("Req:"+req.get('feedback_text')+"End")
+
 				try:
 					writeFeedback(isbn13, request.user.username, req.get('feedback_score'), text)
 				except:

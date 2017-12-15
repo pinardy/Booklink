@@ -3,7 +3,9 @@ import datetime
 
 def userHasGivenFeedback(isbn13,username):
     '''
-    Returns True if user has given feedback for particular book.
+    :param isbn13: isbn13 of the book
+    :param username: name of the user
+    :return: True if user has given feedback for particular book.
     '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
@@ -20,8 +22,13 @@ def userHasGivenFeedback(isbn13,username):
 
 def writeFeedback(isbn13,username,score,text):
     '''
-    Returns True if user has given feedback for particular book.
+    :param isbn13: isbn13 of the book
+    :param username: name of the user
+    :param score: score that the user will give
+    :param text: the string of the feedback to be given
+    :return: True if user has given feedback for particular book
     '''
+
     if userHasGivenFeedback(isbn13, username) is not None:
         return False
 
@@ -37,7 +44,10 @@ def writeFeedback(isbn13,username,score,text):
 
 def userHasRateFeedback(isbn13,rating_username,feedback_username):
     '''
-    Returns True if user has given feedback for particular book.
+    :param isbn13: isbn13 of the book
+    :param rating_username:  currently logged in person giving the rating
+    :param feedback_username: name of the person that is being rated
+    :return: True if user has given feedback for particular book
     '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
@@ -53,7 +63,11 @@ def userHasRateFeedback(isbn13,rating_username,feedback_username):
 
 def rateFeedback(isbn13,rating_username,feedback_username,score):
     '''
-    Returns True if user has given feedback for particular book.
+    :param isbn13: isbn13 of the book
+    :param rating_username: currently logged in person giving the rating
+    :param feedback_username: name of the person that is being rated
+    :param score: score to be assigned to a feedback rating
+    :return: True if user has given feedback for particular book
     '''
     if userHasRateFeedback(isbn13,rating_username,feedback_username):
         return False

@@ -1,6 +1,11 @@
 import MySQLdb as mdb
 
+
 def connectAndExecute(query):
+	'''
+	:param query: An SQL query to be executed
+	:return: a tuple of tuples
+	'''
 	con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
 	with con:
 		cur = con.cursor()
