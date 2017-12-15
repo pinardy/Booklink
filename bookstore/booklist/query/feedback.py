@@ -82,22 +82,30 @@ def rateFeedback(isbn13,rating_username,feedback_username,score):
             cur.execute(query)
 
 def getNFeedbacksForBook(isbn13,n,username):
+    '''
+    :param isbn13: book that specifies which feedbacks to view
+    :param n: max number of feedback to view
+    :param username: logged in user
+    :return: Nested tuple of the top n feedbacks for a particular book, or None if there is none.
+    Query: Innermost sub-query aggregates all ratings given for each (user's feedback,book) tuple.
+    Next innermost sub-query selects all ratings of the requested book isbn13 and ranks them in order, finally imposing max number of feedbacks to view.
+    '''
     con = mdb.connect(host="127.0.0.1", port=3306, user="bookstore_user", passwd="password", db="bookstore")
     with con:
         cur = con.cursor()
-        query = "SELECT * FROM feedback NATURAL JOIN ("\
-                "SELECT feedback_user,isbn13,average,score AS rat_score FROM (SELECT * FROM " \
-                "(SELECT feedback_user, isbn13, AVG(score) as average " \
-                "FROM rating " \
-                "GROUP BY feedback_user, isbn13) A " \
-                "WHERE A.isbn13 = '{0}' " \
-                "ORDER BY A.average DESC " \
-                "LIMIT {1}) J "\
-                "NATURAL LEFT JOIN "\
-                "(SELECT * FROM rating "\
-                "WHERE rating_user = '{2}' "\
-                "AND isbn13 = '{0}') K) L " \
-                "ORDER BY average DESC;".format(isbn13,n,username) #Limit selects top n rows for MYSQL. If SQL server use SELECT TOP n FROM
+        query = "SELECT * FROM feedback NATURAL JOIN ( "\
+                    "SELECT feedback_user,isbn13,average,score AS rat_score FROM ( " \
+                        "SELECT * FROM ( " \
+                        "SELECT feedback_user, isbn13, AVG(score) as average " \
+                        "FROM rating " \
+                        "GROUP BY feedback_user, isbn13) A " \
+                    "WHERE A.isbn13 = '{0}' " \
+                    "ORDER BY A.average DESC " \
+                    "LIMIT {1}) J "\
+                "NATURAL LEFT JOIN ( "\
+                    "SELECT * FROM rating "\
+                    "WHERE rating_user = '{2}' "\
+                    "AND isbn13 = '{0}') K) L; ".format(isbn13,n,username) #Limit selects top n rows for MYSQL. If SQL server use SELECT TOP n FROM
         cur.execute(query)
         if cur.rowcount == 0:
             return None
