@@ -5,10 +5,10 @@ Bookstore Database-system with Django
 1) Pinardy Yang (1001520)
 2) Joshua Lim (1001509)
 3) Jway Jin Jun (1001555)
-4) Eiros Tan ()
+4) Eiros Tan (1001538)
 5) Sanjay Pushparajan (1001646)
 
-<b>Instructions:</b>
+<b>Instructions:</b> <br />
  Ensure that you have setup the database with the following details:
 - Database name: bookstore
 - User: bookstore_user
@@ -34,6 +34,7 @@ The links below show where our functions and other SQL codes are used
 - feedback.py: https://github.com/pinardy/DB-Project/blob/master/bookstore/booklist/query/feedback.py
 - user.py: https://github.com/pinardy/DB-Project/blob/master/bookstore/booklist/query/user.py
 
+***
 <b>Git-tracked development workflow</b>
 In our project, we make use of GitHub version control for our project to enable us to manage our project in an organised, less-risky manner.
 
@@ -63,9 +64,9 @@ BRANCH:
 MASTER:
   - git merge <branch>                   (Merge master with personal branch)
   - git push                                     (Push the changes onto master)
-  
-  
-<b>jQuery</b>
+ 
+***  
+<b>jQuery</b> <br />
 jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. In our project, we make use of AJAX (Asynchronous JavaScript and XML) to make the process of ordering books a smooth and seamless process.
 
 Through the use of jQuery we learnt three aspects of it:
